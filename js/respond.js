@@ -43,6 +43,7 @@ function project_list(longitude, latitude, distance){
                 var activity_id = activity.id;
                 var description = activity.descriptions[0].narratives[0].text;
                                   console.log(description);
+               
                         
                 var title = 'Unnamed activity';
 

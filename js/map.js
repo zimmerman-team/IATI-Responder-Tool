@@ -41,7 +41,6 @@ function ondragend() {
     coordinates.innerHTML = 'Latitude: ' + m.lat + '<br />Longitude: ' + m.lng;
     lat = m.lat;
     lon = m.lng;
-
 }
 
     function projects_near_marker(){       

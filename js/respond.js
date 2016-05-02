@@ -15,7 +15,7 @@ function getLocation() {
 function showPosition(position) {
   // x.innerHTML="Latitude: " + position.coords.latitude + 
   //        "<br>Longitude: " + position.coords.longitude;  
-  project_list(position.coords.longitude, position.coords.latitude, 1000); 
+  project_list(position.coords.longitude, position.coords.latitude, 300); 
 }
     
 function project_list(longitude, latitude, distance){
@@ -48,9 +48,9 @@ function project_list(longitude, latitude, distance){
                    if(activity.descriptions[0] != null){
                     description = activity.descriptions[0].narratives[0].text;
                 }
-                                  console.log(description);
+                //console.log(description);
 
-                // var language = activity.title.narratives[0].language.name;
+
 
                 var title = 'Unnamed activity';
 
@@ -69,7 +69,6 @@ function project_list(longitude, latitude, distance){
                     "properties": {
                         "title": title,
                         "country": country,
-                     //   "language":language,
                         "description": description   
                     }
                 };
@@ -90,7 +89,7 @@ function project_list(longitude, latitude, distance){
         var tbody_html = '';
 
         $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail" >'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
+          tbody_html += '<tr><td><a href="/detail">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
         });
     
         $('#project-list tbody').html(tbody_html);

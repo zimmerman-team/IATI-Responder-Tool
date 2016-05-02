@@ -1,27 +1,9 @@
-// respond.js
-// var geolocate = document.getElementById("geolocate");
+// detail.js
 
-var x = document.getElementById("demo");
-
-function getLocation() {
-
-    if (navigator.geolocation) {
-        navigator.geolocation.watchPosition(showPosition);
-    } else { 
-        x.innerHTML = "Geolocation is not supported by this browser.";
-    }  
-}
-    
-function showPosition(position) {
-  // x.innerHTML="Latitude: " + position.coords.latitude + 
-  //        "<br>Longitude: " + position.coords.longitude;  
-  project_list(position.coords.longitude, position.coords.latitude, 1000); 
-}
-    
 function project_list(longitude, latitude, distance){
-    $('#loader').css('display', 'block');
     
     var projectAPI = "https://dev.oipa.nl/api/activities/";
+    
     $.getJSON( projectAPI, {
       format: "json",
       location_longitude: longitude,
@@ -48,57 +30,35 @@ function project_list(longitude, latitude, distance){
                    if(activity.descriptions[0] != null){
                     description = activity.descriptions[0].narratives[0].text;
                 }
+                //var description = activity.descriptions[0].narratives[0].text;
                                   console.log(description);
 
-                // var language = activity.title.narratives[0].language.name;
+                var language = activity.title.narratives[0].language.name;
 
                 var title = 'Unnamed activity';
 
                 if(activity.title != null){
                     title = activity.title.narratives[0].text.split(/\s+/).slice(0,5).join(" ");
                 }
+               // function getWords(title) {
+               //                return title.split(/\s+/).slice(1,5).join(" ");
+               //            }
+               //            console.log(title.split)
 
-                var country = 'Unknown location'
-
-                  if(activity.recipient_countries.country != null){
-                    country = activity.recipient_countries.country.name;
-                }
-     
                 var projects = {
                     "type": "Feature",
                     "properties": {
                         "title": title,
-                        "country": country,
-                     //   "language":language,
+                        "language":language,
                         "description": description   
                     }
                 };
-                
+                $( "#objectID" ).load( "test.php", { "choices[]": [ "Jon", "Susan" ] } );
                 // function DoPost(description){
                 // $.post("detail.html", { "description":description } );  //Your values here..
                 // }
                 //print een lijst van de titles van de projecten 
                 geojson.push(projects);
-                $('#loader').css('display', 'none');
             });
 
         });
-           console.log(geojson);
-
-        
-
-        var tbody_html = '';
-
-        $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail" >'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
-        });
-    
-        $('#project-list tbody').html(tbody_html);
-      
-        //'+ projects.properties.language'
-        //geojson.toString();
-
-        // x.innerHTML = "title:" + title;
-        
-  });
-}

@@ -7,11 +7,14 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
-            <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/main.css">
 <title>Home</title>
-  <link rel="stylesheet" href="css/main.css">
+ 
 </head>
-<body>
+
+<body onload="getLocation()">
+
         <div class="page-header head">
             <h1>Respond</h1>
         </div>       
@@ -25,7 +28,7 @@
         
           <ul class="dropdown-menu">
             <li><a href="/map">Projects near me</a></li>
-            <li><a href="/respond">Respond to project</a></li>
+            <li><a href="/respond">Respond</a></li>
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/messages">Messages</a></li>
@@ -34,16 +37,21 @@
 
        <div class="btn-group home">       
             <button type="button" class="btn btn-default">
-             <a type= "button" href="http://localhost:9000/index" class="glyphicon glyphicon-home"></a>
+             <a type= "button" href="/index" class="glyphicon glyphicon-home"></a>
             </button>
         </div>
 
-          <button onclick="getLocation()" class="btn btn-primary but3">Click to see nearby projects</button>
+          <!-- <button onclick="getLocation()" class="btn btn-primary but3">Nearby projects</button> -->
+      
+        <div id="loader">
+            <div id="loader-icon">Loading...</div>
+            <div id="loader-bg"></div>
+        </div>
 
 <table id="project-list">
     <thead>
         <tr>
-            <th>Title</th>
+            <th>Projects near me</th>
             <th>Location</th>
         </tr>
     </thead>
@@ -59,7 +67,6 @@
 </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
     <script src="js/respond.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

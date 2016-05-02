@@ -25,7 +25,13 @@
 
     </head>
     
-    <body>   
+    <body>  
+
+        <div id="loader">
+            <div id="loader-icon">Loading...</div>
+            <div id="loader-bg"></div>
+        </div>
+
           <!-- Top header -->
         <div class="page-header head">
             <h1>Projects near me</h1> 
@@ -35,7 +41,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div id="responder-tool"></div>
+        <!-- <div id="responder-tool"></div> -->
         <div id='map'></div>
         
 
@@ -47,35 +53,32 @@
          
         
           <ul class="dropdown-menu">
-            <li><a href="/map">Projects near me</a></li>
-            <li><a href="http://localhost:9000/respond">Respond to project</a></li>
-            <li><a href="http://localhost:9000/about">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Messages</a></li>
+            <li><a href="http://localhost:9000/map">Projects near me</a></li>
+            <li><a href="/respond">Respond </a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/messages">Messages</a></li>
           </ul>
         </div>
 
 
         <div class="btn-group home">       
             <button type="button" class="btn btn-default">
-             <a type= "button" href="http://localhost:9000/index" class="glyphicon glyphicon-home"></a>
+             <a type= "button" href="/index" class="glyphicon glyphicon-home"></a>
             </button>
         </div>
 
-
+         <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Projects near marker</a>
+        <pre id='coordinates' class='ui-coordinates'></pre>
  
-        <div id='output' class='ui-control'>
-          Click: <code id='click'></code><br/>
-          <!-- Mousemove: <code id='mousemove'></code><br/> -->
-        </div>
-        
-        <a href='#' id='geolocate' class='ui-button'>Find me</a>
+
+        <!-- <a href="/detail" id='demo'</a> -->
+        <a href='#' id='geolocate' class='btn btn-primary find-button'>Find me</a>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHJPv9fGRxKK-RxivVtksAeO82NnpYVyQ"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
         <script src="js/map.js"></script>
-
 
      
 
@@ -83,7 +86,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
         
-
+        
 
     </body>
 </html>

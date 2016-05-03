@@ -151,3 +151,9 @@ th, td {
   text-align:center;
   border-radius:3px;
   }
+
+  #title{
+    font-weight: bold;
+    /*font-style: bold;*/
+  }
+

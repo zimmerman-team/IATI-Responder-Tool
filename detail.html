@@ -14,18 +14,30 @@
 <link rel="stylesheet" href="css/main.css">
 
 
-<title>Contact</title>
+<title>Project Name</title>
  
 </head>
-<body >
+<body onload="info()">
         <div class="page-header head">
             <h1>Detail</h1>
         </div>
 
+        <div id="loader">
+            <div id="loader-icon">Loading...</div>
+            <div id="loader-bg"></div>
+        </div>
+
+        <div id="title" >
+        </div>
+
+        <div id="description">
+        </div>
+
+
         <div class="btn-group nav">     
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-            </button>
+          </button>
          
         
           <ul class="dropdown-menu">
@@ -43,11 +55,13 @@
             </button>
         </div>
    
-        <p> info about the project </p>
+      
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
                 <script src="js/detail.js"></script>
+
+
 
 </body>
 </html>

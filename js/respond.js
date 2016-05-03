@@ -15,7 +15,7 @@ function getLocation() {
 function showPosition(position) {
   // x.innerHTML="Latitude: " + position.coords.latitude + 
   //        "<br>Longitude: " + position.coords.longitude;  
-  project_list(position.coords.longitude, position.coords.latitude, 300); 
+  project_list(position.coords.longitude, position.coords.latitude, 200); 
 }
     
 function project_list(longitude, latitude, distance){
@@ -50,32 +50,34 @@ function project_list(longitude, latitude, distance){
                 }
                 //console.log(description);
 
-
-
                 var title = 'Unnamed activity';
-
                 if(activity.title != null){
                     title = activity.title.narratives[0].text.split(/\s+/).slice(0,5).join(" ");
                 }
 
-                var country = 'Unknown location'
-
+                var countries = 'Unknown location'
                   if(activity.recipient_countries.country != null){
-                    country = activity.recipient_countries.country.name;
+                    countries = [];
+
+                    for(var i = 0;i < data.recipient_countries.length;i++){
+                        countries.push(data.recipient_countries[i].country.name);
+                    }
+
+                    // countries = ['Algeria', 'Kenya']
+                    countries = countries.join(',');
+                    //country = activity.recipient_countries.country.name;
                 }
      
                 var projects = {
                     "type": "Feature",
                     "properties": {
                         "title": title,
-                        "country": country,
-                        "description": description   
+                        "country": countries,
+                        "description": description,
+                        "id" : activity_id        
                     }
                 };
                 
-                // function DoPost(description){
-                // $.post("detail.html", { "description":description } );  //Your values here..
-                // }
                 //print een lijst van de titles van de projecten 
                 geojson.push(projects);
                 $('#loader').css('display', 'none');
@@ -88,8 +90,9 @@ function project_list(longitude, latitude, distance){
 
         var tbody_html = '';
 
+
         $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
+          tbody_html += '<tr><td><a href="/detail.html'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
         });
     
         $('#project-list tbody').html(tbody_html);

@@ -20,7 +20,7 @@
         <link rel="stylesheet" href="css/main.css">
         <!-- Add markers on map -->
         <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
-        <!-- <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' /> -->
+        <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' /> 
 
 
     </head>
@@ -71,8 +71,12 @@
          <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Projects near marker</a>
         <pre id='coordinates' class='ui-coordinates'></pre>
  
+       <!--  <div id="link">
+            <a href="/detail.html'+'?activity_id='+projects.properties.id+'">
+        </div> -->
 
-        <!-- <a href="/detail" id='demo'</a> -->
+        <a href="/detail.html'+'?activity_id='+projects.properties.id+'" onclick="test();"></a>
+
         <a href='#' id='geolocate' class='btn btn-primary find-button'>Find me</a>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHJPv9fGRxKK-RxivVtksAeO82NnpYVyQ"></script> -->

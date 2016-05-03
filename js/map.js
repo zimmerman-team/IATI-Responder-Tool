@@ -3,6 +3,7 @@ var geolocate = document.getElementById("geolocate");
 var coordinates = document.getElementById('coordinates');
 
 
+
 var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
     bounds = L.latLngBounds(West, East);
@@ -16,9 +17,39 @@ var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
             noWrap: true
         }
     })//.setView([8.734, 39.00], 2)
-    .setView([52, 5], 9)
+    .setView([52, 5], 8)
     .addControl(L.mapbox.geocoderControl('mapbox.places')); // for marker with clusters
    // map.fitBounds(bounds);
+
+// cluster markers
+var myLayer = L.mapbox.featureLayer().addTo(map);
+L.mapbox.featureLayer().on('ready', function(e) {
+    // The clusterGroup gets each marker in the group added to it
+    // once loaded, and then is added to the map
+    var clusterGroup = new L.MarkerClusterGroup();
+    e.target.eachLayer(function(layer) {
+        clusterGroup.addLayer(layer);
+    });
+    map.addLayer(clusterGroup);
+});
+
+//Add custom popups to each using our custom feature properties
+myLayer.on('layeradd', function(e) {
+    var marker = e.layer,
+        feature = marker.feature;
+
+    // Create custom popup content
+    var popupContent = '<div>';
+    popupContent += '<h3>'+feature.properties.title+'<h3>'; 
+    popupContent += '<a href="/detail.html?activity_id='+feature.properties.id+'">Read more</a>'+" about this project";
+    popupContent += '</div>';
+
+    // http://leafletjs.com/reference.html#popup
+    marker.bindPopup(popupContent,{
+        closeButton: false,
+        minWidth: 180
+    });
+});
 
 // add dragable marker 
 var marker = L.marker([52, 5], {
@@ -32,7 +63,7 @@ var marker = L.marker([52, 5], {
 marker.on('dragend', ondragend);
 
 // Set the initial marker coordinates on load.
-//ondragend();
+ondragend();
 var lat;
 var lon;
 
@@ -47,16 +78,13 @@ function ondragend() {
             show_nearby_projects(lon, lat, 200);
     }
 
-
-var myLayer = null;
-   
+//center map on marker
  map.featureLayer.on('click', function(e) {
      map.panTo(e.layer.getLatLng());
  });
 
 // This uses the HTML5 geolocation API, which is available on
 // most mobile browsers and modern browsers, but not in Internet Explorer
-
 if (!navigator.geolocation) {
     geolocate.innerHTML = 'Geolocation is not available';
 } else {
@@ -69,8 +97,7 @@ if (!navigator.geolocation) {
 
 
 map.on('locationfound', function(e) {
-    //map.fitBounds(e.bounds);      // Once we've got a position, zoom and center the map
-
+      // Once we've got a position, zoom and center the map
     var my_location_geojson = {
         type: 'Feature',
         geometry: {
@@ -86,7 +113,8 @@ map.on('locationfound', function(e) {
     };
 
     L.mapbox.featureLayer().setGeoJSON(my_location_geojson).addTo(map); //call function
-    show_nearby_projects(e.latlng.lng, e.latlng.lat, 800);
+    show_nearby_projects(e.latlng.lng, e.latlng.lat, 200);
+
 });
 
 // If the user chooses not to allow their location
@@ -94,6 +122,8 @@ map.on('locationfound', function(e) {
 map.on('locationerror', function() {
     geolocate.innerHTML = 'Position could not be found';
 });
+
+
 
 
 //OIPA call with 2 coordinates
@@ -107,7 +137,7 @@ map.on('locationerror', function() {
               location_longitude: longitude,
               location_latitude: latitude,
               location_distance_km: distance,
-              fields: "id,locations,descriptions,title",
+              fields: "id,locations,title",
               page_size: 20
 
             })
@@ -128,9 +158,9 @@ map.on('locationerror', function() {
                         var activity_id = activity.id;
 
 
-                        var title = 'Unnamed activity';
+                        var title = activity_id;
 
-                        if(activity.title != null){
+                        if(activity.title != null && activity.title.narratives.length){
                             title = activity.title.narratives[0].text.split(/\s+/).slice(0,5).join(" ");
                         }
 
@@ -141,9 +171,10 @@ map.on('locationerror', function() {
                                 "type": "Point",
                                 "coordinates": [longitude, latitude]
                             },
+            
                             "properties": {
                                 "title": title,
-                                "description": "Read more about this project",
+                                "id": activity_id,
                                 "marker-color": "#3ca0d3",
                                 "marker-size": "medium",
                                 "marker-symbol": "star"
@@ -153,16 +184,22 @@ map.on('locationerror', function() {
                         geojson.push(location_geojson);
                     });
                 });
-
                 
-                console.log(geojson);
+                if (data.count == 0){
+                 alert('No projects availabe, choose a different location');
+                }
 
+                West = L.latLng( latitude+2, longitude-0.2),
+                East = L.latLng( latitude-2, longitude+0.2),
+                bounds = L.latLngBounds(West, East);
+                map.fitBounds(bounds);
                 // toon geojson op de map
-                myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
+                myLayer.setGeoJSON(geojson);
                 $('#loader').css('display', 'none');
       });
+
 }
- //show_nearby_projects(39.00, 8.734, 100);
+
 
 // var RADIUS = 500000;
 // var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {

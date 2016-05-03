@@ -1,64 +1,69 @@
 // detail.js
+var text = document.getElementById("description");
+var head = document.getElementById("title");
+var o = new Object();
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
 
-function project_list(longitude, latitude, distance){
+var id = getParameterByName('activity_id'); // 
+
+
+console.log(id)
+
+
+function info(){
     
-    var projectAPI = "https://dev.oipa.nl/api/activities/";
-    
+    $('#loader').css('display', 'block');
+
+var projectAPI = "https://dev.oipa.nl/api/activities/" + id;    
     $.getJSON( projectAPI, {
+
       format: "json",
-      location_longitude: longitude,
-      location_latitude: latitude,
-      location_distance_km: distance,
-      fields: "id,locations,descriptions,title,recipient_countries",
-      //recipient_country: "recipient_country",
-
-      page_size: 20
+      fields: "id,locations,descriptions,title,recipient_countries,reporting_organisations",
     })
+
     .done(function(data){
-     console.log(data);
-        var geojson = [];
+     console.log(data)
 
-        // voor elke location, maak geojson aan
-        $.each(data.results, function(index, activity) {
-
-            $.each(activity.locations, function(index, location) {
-                var longitude = location.point.pos.longitude;
-                var latitude = location.point.pos.latitude;
-                var activity_id = activity.id;
                 
-                var description = 'No description available';
-                   if(activity.descriptions[0] != null){
-                    description = activity.descriptions[0].narratives[0].text;
+
+                var title = id;
+                if(data.title != null){
+                    title = '<h4>' + data.title.narratives[0].text + '</h4>';
                 }
-                //var description = activity.descriptions[0].narratives[0].text;
-                                  console.log(description);
 
-                var language = activity.title.narratives[0].language.name;
-
-                var title = 'Unnamed activity';
-
-                if(activity.title != null){
-                    title = activity.title.narratives[0].text.split(/\s+/).slice(0,5).join(" ");
+                var description = 'There is no description available for this project';
+                   if(data.descriptions[0] != null){
+                    description = data.descriptions[0].narratives[0].text;
                 }
-               // function getWords(title) {
-               //                return title.split(/\s+/).slice(1,5).join(" ");
-               //            }
-               //            console.log(title.split)
+                console.log(data);
 
-                var projects = {
-                    "type": "Feature",
-                    "properties": {
-                        "title": title,
-                        "language":language,
-                        "description": description   
+                var countries = 'Unknown location'
+                  if(data.recipient_countries.length > 0){
+                    countries = [];
+
+                    for(var i = 0;i < data.recipient_countries.length;i++){
+                        countries.push(data.recipient_countries[i].country.name);
                     }
-                };
-                $( "#objectID" ).load( "test.php", { "choices[]": [ "Jon", "Susan" ] } );
-                // function DoPost(description){
-                // $.post("detail.html", { "description":description } );  //Your values here..
-                // }
-                //print een lijst van de titles van de projecten 
-                geojson.push(projects);
-            });
 
-        });
+                    // countries = ['Algeria', 'Kenya']
+                    countries = "countries: " + countries.join(',');
+                    // countries = countries: Algeria, Kenya
+                }
+
+                var info = [title, description, countries]
+
+                // head.innerHTML = title 
+                text.innerHTML = info.join('<br>');
+
+                $('#loader').css('display', 'none');
+   
+  });
+}

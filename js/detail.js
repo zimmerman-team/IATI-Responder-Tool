@@ -1,7 +1,7 @@
 // detail.js
 var text = document.getElementById("description");
 var head = document.getElementById("title");
-var o = new Object();
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -32,17 +32,27 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
     .done(function(data){
      console.log(data)
 
-                
-
                 var title = id;
-                if(data.title != null){
+                if(data.title.narratives.length != 0){
                     title = '<h4>' + data.title.narratives[0].text + '</h4>';
                 }
 
                 var description = 'There is no description available for this project';
-                   if(data.descriptions[0] != null){
-                    description = data.descriptions[0].narratives[0].text;
-                }
+                   
+                  if(data.descriptions.length > 0){
+                    description = [];
+
+                    for(var i = 0;i < data.descriptions.length;i++){
+                        description.push(data.descriptions[i].narratives.text);
+                        }
+                         description =+ description.join('<br>');
+                    }
+                    else if (data.locations.length > 0){
+                        //description = data.locations.description[0].narratives[0].text
+                        for(var i = 0;i < data.locations.length;i++){
+                        description.push(data.locations.description[i].narratives[i].text);
+                        }
+                    }
                 console.log(data);
 
                 var countries = 'Unknown location'
@@ -54,11 +64,16 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     }
 
                     // countries = ['Algeria', 'Kenya']
-                    countries = "countries: " + countries.join(',');
+                    countries = "Country: " + countries.join(',');
                     // countries = countries: Algeria, Kenya
                 }
 
-                var info = [title, description, countries]
+                if(data.reporting_organisations.organisation != null){
+                  var last_updated = data.reporting_organisations.organisation.last_updated_datetime;  
+                }
+                
+
+                var info = [title, "Project ID: "+id, countries, "Last updated: "+last_updated, description]
 
                 // head.innerHTML = title 
                 text.innerHTML = info.join('<br>');
@@ -67,3 +82,4 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
    
   });
 }
+ //respond on this project 

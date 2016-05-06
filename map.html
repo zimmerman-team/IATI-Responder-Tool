@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
     <head>
-        <title>Index</title>
+        <title>Responder tool - Map</title>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -25,7 +25,7 @@
 
     </head>
     
-    <body>  
+    <body onload= "start_location()">  
 
         <div id="loader">
             <div id="loader-icon">Loading...</div>
@@ -71,9 +71,6 @@
          <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Projects near marker</a>
         <pre id='coordinates' class='ui-coordinates'></pre>
  
-       <!--  <div id="link">
-            <a href="/detail.html'+'?activity_id='+projects.properties.id+'">
-        </div> -->
 
         <a href="/detail.html'+'?activity_id='+projects.properties.id+'" onclick="test();"></a>
 
@@ -81,16 +78,12 @@
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <!--  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHJPv9fGRxKK-RxivVtksAeO82NnpYVyQ"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
-        <script src="js/map.js"></script>
-
-     
-
-       <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        
+        <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
         <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
-        
-        
+
+        <script src="js/map.js"></script>
 
     </body>
 </html>

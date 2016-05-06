@@ -1,11 +1,12 @@
 
-.ui-button:hover {
-  background:#3074a4;
-  color:#fff;
-  }
+body { margin:0; padding:100; 
+    color: white;
+background-color: hsl(2, 57%, 40%);
+background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
+repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+ }
 
-
-body { margin:0; padding:100; background-color: white }
 #map { position: fixed;
        top:20; bottom:0; width:100%; height:86%; border:2px solid black;  left: 0px; 
        zoom: 1;  
@@ -20,9 +21,6 @@ h1{
   font-family: initial;
 }
 
-p{
-font-style: bold;  
-}
 
 .nav{
   position: absolute;
@@ -44,18 +42,22 @@ font-style: bold;
   background-color:   black; /*#9400D3;*/
 }
 
+/*projects near me knop*/
 .btn-primary{
     position:absolute;
     top:50%;
     left:35%;
-    width:125px;
+    width:160px;
+    text-align: left;
 }
 
+/*Respond to project knop*/
 .but2{
     position:absolute;
-    top:56%;
+    top:57%;
     left:35%;
-    width:125px;
+    width:160px;
+    text-align: left;
 }
 
 /*respond knop*/
@@ -71,7 +73,7 @@ font-style: bold;
 {
     position:absolute;
     top:89%;
-    left:20px;
+    left:15px;
     width:150px;
 }
 
@@ -102,10 +104,12 @@ table {
     width:90%;
     left:5%;
     margin-bottom: 5%;
+
 }
 table, th, td {
-    border: 1px solid black;
+    border: 2px solid white;
     border-collapse: collapse;
+    background-color: black;
 }
 th, td {
     padding: 3px;

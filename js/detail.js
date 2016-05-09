@@ -15,7 +15,7 @@ function getParameterByName(name, url) {
 var id = getParameterByName('activity_id'); // 
 
 
-console.log(id)
+//console.log(id)
 
 
 function info(){
@@ -26,9 +26,14 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
     $.getJSON( projectAPI, {
 
       format: "json",
-      fields: "id,locations,descriptions,title,recipient_countries,reporting_organisations",
+      fields: "id,locations,descriptions,title,recipient_countries,reporting_organisations,last_updated_datetime,activity_status,activity_budget_value,sector",
     })
-
+    //activity_budget_value,activity_expenditure_value,actual_start_date,sector,reporting_organisation
+// activity_budget_value
+//actual_start_date
+// activity_incoming_funds_value
+// activity_disbursement_value
+// activity_expenditure_value
     .done(function(data){
      console.log(data)
 
@@ -43,17 +48,11 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     description = [];
 
                     for(var i = 0;i < data.descriptions.length;i++){
-                        description.push(data.descriptions[i].narratives.text);
+                        description.push(data.descriptions[i].narratives[0].text);
                         }
-                         description =+ description.join('<br>');
+                         description += description.join('<br>');
                     }
-                    else if (data.locations.length > 0){
-                        //description = data.locations.description[0].narratives[0].text
-                        for(var i = 0;i < data.locations.length;i++){
-                        description.push(data.locations.description[i].narratives[i].text);
-                        }
-                    }
-                console.log(data);
+                // console.log(description);
 
                 var countries = 'Unknown location'
                   if(data.recipient_countries.length > 0){
@@ -68,12 +67,13 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     // countries = countries: Algeria, Kenya
                 }
 
-                if(data.reporting_organisations.organisation != null){
-                  var last_updated = data.reporting_organisations.organisation.last_updated_datetime;  
+                  var last_updated = "Last updated on: "+data.last_updated_datetime;  
+                  var status = "Status: "+ data.activity_status.name;
+                  if (data.reporting_organisations.length > 0){
+                  var reporting_org = "Reporting organisation "+ data.reporting_organisations[0].organisation.organisation_identifier
                 }
-                
 
-                var info = [title, "Project ID: "+id, countries, "Last updated: "+last_updated, description]
+                var info = [title, "Project ID: "+id, reporting_org, status, countries, last_updated,"<br>Description:<br>"+ description]
 
                 // head.innerHTML = title 
                 text.innerHTML = info.join('<br>');

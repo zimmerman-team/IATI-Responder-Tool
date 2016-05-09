@@ -10,7 +10,8 @@ var West = L.latLng( -60.0,  180.0),
 
 var map = L.mapbox.map('map', 'mapbox.emerald', {  //mapbox.emerald
     maxBounds: bounds,
-//    maxZoom: 19,
+    maxZoom: 11,
+    minZoom: 2,
     tileLayer: {
         continuousWorld: false,
         // This option disables loading tiles outside of the world bounds.
@@ -114,7 +115,7 @@ map.on('locationerror', function() {
               location_longitude: longitude,
               location_latitude: latitude,
               location_distance_km: distance,
-              fields: "id,locations,title",
+              fields: "id,locations,title,activity_budget_value",
               page_size: 20
 
             })
@@ -147,6 +148,7 @@ map.on('locationerror', function() {
                         var popupContent = '<div>';
                             popupContent += '<h3>'+title+'</h3>'; 
                             popupContent += '<a href="/detail.html?activity_id='+activity_id+'">Read more</a>'+" about this project";
+                            popupContent += 'Total budget value';
                             popupContent += '</div>';
 
                         var marker = L.marker(new L.LatLng(latitude, longitude), {

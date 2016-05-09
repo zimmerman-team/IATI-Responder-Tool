@@ -56,7 +56,7 @@ function project_list(longitude, latitude, distance){
                 }
 
                 var countries = 'Unknown location'
-                  if(activity.recipient_countries.country != null){
+                  if(data.results[index].recipient_countries.length > 0){
                     countries = [];
 
                     for(var i = 0;i < data.recipient_countries.length;i++){
@@ -64,7 +64,7 @@ function project_list(longitude, latitude, distance){
                     }
 
                     // countries = ['Algeria', 'Kenya']
-                    countries = countries.join(',');
+                    countries += countries.join(',');
                     //country = activity.recipient_countries.country.name;
                 }
      

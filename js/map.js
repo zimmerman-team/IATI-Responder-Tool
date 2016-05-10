@@ -4,6 +4,16 @@ var coordinates = document.getElementById('coordinates');
 
 var rad = 100;
 
+$("#radius").change(function(e){
+    rad = event.target.value;
+    filterCircle.setRadius(rad * 1000);
+});
+
+$("#radius").mousewheel(function(event) {
+    rad = event.target.value;
+    filterCircle.setRadius(rad * 1000);
+});
+
 var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
     bounds = L.latLngBounds(West, East);
@@ -44,15 +54,15 @@ var filterCircle = L.circle([52, 5], rad * 1000, {
 
 
 // every time the marker is dragged, update the coordinates container
-marker.on('drag', ondragend);
+marker.on('drag', ondrag);
 
 
 // Set the initial marker coordinates on load.
-ondragend();
+ondrag();
 var lat;
 var lon;
 
-function ondragend() {
+function ondrag() {
     var m = marker.getLatLng();
     filterCircle.setLatLng(m);
     lat = m.lat;

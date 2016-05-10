@@ -2,6 +2,7 @@ L.mapbox.accessToken = 'pk.eyJ1IjoibWFuc3VyIiwiYSI6ImNpbjAyY2NrNjAwbHJ2OW0xZzBhY
 var geolocate = document.getElementById("geolocate");
 var coordinates = document.getElementById('coordinates');
 
+var rad = 100;
 
 var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
@@ -35,8 +36,15 @@ var marker = L.marker([52, 5], {
     draggable: true
 }).addTo(map);
 
+var filterCircle = L.circle([52, 5], rad * 1000, {
+    opacity: 1,
+    weight: 1,
+    fillOpacity: 0
+}).addTo(map);
+
+
 // every time the marker is dragged, update the coordinates container
-marker.on('dragend', ondragend);
+marker.on('drag', ondragend);
 
 
 // Set the initial marker coordinates on load.
@@ -46,23 +54,19 @@ var lon;
 
 function ondragend() {
     var m = marker.getLatLng();
-   // coordinates.innerHTML = 'Latitude: ' + m.lat + '<br />Longitude: ' + m.lng;
+    filterCircle.setLatLng(m);
     lat = m.lat;
     lon = m.lng;
 }
 
-var rad = 100;
-var RADIUS = rad*1000;
 
-function projects_near_marker(){       
- map.removeLayer(clusteredMarkers);   
+function projects_near_marker(){
+    // remove old markers    
+    map.removeLayer(clusteredMarkers);
+    clusteredMarkers = L.markerClusterGroup();
+
+    // query oipa
     show_nearby_projects(lon, lat, rad);
-    // shows radius circle of projects near marker
-    // var filterCircle = L.circle(L.latLng(lat, lon), RADIUS, {
-    //     opacity: 1,
-    //     weight: 1,
-    //     fillOpacity: 0.3
-    // }).addTo(map);
 }
 
 function start_location(){
@@ -140,6 +144,7 @@ map.on('locationerror', function() {
                 console.log(data);
                 console.log(longitude);
                 console.log(latitude);
+                console.log(distance);
 
                 var geojson = [];
 
@@ -202,16 +207,7 @@ map.on('locationerror', function() {
 }
 
 
-// var RADIUS = 2000;
-// var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
-//     opacity: 1,
-//     weight: 1,
-//     fillOpacity: 0.4
-// }).addTo(map);
-  
-        // return e.latlng.distanceTo(L.latLng(
-        //         feature.geometry.coordinates[1],
-        //         feature.geometry.coordinates[0])) < RADIUS;
+
 
 
 

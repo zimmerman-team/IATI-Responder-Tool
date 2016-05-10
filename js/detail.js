@@ -124,13 +124,15 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 } 
 
                 var aid_type = ["Aid type: Unavailable"]
-                if(data.default_aid_type.name != null){
-                    aid_type = "Aid type: "+data.default_aid_type.name
+                if (data.default_aid_type !=null){
+                    if(data.default_aid_type.name != null){
+                        aid_type = "Aid type: "+data.default_aid_type.name
+                    }
                 }
 
                 var date_type =[]
                 for (i=0; i < data.activity_dates.length; i++){
-                     date_type.push("<br>"+ data.activity_dates[i].type.name+" date: "+ data.activity_dates[i].iso_date)
+                        date_type.push("<br>"+ data.activity_dates[i].type.name+" date: "+ data.activity_dates[i].iso_date)
                 }
 
                 var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description]

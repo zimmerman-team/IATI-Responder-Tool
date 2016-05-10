@@ -126,8 +126,6 @@ map.on('locationerror', function() {
 });
 
 
-
-
 //OIPA call with 2 coordinates
  function show_nearby_projects(longitude, latitude, distance){
 
@@ -187,7 +185,6 @@ map.on('locationerror', function() {
                             closeButton: true,
                             minWidth: 180
                         });
-
                         clusteredMarkers.addLayer(marker);
                     });
                 });

@@ -131,7 +131,6 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 var date_type =[]
                 for (i=0; i < data.activity_dates.length; i++){
                      date_type.push("<br>"+ data.activity_dates[i].type.name+" date: "+ data.activity_dates[i].iso_date)
-
                 }
 
                 var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description]

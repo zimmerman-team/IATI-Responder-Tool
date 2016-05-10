@@ -159,14 +159,22 @@ th, td {
     width:150px;
 }
 
-  #title{
-    font-weight: bold;
-    /*font-style: bold;*/
-  }
-  .respond {
+#title{
+  font-weight: bold;
+  /*font-style: bold;*/
+}
+.respond {
   position:absolute;
   top:80%;
   left:40%;
-    width:90px;
-  }
+  width:90px;
+}
 
+#radius-input{
+  position: absolute;
+  top: 25%;
+  left: 60%;
+  width: 200px;
+  height: 50px;
+  z-index: 3;
+}

@@ -70,19 +70,6 @@ function ondrag() {
 }
 
 
-<<<<<<< HEAD
-function projects_near_marker(){  
-
-    map.removeLayer(clusteredMarkers);   
-    show_nearby_projects(lon, lat, 100);
-    var circle = L.circle([lat, lon], RADIUS).addTo(map)
-    // shows radius circle of projects near marker
-    // var filterCircle = L.circle(L.latLng(lat, lon), RADIUS, {
-    //     opacity: 1,
-    //     weight: 1,
-    //     fillOpacity: 0.3
-    // }).addTo(map);
-=======
 function projects_near_marker(){
     // remove old markers    
     map.removeLayer(clusteredMarkers);
@@ -90,7 +77,6 @@ function projects_near_marker(){
 
     // query oipa
     show_nearby_projects(lon, lat, rad);
->>>>>>> 1f2b64e18ad94f42281a7b33e70fc6c92520dc44
 }
 
 function start_location(){

@@ -114,14 +114,8 @@ map.on('locationfound', function(e) {
     };
    
     L.mapbox.featureLayer().setGeoJSON(my_location_geojson).addTo(map); //call function
+    console.log(rad)
     show_nearby_projects(e.latlng.lng, e.latlng.lat, rad);
-   
-    // shows radius circle of projects near my location
-    // var filterCircle = L.circle(L.latLng(e.latlng.lat, e.latlng.lng), RADIUS, {
-    //     opacity: 1,
-    //     weight: 1,
-    //     fillOpacity: 0.3
-    // }).addTo(map);
 
 });
 
@@ -179,7 +173,7 @@ map.on('locationerror', function() {
                         var popupContent = '<div>';
                             popupContent += '<h3>'+title+'</h3>'; 
                             popupContent += '<a href="/detail.html?activity_id='+activity_id+'">Read more</a>'+" about this project";
-                            popupContent += 'Total budget value';
+                            // popupContent += 'Total budget value';
                             popupContent += '</div>';
 
                         var marker = L.marker(new L.LatLng(latitude, longitude), {
@@ -197,7 +191,6 @@ map.on('locationerror', function() {
                         clusteredMarkers.addLayer(marker);
                     });
                 });
-
 
                 map.addLayer(clusteredMarkers);
 //map.panTo(latitude, longitude);

@@ -17,7 +17,8 @@ function showPosition(position) {
   //        "<br>Longitude: " + position.coords.longitude;  
   project_list(position.coords.longitude, position.coords.latitude, 200); 
 }
-    
+  
+
 function project_list(longitude, latitude, distance){
     $('#loader').css('display', 'block');
     

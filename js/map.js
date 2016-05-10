@@ -3,7 +3,6 @@ var geolocate = document.getElementById("geolocate");
 var coordinates = document.getElementById('coordinates');
 
 
-
 var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
     bounds = L.latLngBounds(West, East);
@@ -52,12 +51,22 @@ function ondragend() {
     lon = m.lng;
 }
 
+var rad = 100;
+var RADIUS = rad*1000;
+
 function projects_near_marker(){       
-    show_nearby_projects(lon, lat, 200);
+ map.removeLayer(clusteredMarkers);   
+    show_nearby_projects(lon, lat, rad);
+    // shows radius circle of projects near marker
+    // var filterCircle = L.circle(L.latLng(lat, lon), RADIUS, {
+    //     opacity: 1,
+    //     weight: 1,
+    //     fillOpacity: 0.3
+    // }).addTo(map);
 }
 
 function start_location(){
-    map.setView([lat, lon], 8)
+    map.setView([lat, lon], 7)
 }
 
 
@@ -82,16 +91,23 @@ map.on('locationfound', function(e) {
             type: 'Point',          // on it, and add a single marker.
             coordinates: [e.latlng.lng, e.latlng.lat]
         },
-
+     
         properties: {
             'title': 'I am here!',
             'marker-color': '#ff8888',
             'marker-symbol': 'circle'
         }
     };
-
+   
     L.mapbox.featureLayer().setGeoJSON(my_location_geojson).addTo(map); //call function
-    show_nearby_projects(e.latlng.lng, e.latlng.lat, 200);
+    show_nearby_projects(e.latlng.lng, e.latlng.lat, rad);
+   
+    // shows radius circle of projects near my location
+    // var filterCircle = L.circle(L.latLng(e.latlng.lat, e.latlng.lng), RADIUS, {
+    //     opacity: 1,
+    //     weight: 1,
+    //     fillOpacity: 0.3
+    // }).addTo(map);
 
 });
 
@@ -115,7 +131,7 @@ map.on('locationerror', function() {
               location_longitude: longitude,
               location_latitude: latitude,
               location_distance_km: distance,
-              fields: "id,locations,title,activity_budget_value",
+              fields: "id,locations,title,aggregations",
               page_size: 20
 
             })
@@ -167,6 +183,7 @@ map.on('locationerror', function() {
                     });
                 });
 
+
                 map.addLayer(clusteredMarkers);
 //map.panTo(latitude, longitude);
                 
@@ -185,12 +202,17 @@ map.on('locationerror', function() {
 }
 
 
-// var RADIUS = 500000;
+// var RADIUS = 2000;
 // var filterCircle = L.circle(L.latLng(40, -75), RADIUS, {
 //     opacity: 1,
 //     weight: 1,
 //     fillOpacity: 0.4
 // }).addTo(map);
+  
+        // return e.latlng.distanceTo(L.latLng(
+        //         feature.geometry.coordinates[1],
+        //         feature.geometry.coordinates[0])) < RADIUS;
+
 
 
 

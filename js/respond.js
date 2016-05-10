@@ -37,9 +37,9 @@ function project_list(longitude, latitude, distance){
         var geojson = [];
 
         // voor elke location, maak geojson aan
-        $.each(data.results, function(index, activity) {
+        $.each(data.results, function(index1, activity) {
 
-            $.each(activity.locations, function(index, location) {
+            $.each(activity.locations, function(index2, location) {
                 var longitude = location.point.pos.longitude;
                 var latitude = location.point.pos.latitude;
                 var activity_id = activity.id;
@@ -50,24 +50,26 @@ function project_list(longitude, latitude, distance){
                 }
                 //console.log(description);
 
-                var title = 'Unnamed activity';
+                var title = activity_id;
                 if(activity.title != null){
                     title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
                 }
 
-                var countries = 'Unknown location'
-                  if(data.results[index].recipient_countries.length > 0){
+                var countries = 'Unavailable'
+
+                    if (data.results[index1].recipient_countries.length > 0){
                     countries = [];
 
-                    for(var i = 0;i < data.recipient_countries.length;i++){
-                        countries.push(data.recipient_countries[i].country.name);
-                    }
+                      for(var i=0; i < data.results[index1].recipient_countries.length;i++){
 
-                    // countries = ['Algeria', 'Kenya']
-                    countries += countries.join(',');
-                    //country = activity.recipient_countries.country.name;
-                }
-     
+                        if (data.results[index1].recipient_countries[i].country.name != null){
+                          countries.push(data.results[index1].recipient_countries[i].country.name);
+                        }
+                             
+                      }
+                      countries = countries.join(',');
+                    }
+ 
                 var projects = {
                     "type": "Feature",
                     "properties": {

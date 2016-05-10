@@ -72,15 +72,6 @@ h1{
     width:155px;
 }
 
-/*marker button*/
-.marker
-{
-    position:absolute;
-    top:89%;
-    left:15px;
-    width:150px;
-}
-
 .list {
     border: 1px solid black;
     position:absolute;
@@ -149,19 +140,33 @@ th, td {
   z-index: 3;
 }
 
-.find-button {
+.projects_near_me_button {
   /*display:block;*/
   position:absolute;
-  top:15%;
-  left:75%;
+  top:13%;
+  left:60%;
   width:150px;
   z-index:100;
   text-align:center;
   border-radius:3px;
   }
 
+  /*marker button*/
+.marker{
+    position:absolute;
+    top:18%;
+    left:60%;
+    width:150px;
+}
+
   #title{
     font-weight: bold;
     /*font-style: bold;*/
+  }
+  .respond {
+  position:absolute;
+  top:80%;
+  left:40%;
+    width:90px;
   }
 

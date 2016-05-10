@@ -60,7 +60,6 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     for(var i = 0;i < data.recipient_countries.length;i++){
                         countries.push(data.recipient_countries[i].country.name);
                     }
-
                     countries = "Country: " + countries.join(',');
                     // countries = countries: Algeria, Kenya
                 }
@@ -90,44 +89,47 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     for(var i = 0;i < data.recipient_regions.length;i++){
                         if (data.recipient_regions[i].region.name != null){
                         region.push(data.recipient_regions[i].region.name);
-                        }
-                        
+                        }   
                     }
                     region ="Region: "+region.join(',');
                 }
-                
+
+                //commitement
                 var commitment_currency = [];
-                    if (data.aggregations.activity.commitment_currency !=null){
-                        commitment_currency.push(data.aggregations.activity.commitment_currency)
-                    }        
+                if (data.aggregations.activity.commitment_currency !=null){
+                    commitment_currency.push(data.aggregations.activity.commitment_currency)
+                }        
                 var commitment = "Commitment: Unavailable" 
                 if (data.aggregations.commitment_value != null || data.aggregations.activity.commitment_value !=0){
-
                  commitment ="Commitment in "+commitment_currency+": "+ data.aggregations.activity.commitment_value;
-                 }
-                
+                }
+
+                //disbursement
                 var disbursement_currency = [];
-                    if (data.aggregations.activity.disbursement_currency !=null){
-                        disbursement_currency.push(data.aggregations.activity.disbursement_currency)
-                    }        
+                if (data.aggregations.activity.disbursement_currency !=null){
+                    disbursement_currency.push(data.aggregations.activity.disbursement_currency)
+                }        
                 var disbursement = "Disbursement: Unavailable" 
                 if (data.aggregations.disbursement_value != null || data.aggregations.activity.disbursement_value !=0){
-
                  disbursement ="Disbursement in "+disbursement_currency+": "+ data.aggregations.activity.disbursement_value;
-                 }
-
+                }
+                //expenditure
                 var expenditure_currency = [];
-                    if (data.aggregations.activity.expenditure_currency !=null){
-                        expenditure_currency.push(data.aggregations.activity.expenditure_currency)
-                    }        
+                if (data.aggregations.activity.expenditure_currency !=null){
+                    expenditure_currency.push(data.aggregations.activity.expenditure_currency)
+                }        
                 var expenditure = "Expenditure: Unavailable" 
                 if (data.aggregations.expenditure_value != null || data.aggregations.activity.expenditure_value !=0){
-
                  expenditure ="Expenditure in "+expenditure_currency+": "+ data.aggregations.activity.expenditure_value;
-                 } 
+                } 
+
+                var aid_type = ["Aid type: Unavailable"]
+                if(data.default_aid_type.name != null){
+                    aid_type = "Aid type: "+data.default_aid_type.name
+                }
 
 
-                var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, description]
+                var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, description]
 
                 // head.innerHTML = title 
                 text.innerHTML = info.join('<br>');

@@ -54,9 +54,11 @@ function ondragend() {
 var rad = 100;
 var RADIUS = rad*1000;
 
-function projects_near_marker(){       
- map.removeLayer(clusteredMarkers);   
-    show_nearby_projects(lon, lat, rad);
+function projects_near_marker(){  
+
+    map.removeLayer(clusteredMarkers);   
+    show_nearby_projects(lon, lat, 100);
+    var circle = L.circle([lat, lon], RADIUS).addTo(map)
     // shows radius circle of projects near marker
     // var filterCircle = L.circle(L.latLng(lat, lon), RADIUS, {
     //     opacity: 1,

@@ -1,4 +1,5 @@
 // detail.js
+      $("h2").text("Detail")
 var text = document.getElementById("description");
 var head = document.getElementById("title");
 
@@ -135,7 +136,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                         date_type.push("<br>"+ data.activity_dates[i].type.name+" date: "+ data.activity_dates[i].iso_date)
                 }
 
-                var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description]
+                var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description+"<br>"]
 
                 // head.innerHTML = title 
                 text.innerHTML = info.join('<br>');

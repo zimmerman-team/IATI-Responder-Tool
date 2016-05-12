@@ -1,3 +1,5 @@
+$("h2").text("Projects Map")
+
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFuc3VyIiwiYSI6ImNpbjAyY2NrNjAwbHJ2OW0xZzBhYXpoaG8ifQ.l5at2Lcce4D_XJc8o6tglg';
 var geolocate = document.getElementById("geolocate");
 var coordinates = document.getElementById('coordinates');
@@ -112,11 +114,9 @@ map.on('locationfound', function(e) {
             'marker-symbol': 'circle'
         }
     };
-   
     L.mapbox.featureLayer().setGeoJSON(my_location_geojson).addTo(map); //call function
     console.log(rad)
     show_nearby_projects(e.latlng.lng, e.latlng.lat, rad);
-
 });
 
 // If the user chooses not to allow their location
@@ -170,7 +170,7 @@ map.on('locationerror', function() {
 
                         var popupContent = '<div>';
                             popupContent += '<h3>'+title+'</h3>'; 
-                            popupContent += '<a href="/detail.html?activity_id='+activity_id+'">Read more</a>'+" about this project";
+                            popupContent += '<a href="/detail.php?activity_id='+activity_id+'">Read more</a>'+" about this project";
                             // popupContent += 'Total budget value';
                             popupContent += '</div>';
 

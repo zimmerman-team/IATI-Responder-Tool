@@ -1,6 +1,7 @@
 // respond.js
 // var geolocate = document.getElementById("geolocate");
-
+      $("h2").text("Projects List")
+       // document.getElementById("header").innerHTML = "Public Offers";
 var x = document.getElementById("demo");
 
 function getLocation() {
@@ -15,7 +16,7 @@ function getLocation() {
 function showPosition(position) {
   // x.innerHTML="Latitude: " + position.coords.latitude + 
   //        "<br>Longitude: " + position.coords.longitude;  
-  project_list(position.coords.longitude, position.coords.latitude, 200); 
+  project_list(position.coords.longitude, position.coords.latitude, 100); 
 }
   
 
@@ -28,7 +29,7 @@ function project_list(longitude, latitude, distance){
       location_longitude: longitude,
       location_latitude: latitude,
       location_distance_km: distance,
-      fields: "id,locations,descriptions,title,recipient_countries",
+      fields: "id,locations,descriptions,title,recipient_countries,recipient_regions",
       //recipient_country: "recipient_country",
 
       page_size: 20
@@ -56,21 +57,36 @@ function project_list(longitude, latitude, distance){
                     title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
                 }
 
-                var countries = 'Unavailable'
+                var countries = [];
+                
+                if (data.results[index1].recipient_countries.length > 0){
 
-                    if (data.results[index1].recipient_countries.length > 0){
-                    countries = [];
+                  for(var i=0; i<data.results[index1].recipient_countries.length;i++){
 
-                      for(var i=0; i < data.results[index1].recipient_countries.length;i++){
-
-                        if (data.results[index1].recipient_countries[i].country.name != null){
-                          countries.push(data.results[index1].recipient_countries[i].country.name);
-                        }
-                             
+                    if (data.results[index1].recipient_countries[i].country.name != null){
+                      if (i<3){
+                        countries.push(data.results[index1].recipient_countries[i].country.name);
                       }
-                      countries = countries.join(',');
-                    }
- 
+                    }               
+                  }
+                } else {
+
+                  for(var i=0; i<data.results[index1].recipient_regions.length;i++){
+
+                    if (data.results[index1].recipient_regions[i].region.name != null){
+                      if (i<3){
+                        countries.push(data.results[index1].recipient_regions[i].region.name);
+                      }
+                    }               
+                  }
+                }
+
+                if(countries.length == 0){
+                  countries = 'Unavailable'
+                } else {
+                  countries = countries.join(', &nbsp');
+                }
+
                 var projects = {
                     "type": "Feature",
                     "properties": {
@@ -95,15 +111,10 @@ function project_list(longitude, latitude, distance){
 
 
         $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail.html'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
+          tbody_html += '<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 
         });
     
         $('#project-list tbody').html(tbody_html);
-      
-        //'+ projects.properties.language'
-        //geojson.toString();
-
-        // x.innerHTML = "title:" + title;
         
   });
 }

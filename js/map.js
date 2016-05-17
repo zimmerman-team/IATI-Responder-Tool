@@ -131,14 +131,14 @@ map.on('locationerror', function() {
 
             $('#loader').css('display', 'block');
           
-           var projectAPI = "https://dev.oipa.nl/api/activities/";
+           var projectAPI = "https://dev.oipa.nl/api/locations/";
            $.getJSON( projectAPI, {
               format: "json",
               location_longitude: longitude,
               location_latitude: latitude,
               location_distance_km: distance,
-              fields: "id,locations,title,aggregations",
-              page_size: 20
+              fields: "id,activity,point",
+              page_size: 200
 
             })
             .done(function(data){
@@ -151,46 +151,41 @@ map.on('locationerror', function() {
                 var geojson = [];
 
                 // voor elke location, maak geojson aan
-                $.each(data.results, function(i, activity) {
+                $.each(data.results, function(i, location) {
 
-                    $.each(activity.locations, function(i, location) {
+                    if(location.point.pos == null){ return false; }
 
-                        if(location.point.pos == null){ return false; }
+                    var longitude = location.point.pos.longitude;
+                    var latitude = location.point.pos.latitude;
+                    
+                    var activity = location.activity;
+                    var title = ''
 
-                        var longitude = location.point.pos.longitude;
-                        var latitude = location.point.pos.latitude;
-                        var activity_id = activity.id;
+                    if(activity.title != null && activity.title.narratives.length){
+                        title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
+                    }
 
+                    var popupContent = '<div>';
+                        popupContent += '<h3>'+title+'</h3>'; 
+                        popupContent += '<a href="/detail.php?activity_id='+activity.id+'">Read more</a>'+" about this project";
+                        popupContent += '</div>';
 
-                        var title = activity_id;
-
-                        if(activity.title != null && activity.title.narratives.length){
-                            title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
-                        }
-
-                        var popupContent = '<div>';
-                            popupContent += '<h3>'+title+'</h3>'; 
-                            popupContent += '<a href="/detail.php?activity_id='+activity_id+'">Read more</a>'+" about this project";
-                            // popupContent += 'Total budget value';
-                            popupContent += '</div>';
-
-                        var marker = L.marker(new L.LatLng(latitude, longitude), {
-                            icon: L.mapbox.marker.icon({
-                                "marker-color": "#3ca0d3",
-                                "marker-size": "medium",
-                                "marker-symbol": "star"}),
-                        });
-
-                        marker.bindPopup(popupContent,{
-                            closeButton: true,
-                            minWidth: 180
-                        });
-                        clusteredMarkers.addLayer(marker);
+                    var marker = L.marker(new L.LatLng(latitude, longitude), {
+                        icon: L.mapbox.marker.icon({
+                            "marker-color": "#3ca0d3",
+                            "marker-size": "medium",
+                            "marker-symbol": "star"}),
                     });
+
+                    marker.bindPopup(popupContent,{
+                        closeButton: true,
+                        minWidth: 180
+                    });
+
+                    clusteredMarkers.addLayer(marker);
                 });
 
                 map.addLayer(clusteredMarkers);
-//map.panTo(latitude, longitude);
                 
                 if (data.count == 0){
                  alert('No projects availabe, choose a different location');

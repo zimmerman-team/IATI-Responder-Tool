@@ -14,7 +14,6 @@
 
     <link href='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css' rel='stylesheet' />
     
-
     <!-- Add markers on map -->
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet'/> 
@@ -26,28 +25,44 @@
 
   <header id="header">
     <div class="container-fluid">
-
-      <div class="row">
-          <div class="col-xs-12"> <h2>IATI Responder</h2></div>
-      </div>
-
-      <div class="btn-group nav">     
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
-        </button>
-
-        <ul class="dropdown-menu">
-          <li><a href="map.php">Projects Map</a></li>
-          <li><a href="respond.php">Projects List</a></li>
-          <li><a href="about.php">About</a></li>
-          <li><a href="contact.php">Contact</a></li>
-          <li><a href="messages.php">Messages</a></li>
-        </ul>
-      </div>
       
-      <div class="btn-group home">       
-        <a type= "button" href="index.php" class="btn btn-default glyphicon glyphicon-home"></a>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="map.php">Projects Map</a>
+        <a href="respond.php">Projects List</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact</a>
+        <a href="messages.php">Messages</a>
       </div>
 
-    </div>
+      <!-- Use any element to open the sidenav -->
+      <div class="nav">
+        <span style="font-size:30px;cursor:pointer; color:white; top:1px;" onclick="openNav()">☰ </span>
+      </div>
+      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+      <h2>IATI Responder</h2>
+
+<!-- <div class="home"> -->
+      <a class="logo" href="index.php">
+        <img src="/images/IATI_studio_logo_icon.svg">  
+      </a>
+<!-- </div> -->
+
+           
+      <!--       <div class="btn-group home">       
+              <a type= "button" href="index.php" class="btn btn-default glyphicon glyphicon-home"></a>
+            </div>
+       -->
+       <script>
+      function openNav() {
+          document.getElementById("mySidenav").style.width = "200px";
+      }
+
+      /* Set the width of the side navigation to 0 */
+      function closeNav() {
+          document.getElementById("mySidenav").style.width = "0";
+      }
+      </script>
+    </div> 
   </header>
+

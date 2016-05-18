@@ -2,18 +2,24 @@
 include('header.php'); 
 $page = 'detail';
 ?>
-  <!-- var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description] -->
-
   
   <div class="container-fluid">
       <div class="row">
         <div class="col-xs-12">
-          <div id="title">
+          <div id="title">          
           </div>
 
         </div>
       </div>
- 
+
+
+<table class="table table-striped" id="detail">
+  <col width="130">
+  <col width="80">
+    <thead id= "thead"> </thead>
+    <tbody>
+    </tbody>
+</table>
 
   <section>
       <div class="row">
@@ -30,9 +36,6 @@ $page = 'detail';
       </div>
   
   </section>
-
-
-
 
 
         <a class="btn btn-primary respond" href="form.php" role="button">Respond</a>

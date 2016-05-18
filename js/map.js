@@ -20,7 +20,7 @@ var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
     bounds = L.latLngBounds(West, East);
 
-var map = L.mapbox.map('map', 'mapbox.emerald', {  //mapbox.emerald
+var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 11,
     minZoom: 2,

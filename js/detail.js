@@ -50,11 +50,11 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                             }
                         }
                     }
-                    description = "<br>Project description:<br>"+description.join('<br>');
+                    description = "<br><b>Project description:</b><br>"+description.join('<br>');
                 }
            
 
-                var countries = 'Country: Unavailable'
+                var countries = 'Unavailable'
                   if(data.recipient_countries.length > 0){
                     countries = [];
 
@@ -65,13 +65,15 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     // countries = countries: Algeria, Kenya
                 }
 
-                var last_updated = "Last updated on: "+data.last_updated_datetime;  
-                  var status = "Status: "+ data.activity_status.name;
+                var last_updated = "Last updated on: "+data.last_updated_datetime; 
+
+                var status = data.activity_status.name;
+                
                   if (data.reporting_organisations.length > 0){
                   var reporting_org = "Reporting organisation: "+ data.reporting_organisations[0].organisation.organisation_identifier
                 }
 
-                var sector = "Sector: Unknown" 
+                var sector = "Unknown" 
                   if(data.sectors.length > 0){
                     sector = [];
 
@@ -80,10 +82,10 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                         sector.push(data.sectors[i].sector.name);
                         }
                     }
-                    sector ="Sector: "+sector.join(',');
+                    sector =sector.join(',');
                 }
                
-                var region = "Region: Unknown" 
+                var region = "Unavailable" 
                   if(data.recipient_regions.length > 0){
                      region = [];
 
@@ -92,54 +94,81 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                         region.push(data.recipient_regions[i].region.name);
                         }   
                     }
-                    region ="Region: "+region.join(',');
+                    region =region.join(',');
                 }
 
                 //commitement
                 var commitment_currency = [];
-                if (data.aggregations.activity.commitment_currency !=null){
+                if (data.aggregations.activity.commitment_currency != null){
                     commitment_currency.push(data.aggregations.activity.commitment_currency)
                 }        
-                var commitment = "Commitment: Unavailable" 
+                var commitment = "Unavailable" 
                 if (data.aggregations.commitment_value != null || data.aggregations.activity.commitment_value !=0){
-                 commitment ="Commitment in "+commitment_currency+": "+ data.aggregations.activity.commitment_value;
+                 commitment ="in "+commitment_currency+": "+ data.aggregations.activity.commitment_value;
                 }
 
                 //disbursement
                 var disbursement_currency = [];
-                if (data.aggregations.activity.disbursement_currency !=null){
+                if (data.aggregations.activity.disbursement_currency != null){
                     disbursement_currency.push(data.aggregations.activity.disbursement_currency)
                 }        
-                var disbursement = "Disbursement: Unavailable" 
+                var disbursement = "Unavailable" 
                 if (data.aggregations.disbursement_value != null || data.aggregations.activity.disbursement_value !=0){
-                 disbursement ="Disbursement in "+disbursement_currency+": "+ data.aggregations.activity.disbursement_value;
+                 disbursement ="in "+disbursement_currency+": "+ data.aggregations.activity.disbursement_value;
                 }
                 //expenditure
                 var expenditure_currency = [];
                 if (data.aggregations.activity.expenditure_currency !=null){
                     expenditure_currency.push(data.aggregations.activity.expenditure_currency)
                 }        
-                var expenditure = "Expenditure: Unavailable" 
+                var expenditure = "Unavailable" 
                 if (data.aggregations.expenditure_value != null || data.aggregations.activity.expenditure_value !=0){
-                 expenditure ="Expenditure in "+expenditure_currency+": "+ data.aggregations.activity.expenditure_value;
+                 expenditure ="in "+expenditure_currency+": "+ data.aggregations.activity.expenditure_value;
                 } 
 
-                var aid_type = ["Aid type: Unavailable"]
+                var aid_type = ["Unavailable"]
                 if (data.default_aid_type !=null){
                     if(data.default_aid_type.name != null){
-                        aid_type = "Aid type: "+data.default_aid_type.name
+                        aid_type = data.default_aid_type.name
                     }
                 }
 
                 var date_type =[]
                 for (i=0; i < data.activity_dates.length; i++){
-                        date_type.push("<br>"+ data.activity_dates[i].type.name+" date: "+ data.activity_dates[i].iso_date)
+                    date_type.push(data.activity_dates[i].type.name+" date: ")
                 }
 
-                var info = [title, "Project ID: "+id, reporting_org,last_updated, status, region, countries, sector,"<br>"+commitment, disbursement, expenditure, aid_type, date_type, description+"<br>"]
+                var date = []
+                for (i=0; i < data.activity_dates.length; i++){
+                    date.push(data.activity_dates[i].iso_date)
+                }
 
-                // head.innerHTML = title 
-                text.innerHTML = info.join('<br>');
+                console.log(date)
+
+                var info = [id, reporting_org, last_updated, status, region, countries, sector, commitment, disbursement, expenditure, aid_type]
+                var info2 = [description]
+                
+                text.innerHTML = info2.join('<br>');
+            
+          
+                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Commitment", "Disbursement", "Expenditure", "Aid type"]
+
+                var table = document.getElementById("detail");
+                 // var tablehead = document.getElementById("thead");
+                 // tablehead = '<th>'+title+'<th>';
+                    for (var i = 0, parameters; i<parameters.length; i++) {
+                     table += '<tr><td>'+parameters[i]+'</td><td>'+info[i]+'</td></tr>'
+                     // table += '<tr><td>'+date_type[i]+'</td><td>'+info[i]+'</td></tr>'
+                    }
+
+                    if (date_type && date !=null){
+                        for (i=0; i < data.activity_dates.length; i++){
+                            table += '<tr><td>'+date_type[i]+'</td><td>'+date[i]+'</td></tr>'
+                        }
+                    }
+                    
+                
+                 $('#detail tbody').html(table);
 
                 $('#loader').css('display', 'none');
    

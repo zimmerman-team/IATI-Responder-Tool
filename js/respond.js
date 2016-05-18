@@ -54,7 +54,7 @@ function project_list(longitude, latitude, distance){
 
                 var title = activity_id;
                 if(activity.title != null){
-                    title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
+                    title = activity.title.narratives[0].text;
                 }
 
                 var countries = [];

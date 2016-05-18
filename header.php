@@ -42,17 +42,12 @@
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <h2>IATI Responder</h2>
 
-<!-- <div class="home"> -->
+
       <a class="logo" href="index.php">
         <img src="/images/IATI_studio_logo_icon.svg">  
       </a>
-<!-- </div> -->
 
            
-      <!--       <div class="btn-group home">       
-              <a type= "button" href="index.php" class="btn btn-default glyphicon glyphicon-home"></a>
-            </div>
-       -->
        <script>
       function openNav() {
           document.getElementById("mySidenav").style.width = "200px";

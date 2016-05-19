@@ -12,11 +12,10 @@ $page = 'detail';
         </div>
       </div>
 
+<h3 id="page-title"></h3>
 
 <table class="table table-striped" id="detail">
-  <col width="130">
-  <col width="80">
-    <thead id= "thead"> </thead>
+
     <tbody>
     </tbody>
 </table>

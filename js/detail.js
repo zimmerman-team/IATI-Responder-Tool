@@ -1,7 +1,9 @@
 // detail.js
       $("h2").text("Detail")
+
 var text = document.getElementById("description");
-var head = document.getElementById("title");
+var head = document.getElementById("page-title");
+
 
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -36,10 +38,10 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
 
                 var title = id;
                 if(data.title.narratives.length != 0){
-                    title = '<h4><center>' + data.title.narratives[0].text + '</center></h4>';
+                    title = data.title.narratives[0].text;
                 }
 
-                var description = '<br>There is no description available for this project'; 
+                var description = '<br><b>Project description:</b> <br> Unavailable'; 
                   if(data.descriptions.length > 0){
                     description = [];
 
@@ -61,19 +63,22 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     for(var i = 0;i < data.recipient_countries.length;i++){
                         countries.push(data.recipient_countries[i].country.name);
                     }
-                    countries = "Country: " + countries.join(',');
+                    countries = countries.join(',');
                     // countries = countries: Algeria, Kenya
                 }
 
-                var last_updated = "Last updated on: "+data.last_updated_datetime; 
-
-                var status = data.activity_status.name;
+                var last_updated = data.last_updated_datetime; 
+                
+                if (data.activity_status.name != null){
+                  var status = data.activity_status.name;   
+                }
+               
                 
                   if (data.reporting_organisations.length > 0){
-                  var reporting_org = "Reporting organisation: "+ data.reporting_organisations[0].organisation.organisation_identifier
+                  var reporting_org = data.reporting_organisations[0].organisation.organisation_identifier
                 }
 
-                var sector = "Unknown" 
+                var sector = "Unavailable" 
                   if(data.sectors.length > 0){
                     sector = [];
 
@@ -96,6 +101,16 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     }
                     region =region.join(',');
                 }
+                var budget = "Unavailable"
+                if (data.budgets.length > 0){
+                     budget = [];
+                    for(i=0; i<data.budgets.length; i++){
+                        if (data.budgets[i].value.value != 0){ 
+                        budget.push( data.budgets[i].value.value+ '&nbsp'+ data.budgets[i].value.currency.code);
+                        }
+                    }
+                    budget = budget.join(',')
+                }
 
                 //commitement
                 var commitment_currency = [];
@@ -104,7 +119,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 }        
                 var commitment = "Unavailable" 
                 if (data.aggregations.commitment_value != null || data.aggregations.activity.commitment_value !=0){
-                 commitment ="in "+commitment_currency+": "+ data.aggregations.activity.commitment_value;
+                 commitment = data.aggregations.activity.commitment_value +'&nbsp'+ commitment_currency;
                 }
 
                 //disbursement
@@ -114,7 +129,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 }        
                 var disbursement = "Unavailable" 
                 if (data.aggregations.disbursement_value != null || data.aggregations.activity.disbursement_value !=0){
-                 disbursement ="in "+disbursement_currency+": "+ data.aggregations.activity.disbursement_value;
+                 disbursement =data.aggregations.activity.disbursement_value +'&nbsp'+  disbursement_currency ;
                 }
                 //expenditure
                 var expenditure_currency = [];
@@ -123,10 +138,10 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 }        
                 var expenditure = "Unavailable" 
                 if (data.aggregations.expenditure_value != null || data.aggregations.activity.expenditure_value !=0){
-                 expenditure ="in "+expenditure_currency+": "+ data.aggregations.activity.expenditure_value;
+                 expenditure = data.aggregations.activity.expenditure_value+'&nbsp'+  expenditure_currency;
                 } 
 
-                var aid_type = ["Unavailable"]
+                var aid_type = "Unavailable"
                 if (data.default_aid_type !=null){
                     if(data.default_aid_type.name != null){
                         aid_type = data.default_aid_type.name
@@ -145,20 +160,18 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
 
                 console.log(date)
 
-                var info = [id, reporting_org, last_updated, status, region, countries, sector, commitment, disbursement, expenditure, aid_type]
+                var info = [id, reporting_org, last_updated, status, region, countries, sector, budget, commitment, disbursement, expenditure, aid_type]
                 var info2 = [description]
                 
                 text.innerHTML = info2.join('<br>');
-            
+                head.innerHTML ='<center>'+title+'</center><br>';
           
-                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Commitment", "Disbursement", "Expenditure", "Aid type"]
+                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budget", "Commitment", "Disbursement", "Expenditure", "Aid type"]
 
                 var table = document.getElementById("detail");
-                 // var tablehead = document.getElementById("thead");
-                 // tablehead = '<th>'+title+'<th>';
+
                     for (var i = 0, parameters; i<parameters.length; i++) {
                      table += '<tr><td>'+parameters[i]+'</td><td>'+info[i]+'</td></tr>'
-                     // table += '<tr><td>'+date_type[i]+'</td><td>'+info[i]+'</td></tr>'
                     }
 
                     if (date_type && date !=null){

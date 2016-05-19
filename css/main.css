@@ -39,33 +39,44 @@ header h2 {
   width:50px;
   height: 50px;
 }
+
 .logo img {
   width: 100%;
   height: auto;
 }
 
 .btn{
-  border-radius: 0;
+  background-color: #3a99d8;
+  font-size: 1.5rem;
+  font-weight: 400;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: .4em 1em;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
-
+.home-buttons{
+    position:relative;
+    left:40%;
+    margin: -20px -50px; 
+    text-align: left;
+    display: block;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
 /*Projects Map knop*/
 .but1{
-    position:absolute;
+    /*font-weight: 200;*/
+    width:300px;
+    position:fixed;
     top:50%;
-    left:35%;
-    width:125px;
-    text-align: left;
-    padding: 10px;
 }
 
 /*Respond List knop*/
 .but2{
-    position:absolute;
+    /*font-weight: 200;*/
+    width:300px;
+    position:fixed;
     top:57%;
-    left:35%;
-    width:125px;
-    text-align: left;
-    padding: 10px;
 }
 
 /*Respond knop*/
@@ -104,21 +115,15 @@ header h2 {
     position:absolute;
     width:90%;
     left:5%;
+    border: 1px solid black;
     margin-bottom: 5%;
-    color: white;
-}
-#project-list, #project-list th, #project-list td {
-    border: 2px solid white;
-    border-collapse: collapse;
-    background-color: #333;
-}
-#project-list th, #project-list td {
-    padding: 7px;
-    text-align: left;
+    color: black;
 }
 
+
 #detail{
-width: 70%;
+border: 1px solid black;
+width: 100%;
 }
 
 #loader{
@@ -154,9 +159,9 @@ width: 70%;
   position:absolute;
   top:10%;
   left:60%;
-  width:150px;
+  width:160px;
   z-index:100;
-  text-align:center;
+  text-align:left;
   /*border-radius:3px;*/
   }
 
@@ -165,18 +170,19 @@ width: 70%;
     position:absolute;
     top:15%;
     left:60%;
-    width:150px;
+    width:160px;
+    text-align:left;
 }
 
 #title{
   font-weight: bold;
-  /*font-style: bold;*/
 }
+
 .respond{
   position:absolute;
-  width:90px;
-  right:  5%;
-  top:   17%;
+  width:100px;
+  right:  2%;
+  top:   7%;
 }
 
 #radius-input{
@@ -193,43 +199,60 @@ width: 70%;
 
 /* The side navigation menu */
 .sidenav {
-    font-family: proxima-nova, sans-serif;
+
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top:0;
+    z-index: 2; /* Stay on top */
+    top:50px;
     left:0;
     background-color: #3C3C3B; /* grey*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 50px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    transition: .3s ; /* 0.5 second transition effect to slide in the sidenav */
     text-align: left;
 }
 
 /* The navigation menu links */
 .sidenav a {
     font-family: proxima-nova, sans-serif;
-    padding: 8px 8px 8px 32px;
+    padding: 10px 10px 10px 52px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.5rem;
+    font-weight: 400;
     color: white;
     display: block;
-    transition: 0.3s;
+    transition: 0.2s;
     white-space:nowrap;
+    margin: 0;
+    padding-left: 10px;
 }
 
+.main-nav ul li a {
+    display: block;
+    color: #fff;
+    border-left: 2px solid transparent;
+    padding: .8rem .4rem;
+}
+.sidenav ul {
+  padding-left: 0px;
+ list-style: none;
+}
+
+.sidenav hr{
+  margin: 0;
+}
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
-    color: #3a99d8;
+    background-color: #3a99d8;
 }
 
 /* Position and style the close button (top right corner) */
-.closebtn {
+/*.closebtn {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 30px !important;
-}
+        font-weight: 700;
+    
+}*/
 
 

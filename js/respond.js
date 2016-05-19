@@ -1,7 +1,6 @@
 // respond.js
 // var geolocate = document.getElementById("geolocate");
       $("h2").text("Projects List")
-       // document.getElementById("header").innerHTML = "Public Offers";
 var x = document.getElementById("demo");
 
 function getLocation() {
@@ -29,7 +28,7 @@ function project_list(longitude, latitude, distance){
       location_longitude: longitude,
       location_latitude: latitude,
       location_distance_km: distance,
-      fields: "id,locations,descriptions,title,recipient_countries,recipient_regions",
+      fields: "id,locations,title,recipient_countries,recipient_regions",
       //recipient_country: "recipient_country",
 
       page_size: 20
@@ -37,6 +36,7 @@ function project_list(longitude, latitude, distance){
     .done(function(data){
      console.log(data);
         var geojson = [];
+        var titles =[];
 
         // voor elke location, maak geojson aan
         $.each(data.results, function(index1, activity) {
@@ -46,16 +46,14 @@ function project_list(longitude, latitude, distance){
                 var latitude = location.point.pos.latitude;
                 var activity_id = activity.id;
                 
-                var description = 'No description available';
-                   if(activity.descriptions[0] != null){
-                    description = activity.descriptions[0].narratives[0].text;
-                }
-                //console.log(description);
 
                 var title = activity_id;
                 if(activity.title != null){
                     title = activity.title.narratives[0].text;
                 }
+              
+            console.log(title);
+
 
                 var countries = [];
                 
@@ -70,9 +68,8 @@ function project_list(longitude, latitude, distance){
                     }               
                   }
                 } else {
-
+                //display region if country is unavailable
                   for(var i=0; i<data.results[index1].recipient_regions.length;i++){
-
                     if (data.results[index1].recipient_regions[i].region.name != null){
                       if (i<3){
                         countries.push(data.results[index1].recipient_regions[i].region.name);
@@ -92,23 +89,29 @@ function project_list(longitude, latitude, distance){
                     "properties": {
                         "title": title,
                         "country": countries,
-                        "description": description,
                         "id" : activity_id        
                     }
                 };
-                
+                titles.push(title)
                 //print een lijst van de titles van de projecten 
-                geojson.push(projects);
+    
+                  geojson.push(projects);
+          
                 $('#loader').css('display', 'none');
             });
-
+       
         });
-           console.log(geojson);
+        console.log(geojson);
+        //console.log(titles);
+        // var project_title=[];
+        // for(i=0; i<geojson.length; i++){
+        //    project_title = geojson[i].properties.title
+        //   }
+          //   if(titles.indexOf(project_title) = -1){
+          // }
 
-        
 
         var tbody_html = '';
-
 
         $.each(geojson, function(index, projects){
           tbody_html += '<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td></tr>' 

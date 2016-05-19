@@ -5,20 +5,21 @@
       <div class="row">
         <div class="col-xs-12">
           <h3>Welcome</h3> 
-          <br>Select projects map to see project near you or projects near a chosen location.<br> 
-          To view the nearest 20 projects select the projects list option.
-        </div>
+          <br>To view all the projects near you on a map press the projects map button.<br> 
+          To view a list of the nearest 20 projects press the projects list button.
       </div>
 
-      <a class="btn btn-primary but1" href="map.php" role="button">
-      <span class="glyphicon glyphicon-map-marker"></span> Projects Map
-      </a>
+        <div class= "home-buttons">
+          <a class="btn btn-primary but1" href="map.php" role="button">
+          <span class="glyphicon glyphicon-map-marker"></span> Projects Map
+          </a>
 
-      <a class="btn btn-primary but2" href="respond.php" role="button">
-      <span class="glyphicon glyphicon-list-alt"></span> Projects List
-      </a> 
+          <a class="btn btn-primary but2" href="respond.php" role="button">
+          <span class="glyphicon glyphicon-list-alt"></span> Projects List
+          </a> 
+        </div>
+      </div>
   </div>
   </section>
-
 
 <?php include('footer.php'); ?>

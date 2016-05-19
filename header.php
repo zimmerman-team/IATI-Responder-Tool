@@ -27,17 +27,20 @@
     <div class="container-fluid">
       
       <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="map.php">Projects Map</a>
-        <a href="respond.php">Projects List</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact</a>
-        <a href="messages.php">Messages</a>
+        <ul>
+          <hr>       
+          <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; close menu</a></li> <hr>
+          <li><a href="map.php">Projects Map</a></li><hr>
+          <li><a href="respond.php">Projects List</a></li><hr>
+          <li><a href="about.php">About</a></li><hr>
+          <li><a href="contact.php">Contact</a></li><hr>
+          <li><a href="messages.php">Messages</a></li><hr>
+        </ul>
       </div>
 
       <!-- Use any element to open the sidenav -->
       <div class="nav">
-        <span style="font-size:30px;cursor:pointer; color:white; top:1px;" onclick="openNav()">☰ </span>
+        <span style="font-size:25px;cursor:pointer; color:white; top:1px;" onclick="openNav()">☰ </span>
       </div>
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
       <h2>IATI Responder</h2>
@@ -50,7 +53,7 @@
            
        <script>
       function openNav() {
-          document.getElementById("mySidenav").style.width = "200px";
+          document.getElementById("mySidenav").style.width = "14.2rem";
       }
 
       /* Set the width of the side navigation to 0 */

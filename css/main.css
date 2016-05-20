@@ -6,9 +6,11 @@ body { margin:0; padding:100;
  }
 
 #map { position: fixed;
-       top:20; bottom:0; width:100%; height:94.5%; border:1px solid black;  left: 0px; 
-       zoom: 1;  
-       }
+      bottom:0; width:100%; height:94.5%;   
+      left:0;
+      display: block;
+       /*zoom: 1;  */
+      }
 
 header {
   font-family: proxima-nova, sans-serif;
@@ -19,10 +21,12 @@ header {
 }
 
 h3{ 
+    font-family: proxima-nova, sans-serif;
   margin-bottom: 0px;
  }
 
 header h2 {
+  font-family: proxima-nova, sans-serif;
   display: inline-block;
   color:#fff;
   margin:0;
@@ -54,29 +58,33 @@ header h2 {
   padding: .4em 1em;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
+
 .home-buttons{
     position:relative;
-    left:40%;
-    margin: -20px -50px; 
-    text-align: left;
-    display: block;
+    top:50%;
+    margin: 0 auto;
+    text-align: center;
     border: 1px solid transparent;
     border-radius: 2px;
 }
 /*Projects Map knop*/
 .but1{
-    /*font-weight: 200;*/
-    width:300px;
-    position:fixed;
+    clear: both;
     top:50%;
+    display: block;
+    margin: 0 auto;
+    width:300px;
 }
 
 /*Respond List knop*/
 .but2{
-    /*font-weight: 200;*/
+    clear: both;
+    margin: 0 auto;
+    margin-top:10px;
+    display: block;
     width:300px;
-    position:fixed;
-    top:57%;
+    position:relative;
+
 }
 
 /*Respond knop*/
@@ -90,7 +98,7 @@ header h2 {
 .list {
     border: 1px solid black;
     position:absolute;
-    background-color:   white;
+    background-color: white;
     top:50%;
     left:15%;
     width:300px; height:200px; overflow: auto;
@@ -115,16 +123,10 @@ header h2 {
     position:absolute;
     width:90%;
     left:5%;
-    border: 1px solid black;
     margin-bottom: 5%;
     color: black;
 }
 
-
-#detail{
-border: 1px solid black;
-width: 100%;
-}
 
 #loader{
   position: absolute;
@@ -154,24 +156,40 @@ width: 100%;
   z-index: 3;
 }
 
-.projects_near_me_button {
-  /*display:block;*/
-  position:absolute;
-  top:10%;
-  left:60%;
-  width:160px;
+/*.projects_near_me_button {
+
+  position:relative;
+  width:200px;
   z-index:100;
-  text-align:left;
-  /*border-radius:3px;*/
-  }
+  text-align:center;
+  float: right;
+  clear: both;
+  margin-top: 5px;
+    margin-bottom: 10px;
+  }*/
 
   /*marker button*/
 .marker{
-    position:absolute;
-    top:15%;
-    left:60%;
-    width:160px;
-    text-align:left;
+    position:relative;
+    width:200px;
+    text-align:center;
+    float: right;
+    clear: both;
+}
+#radius-input{
+  position: relative;
+  float: right;
+  clear: both;
+  width: 200px;
+  height: 50px;
+  z-index: 3;
+  color:black;
+}
+#count{
+  margin-top: 15px;
+  position: relative;
+  float: right;
+  clear: both;
 }
 
 #title{
@@ -185,74 +203,67 @@ width: 100%;
   top:   7%;
 }
 
-#radius-input{
-  position: absolute;
-  top: 20%;
-  left: 60%;
-  width: 100px;
-  height: 50px;
-  z-index: 3;
-  color:black;
-}
+
+
 
 
 
 /* The side navigation menu */
 .sidenav {
-
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 2; /* Stay on top */
-    top:50px;
+    top:0px;
     left:0;
-    background-color: #3C3C3B; /* grey*/
+    background-color: #333;
     overflow-x: hidden; /* Disable horizontal scroll */
-    transition: .3s ; /* 0.5 second transition effect to slide in the sidenav */
+    transition: .2s ; /* 0.5 second transition effect to slide in the sidenav */
     text-align: left;
 }
 
 /* The navigation menu links */
 .sidenav a {
     font-family: proxima-nova, sans-serif;
-    padding: 10px 10px 10px 52px;
+    padding: 14px 10px 14px 52px;
     text-decoration: none;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
     color: white;
     display: block;
     transition: 0.2s;
     white-space:nowrap;
     margin: 0;
-    padding-left: 10px;
+    padding-left: 20px;
 }
 
-.main-nav ul li a {
-    display: block;
-    color: #fff;
-    border-left: 2px solid transparent;
-    padding: .8rem .4rem;
+.sidenav ul li a:hover{
+background: #242424;
 }
 .sidenav ul {
   padding-left: 0px;
- list-style: none;
+  list-style: none;
 }
 
 .sidenav hr{
   margin: 0;
+  display: block;
+  border: 0;
+  border-top: 1px solid #fff;
+  padding: 0; 
+  opacity: 0.1;
 }
 /* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
+/*.sidenav a:hover, .offcanvas a:focus{
     background-color: #3a99d8;
-}
+}*/
 
 /* Position and style the close button (top right corner) */
-/*.closebtn {
-    position: absolute;
-    top: 0;
-    left: 0;
-        font-weight: 700;
-    
-}*/
+.closebtn {
+   background-color: #3a99d8;
+}
+.closebtn a:hover {
+background-color: #257fba;
+}
 
 

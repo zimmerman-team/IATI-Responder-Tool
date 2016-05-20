@@ -7,7 +7,7 @@ $page = 'messages';
       <!-- <div class="form-group"> -->
          <!-- <center><h3>Form</h3></center> -->
         
-        <label> What is the status of this project?</label>
+        <br><label> What is the status of this project?</label>
         <div class="radio">
           <label><input type="radio" name="optradio">The project is finished</label>
         </div>

@@ -17,6 +17,9 @@
     <script src="js/detail.js"></script>
     <script>info();</script>
 
+<?  } else if($page == 'about'){ ?>
+    <script>("h2").text("About")</script>
+
 <?  } else if($page == 'form'){ ?>
     <script src="js/form.js"></script>
 <? } ?>

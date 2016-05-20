@@ -1,10 +1,34 @@
-$("h2").text("Projects Map")
+// init 
 
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFuc3VyIiwiYSI6ImNpbjAyY2NrNjAwbHJ2OW0xZzBhYXpoaG8ifQ.l5at2Lcce4D_XJc8o6tglg';
-var geolocate = document.getElementById("geolocate");
-var coordinates = document.getElementById('coordinates');
-
 var rad = 100;
+
+var West = L.latLng( -60.0,  180.0),
+    East = L.latLng( 60.0,  -180.0),
+    bounds = L.latLngBounds(West, East);
+
+var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
+    maxBounds: bounds,
+    maxZoom: 14,
+    minZoom: 3,
+    tileLayer: {
+        continuousWorld: true,
+        // This option disables loading tiles outside of the world bounds.
+        noWrap: false
+    }
+});
+
+var clusteredMarkers = L.markerClusterGroup();
+var lat;
+var lon;
+var marker;
+var filterCircle;
+
+
+
+// add listeners 
+
+$("h2").text("Projects Map")
 
 $("#radius").change(function(e){
     rad = event.target.value;
@@ -16,53 +40,10 @@ $("#radius").mousewheel(function(event) {
     filterCircle.setRadius(rad * 1000);
 });
 
-var West = L.latLng( -60.0,  180.0),
-    East = L.latLng( 60.0,  -180.0),
-    bounds = L.latLngBounds(West, East);
-
-var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
-    maxBounds: bounds,
-    maxZoom: 14,
-    minZoom: 2,
-    tileLayer: {
-        continuousWorld: false,
-        // This option disables loading tiles outside of the world bounds.
-        noWrap: true
-    }
-});
-// .setView([52, 5], 8)
-
-
-var clusteredMarkers = L.markerClusterGroup();
-
 //center map on marker
 map.featureLayer.on('click', function(e) {
     map.panTo(e.layer.getLatLng());
 });
-
-// add dragable marker 
-var marker = L.marker([52, 5], {
-    icon: L.mapbox.marker.icon({
-      'marker-color': '#f86767'
-    }),
-    draggable: true
-}).addTo(map);
-
-var filterCircle = L.circle([52, 5], rad * 1000, {
-    opacity: 1,
-    weight: 1,
-    fillOpacity: 0
-}).addTo(map);
-
-
-// every time the marker is dragged, update the coordinates container
-marker.on('drag', ondrag);
-
-
-// Set the initial marker coordinates on load.
-ondrag();
-var lat;
-var lon;
 
 function ondrag() {
     var m = marker.getLatLng();
@@ -71,6 +52,53 @@ function ondrag() {
     lon = m.lng;
 }
 
+// If the user chooses not to allow their location
+// to be shared, display an error message.
+map.on('locationerror', function() {
+    geolocate.innerHTML = 'Position could not be found';
+});
+
+if (!navigator.geolocation) {
+    geolocate.innerHTML = 'Geolocation is not available';
+}
+
+map.on('locationfound', function(e) {
+    init_marker([e.latlng.lat, e.latlng.lng]);
+});
+
+
+function init_marker(latlng){
+
+    lat = latlng[0];
+    lon = latlng[1];
+
+    // add dragable marker 
+    marker = L.marker(latlng, {
+        icon: L.mapbox.marker.icon({
+          'marker-color': '#f86767'
+        }),
+        draggable: true
+    }).addTo(map);
+
+    filterCircle = L.circle(latlng, rad * 1000, {
+        opacity: 1,
+        weight: 1,
+        fillOpacity: 0
+    }).addTo(map);
+
+    // every time the marker is dragged, update the coordinates container
+    marker.on('drag', ondrag);
+
+    show_nearby_projects(latlng, rad);
+}
+
+
+function start_location(){
+    // hier toegang tot locatie vragen
+    map.locate();
+}
+
+
 
 function projects_near_marker(){
     // remove old markers    
@@ -78,64 +106,19 @@ function projects_near_marker(){
     clusteredMarkers = L.markerClusterGroup();
 
     // query oipa
-    show_nearby_projects(lon, lat, rad);
+    show_nearby_projects([lat, lon], rad);
 }
-
-function start_location(){
-    map.setView([lat, lon], 7)
-}
-
-
-// This uses the HTML5 geolocation API, which is available on
-// most mobile browsers and modern browsers, but not in Internet Explorer
-if (!navigator.geolocation) {
-    geolocate.innerHTML = 'Geolocation is not available';
-} else {
-    geolocate.onclick = function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        map.locate();
-    };
-}
-
-
-map.on('locationfound', function(e) {
-      // Once we've got a position, zoom and center the map
-    var my_location_geojson = {
-        type: 'Feature',
-        geometry: {
-            type: 'Point',          // on it, and add a single marker.
-            coordinates: [e.latlng.lng, e.latlng.lat]
-        },
-     
-        properties: {
-            'title': 'I am here!',
-            'marker-color': '#ff8888',
-            'marker-symbol': 'circle'
-        }
-    };
-    L.mapbox.featureLayer().setGeoJSON(my_location_geojson).addTo(map); //call function
-    console.log(rad)
-    show_nearby_projects(e.latlng.lng, e.latlng.lat, rad);
-});
-
-// If the user chooses not to allow their location
-// to be shared, display an error message.
-map.on('locationerror', function() {
-    geolocate.innerHTML = 'Position could not be found';
-});
-
 
 //OIPA call with 2 coordinates
- function show_nearby_projects(longitude, latitude, distance){
+ function show_nearby_projects(latlng, distance){
 
             $('#loader').css('display', 'block');
           
            var projectAPI = "https://dev.oipa.nl/api/locations/";
            $.getJSON( projectAPI, {
               format: "json",
-              location_longitude: longitude,
-              location_latitude: latitude,
+              location_longitude: latlng[1],
+              location_latitude: latlng[0],
               location_distance_km: distance,
               fields: "id,activity,point",
               page_size: 200
@@ -144,9 +127,7 @@ map.on('locationerror', function() {
             .done(function(data){
 
                 console.log(data);
-                console.log(longitude);
-                console.log(latitude);
-                console.log(distance);
+    
 
                 var geojson = [];
 
@@ -190,10 +171,29 @@ map.on('locationerror', function() {
                 if (data.count == 0){
                  alert('No projects availabe, choose a different location');
                 }
+                   
+                   // var project_count = document.getElementById("count");
+                if (data.count > data.results.length){
+                var project_count = "Showing first 200 of "+ data.count+" projects";
+                
+                function show_more(){
+                    var projectAPI = "https://dev.oipa.nl/api/locations/";
+                   
+                       $.getJSON( projectAPI, {
+                          format: "json",
+                          location_longitude: longitude,
+                          location_latitude: latitude,
+                          location_distance_km: distance,
+                          fields: "id,activity,point",
+                          page_size: 200,
+                          page:2
+                        })
+                 }
+                   document.getElementById("count").innerHTML = project_count;
+                }
+             
 
-                West = L.latLng( latitude+2, longitude-0.2),
-                East = L.latLng( latitude-2, longitude+0.2),
-                bounds = L.latLngBounds(West, East);
+                bounds = clusteredMarkers.getBounds();
                 map.fitBounds(bounds);
 
                 $('#loader').css('display', 'none');

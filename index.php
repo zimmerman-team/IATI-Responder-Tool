@@ -9,7 +9,7 @@
           To view a list of the nearest 20 projects press the projects list button.
       </div>
 
-        <div class= "home-buttons">
+        <div class="row home-buttons">
           <a class="btn btn-primary but1" href="map.php" role="button">
           <span class="glyphicon glyphicon-map-marker"></span> Projects Map
           </a>
@@ -18,6 +18,7 @@
           <span class="glyphicon glyphicon-list-alt"></span> Projects List
           </a> 
         </div>
+        
       </div>
   </div>
   </section>

@@ -63,7 +63,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     for(var i = 0;i < data.recipient_countries.length;i++){
                         countries.push(data.recipient_countries[i].country.name);
                     }
-                    countries = countries.join(',');
+                    countries = countries.join(',&nbsp');
                     // countries = countries: Algeria, Kenya
                 }
 
@@ -106,10 +106,10 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                      budget = [];
                     for(i=0; i<data.budgets.length; i++){
                         if (data.budgets[i].value.value != 0){ 
-                        budget.push( data.budgets[i].value.value+ '&nbsp'+ data.budgets[i].value.currency.code);
+                        budget.push(data.budgets[i].value.value+ '&nbsp'+ data.budgets[i].value.currency.code);
                         }
                     }
-                    budget = budget.join(',')
+                    budget = budget.join(',&nbsp')
                 }
 
                 //commitement
@@ -166,7 +166,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 text.innerHTML = info2.join('<br>');
                 head.innerHTML ='<center>'+title+'</center><br>';
           
-                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budget", "Commitment", "Disbursement", "Expenditure", "Aid type"]
+                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budgets", "Commitment", "Disbursement", "Expenditure", "Aid type"]
 
                 var table = document.getElementById("detail");
 

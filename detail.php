@@ -8,7 +8,6 @@ $page = 'detail';
         <div class="col-xs-12">
           <div id="title">          
           </div>
-
         </div>
       </div>
 

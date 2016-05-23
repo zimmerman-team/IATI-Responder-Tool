@@ -43,8 +43,9 @@
         <span style="font-size:25px;cursor:pointer; color:white;" onclick="openNav()">☰ </span>
       </div>
       <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-      <h2>IATI Responder</h2>
-
+   
+        <h2>IATI Responder</h2>
+ 
 
       <a class="logo" href="index.php">
         <img src="/images/IATI_studio_logo_icon.svg">  

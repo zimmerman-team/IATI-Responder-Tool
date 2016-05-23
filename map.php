@@ -29,7 +29,7 @@ $page = 'map';
     </div> 
 
    <label id="count" for="usr"></label>
-     
+     <pre id='coordinates' class='ui-coordinates'></pre>
 </div>
 </section>       
 

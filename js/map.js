@@ -1,7 +1,7 @@
 // init 
-
 L.mapbox.accessToken = 'pk.eyJ1IjoibWFuc3VyIiwiYSI6ImNpbjAyY2NrNjAwbHJ2OW0xZzBhYXpoaG8ifQ.l5at2Lcce4D_XJc8o6tglg';
 var rad = 100;
+var coordinates = document.getElementById('coordinates');
 
 var West = L.latLng( -60.0,  180.0),
     East = L.latLng( 60.0,  -180.0),
@@ -10,7 +10,7 @@ var West = L.latLng( -60.0,  180.0),
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 14,
-    minZoom: 3,
+    minZoom: 2,
     tileLayer: {
         continuousWorld: true,
         // This option disables loading tiles outside of the world bounds.
@@ -75,7 +75,8 @@ function init_marker(latlng){
     // add dragable marker 
     marker = L.marker(latlng, {
         icon: L.mapbox.marker.icon({
-          'marker-color': '#f86767'
+          'marker-color': '#f86767',
+           "marker-symbol": "circle",
         }),
         draggable: true
     }).addTo(map);
@@ -122,7 +123,6 @@ function projects_near_marker(){
               location_distance_km: distance,
               fields: "id,activity,point",
               page_size: 200
-
             })
             .done(function(data){
 
@@ -167,7 +167,8 @@ function projects_near_marker(){
                 });
 
                 map.addLayer(clusteredMarkers);
-                
+
+                coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
                 if (data.count == 0){
                  alert('No projects availabe, choose a different location');
                 }

@@ -5,9 +5,12 @@ body { margin:0; padding:100;
     font-family: proxima-nova, sans-serif;
  }
 
-#map { position: fixed;
-      bottom:0; width:100%; height:94.5%;   
+#map { 
+      position: fixed;
+      bottom:0;
       left:0;
+      right:0;
+      top:50px;
       display: block;
        /*zoom: 1;  */
       }
@@ -27,6 +30,7 @@ h3{
 
 header h2 {
   font-family: proxima-nova, sans-serif;
+  font-weight: 550;
   display: inline-block;
   color:#fff;
   margin:0;
@@ -61,7 +65,6 @@ header h2 {
 
 .home-buttons{
     position:relative;
-    top:50%;
     margin: 0 auto;
     text-align: center;
     border: 1px solid transparent;
@@ -70,10 +73,10 @@ header h2 {
 /*Projects Map knop*/
 .but1{
     clear: both;
-    top:50%;
     display: block;
     margin: 0 auto;
     width:300px;
+    margin-top:40%;
 }
 
 /*Respond List knop*/
@@ -104,19 +107,6 @@ header h2 {
     width:300px; height:200px; overflow: auto;
 }
 
-
-/*show coordinates of the marker */
-/*pre.ui-coordinates {
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  padding:5px 10px;
-  background:rgba(0,0,0,0.5);
-  color:#fff;
-  font-size:11px;
-  line-height:18px;
-  border-radius:3px;
-  }*/
 
 /*table list*/
 #project-list {
@@ -170,6 +160,7 @@ header h2 {
 
   /*marker button*/
 .marker{
+    margin-top: 5px;
     position:relative;
     width:200px;
     text-align:center;
@@ -180,11 +171,28 @@ header h2 {
   position: relative;
   float: right;
   clear: both;
-  width: 200px;
+  width: 100px;
   height: 50px;
   z-index: 3;
   color:black;
 }
+
+/*show coordinates of the marker */
+pre.ui-coordinates {
+  font-family: proxima-nova, sans-serif;
+  position:relative;
+  float: right;
+  clear: both;
+  width: 100px;
+  padding:1px 1px;
+  background:rgba(0,0,0,0.5);
+  color:#fff;
+  font-size:11px;
+  line-height:18px;
+/*  border-radius:3px;
+*/
+  }
+
 #count{
   margin-top: 15px;
   position: relative;
@@ -202,9 +210,6 @@ header h2 {
   right:  2%;
   top:   7%;
 }
-
-
-
 
 
 
@@ -228,7 +233,7 @@ header h2 {
     padding: 14px 10px 14px 52px;
     text-decoration: none;
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 550;
     color: white;
     display: block;
     transition: 0.2s;
@@ -262,8 +267,7 @@ background: #242424;
 .closebtn {
    background-color: #3a99d8;
 }
-.closebtn a:hover {
-background-color: #257fba;
-}
+
+
 
 

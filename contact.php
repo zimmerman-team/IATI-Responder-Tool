@@ -1,6 +1,6 @@
 <?php 
 include('header.php'); 
-$page = 'list';
+$page = 'contact';
 ?>
    
 

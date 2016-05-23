@@ -18,18 +18,20 @@ $page = 'map';
         </div>
     </div>
   </div>
-<!--     <a href='#' id='geolocate' class='btn btn-primary projects_near_me_button'>Projects near me</a>
- -->    <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Projects near marker</a>
 
-    <div id="radius-input">
-        <div class="form-group">
-          <label for="usr">Radius in km:</label>
-          <input type="number" class="form-control" id="radius" step="10" min="10" max="500" value="100">
-        </div>
-    </div> 
+  <div class="my-legend">  
+  <!--     <a href='#' id='geolocate' class='btn btn-primary projects_near_me_button'>Projects near me</a>
+   -->    <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Find projects</a>
 
-   <label id="count" for="usr"></label>
-     <pre id='coordinates' class='ui-coordinates'></pre>
+      <div id="radius-input">
+          <div class="form-group">
+            <label for="usr">Radius in km:</label>
+            <input type="number" class="form-control" id="radius" step="10" min="10" max="500" value="100">
+          </div>
+      </div> 
+       <pre id='coordinates' class='ui-coordinates'></pre>
+      <label id="count" for="usr"></label>
+  </div>
 </div>
 </section>       
 

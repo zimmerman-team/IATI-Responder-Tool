@@ -1,5 +1,5 @@
 // detail.js
-      $("h2").text("Detail")
+      //$("h2").text("Detail")
 
 var text = document.getElementById("description");
 var head = document.getElementById("page-title");
@@ -150,8 +150,15 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
 
                 var date_type =[]
                 for (i=0; i < data.activity_dates.length; i++){
-                    date_type.push(data.activity_dates[i].type.name+" date: ")
+                    date_type.push(data.activity_dates[i].type.name+" date ")
                 }
+
+                var finance_type=[]
+                if (data.default_finance_type.name != null){
+                finance_type = data.default_finance_type.name
+
+                }
+
 
                 var date = []
                 for (i=0; i < data.activity_dates.length; i++){
@@ -160,13 +167,14 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
 
                 console.log(date)
 
-                var info = [id, reporting_org, last_updated, status, region, countries, sector, budget, commitment, disbursement, expenditure, aid_type]
+                var info = [id, reporting_org, last_updated, status, region, countries, sector, budget, commitment, disbursement, expenditure, aid_type, finance_type]
                 var info2 = [description]
-                
-                text.innerHTML = info2.join('<br>');
+
                 head.innerHTML ='<center>'+title+'</center><br>';
+                text.innerHTML = info2.join('<br>'); 
+                
           
-                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budgets", "Commitment", "Disbursement", "Expenditure", "Aid type"]
+                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budgets", "Commitment", "Disbursement", "Expenditure", "Aid type", "Finance type"]
 
                 var table = document.getElementById("detail");
 

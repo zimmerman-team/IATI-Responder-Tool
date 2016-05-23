@@ -50,6 +50,8 @@ function ondrag() {
     filterCircle.setLatLng(m);
     lat = m.lat;
     lon = m.lng;
+    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
+
 }
 
 // If the user chooses not to allow their location
@@ -91,6 +93,8 @@ function init_marker(latlng){
     marker.on('drag', ondrag);
 
     show_nearby_projects(latlng, rad);
+ coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
+
 }
 
 
@@ -108,6 +112,7 @@ function projects_near_marker(){
 
     // query oipa
     show_nearby_projects([lat, lon], rad);
+    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
 }
 
 //OIPA call with 2 coordinates
@@ -168,7 +173,7 @@ function projects_near_marker(){
 
                 map.addLayer(clusteredMarkers);
 
-                coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
+                // coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
                 if (data.count == 0){
                  alert('No projects availabe, choose a different location');
                 }
@@ -194,7 +199,7 @@ function projects_near_marker(){
                 }
              
 
-                bounds = clusteredMarkers.getBounds();
+                bounds = filterCircle.getBounds();
                 map.fitBounds(bounds);
 
                 $('#loader').css('display', 'none');

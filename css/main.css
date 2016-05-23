@@ -23,9 +23,10 @@ header {
   height: 50px;
 }
 
-h3{ 
+.title-home h2{ 
     font-family: proxima-nova, sans-serif;
-  margin-bottom: 0px;
+    margin-bottom: 0px;
+    font-weight: 700;
  }
 
 header h2 {
@@ -46,17 +47,19 @@ header h2 {
   display: block;
   width:50px;
   height: 50px;
+  margin-right: -10px;
+  margin-left: -4px;
 }
 
 .logo img {
   width: 100%;
   height: auto;
+  border: 0;
 }
 
 .btn{
   background-color: #3a99d8;
   font-size: 1.5rem;
-  font-weight: 400;
   border: 1px solid transparent;
   border-radius: 2px;
   padding: .4em 1em;
@@ -64,6 +67,7 @@ header h2 {
 }
 
 .home-buttons{
+
     position:relative;
     margin: 0 auto;
     text-align: center;
@@ -72,6 +76,7 @@ header h2 {
 }
 /*Projects Map knop*/
 .but1{
+      font-weight: 300;
     clear: both;
     display: block;
     margin: 0 auto;
@@ -81,6 +86,7 @@ header h2 {
 
 /*Respond List knop*/
 .but2{
+      font-weight: 300;
     clear: both;
     margin: 0 auto;
     margin-top:10px;
@@ -160,48 +166,60 @@ header h2 {
 
   /*marker button*/
 .marker{
+      font-weight: 400;
     margin-top: 5px;
     position:relative;
-    width:200px;
+    width:130px;
     text-align:center;
     float: right;
     clear: both;
+    margin-bottom: 10px;
+    box-shadow: 0;
 }
+
 #radius-input{
   position: relative;
   float: right;
   clear: both;
-  width: 100px;
+  width: 130px;
   height: 50px;
   z-index: 3;
-  color:black;
+  color:white;
+
 }
 
 /*show coordinates of the marker */
 pre.ui-coordinates {
   font-family: proxima-nova, sans-serif;
   position:relative;
-  float: right;
-  clear: both;
-  width: 100px;
-  padding:1px 1px;
-  background:rgba(0,0,0,0.5);
+  font-weight: 600;
+   clear: both;
+  margin-top: 15px;
+  padding-top: 5px;
+  margin-bottom: 0px;
+  background:transparent;
   color:#fff;
-  font-size:11px;
-  line-height:18px;
-/*  border-radius:3px;
-*/
+  float: left;
+  border:0;
+  line-height:1.42857143;
+  font size: 14px;
+  margin-left: -5px;
   }
 
 #count{
-  margin-top: 15px;
+/*  margin-top: 0px;*/
   position: relative;
   float: right;
   clear: both;
 }
 
-#title{
-  font-weight: bold;
+.header-title{
+    line-height: 5rem;
+    text-align: center;
+    font-weight: 300;
+    float: right;
+    color: #fff;
+    margin-right: 1rem;
 }
 
 .respond{
@@ -223,7 +241,7 @@ pre.ui-coordinates {
     left:0;
     background-color: #333;
     overflow-x: hidden; /* Disable horizontal scroll */
-    transition: .2s ; /* 0.5 second transition effect to slide in the sidenav */
+    transition: .2s ease; /* 0.5 second transition effect to slide in the sidenav */
     text-align: left;
 }
 
@@ -258,16 +276,25 @@ background: #242424;
   padding: 0; 
   opacity: 0.1;
 }
-/* When you mouse over the navigation links, change their color */
-/*.sidenav a:hover, .offcanvas a:focus{
-    background-color: #3a99d8;
-}*/
 
 /* Position and style the close button (top right corner) */
 .closebtn {
    background-color: #3a99d8;
 }
 
+.my-legend {
+  display: block;
+  clear:both;
+  border: 1px solid black;
+  width: 140px !important;
+  height: auto;
+  float:right;
+  padding:5px 5px 5px 5px;
+  position: relative;
+  background: rgba(1,1,1,.24);
+    /*opacity: 0.1;*/
+   
+  }
 
-
+  
 

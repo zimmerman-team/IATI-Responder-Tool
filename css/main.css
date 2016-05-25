@@ -1,7 +1,7 @@
 
 body { margin:0; padding:100; 
     color: black;
-    background-color: white;
+    background-color: #F2F2F2;
     font-family: proxima-nova, sans-serif;
  }
 
@@ -12,7 +12,6 @@ body { margin:0; padding:100;
       right:0;
       top:50px;
       display: block;
-       /*zoom: 1;  */
       }
 
 header {
@@ -28,7 +27,9 @@ header {
     margin-bottom: 0px;
     font-weight: 700;
  }
-
+#page-title{
+  font-weight: 700;
+}
 header h2 {
   font-family: proxima-nova, sans-serif;
   font-weight: 550;
@@ -66,27 +67,20 @@ header h2 {
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-.home-buttons{
 
-    position:relative;
-    margin: 0 auto;
-    text-align: center;
-    border: 1px solid transparent;
-    border-radius: 2px;
-}
 /*Projects Map knop*/
 .but1{
-      font-weight: 300;
+    font-weight: 300;
     clear: both;
     display: block;
     margin: 0 auto;
     width:300px;
-    margin-top:40%;
+    margin-top:20%;
 }
 
 /*Respond List knop*/
 .but2{
-      font-weight: 300;
+    font-weight: 300;
     clear: both;
     margin: 0 auto;
     margin-top:10px;
@@ -119,10 +113,20 @@ header h2 {
     position:absolute;
     width:90%;
     left:5%;
+    background-color: #fff;
     margin-bottom: 5%;
-    color: black;
+    /*color: black;*/
+    /*padding: 20px;*/
 }
 
+#project-list th, td, tr{
+    padding: 20px;
+    /*text-align: center;    */
+} 
+
+#detail{
+  background-color: #fff;
+}
 
 #loader{
   position: absolute;

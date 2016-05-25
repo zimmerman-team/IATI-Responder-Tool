@@ -153,10 +153,11 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                     date_type.push(data.activity_dates[i].type.name+" date ")
                 }
 
-                var finance_type=[]
-                if (data.default_finance_type.name != null){
-                finance_type = data.default_finance_type.name
-
+                var finance_type ="Unavailable"
+                if (data.default_finance_type != null){
+                    if(data.default_finance_type.name != null){
+                    finance_type = data.default_finance_type.name
+                    }
                 }
 
 

@@ -12,7 +12,7 @@ $page = 'list';
             <div id="loader-bg"></div>
         </div>
 
-<table class="table table-striped" id="project-list">
+<table class="table" id="project-list">
     <thead>
         <tr>
             <th>Projects near me</th>

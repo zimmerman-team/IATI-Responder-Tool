@@ -10,7 +10,7 @@ var West = L.latLng( -60.0,  180.0),
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 14,
-    minZoom: 2,
+    minZoom: 3,
     tileLayer: {
         continuousWorld: true,
         // This option disables loading tiles outside of the world bounds.

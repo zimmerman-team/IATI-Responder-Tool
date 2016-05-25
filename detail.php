@@ -13,14 +13,14 @@ $page = 'detail';
 
 <h3 id="page-title"></h3>
 
-<table class="table table-striped" id="detail">
+<table class="table" id="detail">
 
     <tbody>
     </tbody>
 </table>
 
   <section>
-  
+
       <div class="row">
         <div class="col-xs-12">
           <div id="loader">

@@ -25,11 +25,10 @@ function info(){
     
     $('#loader').css('display', 'block');
 
-var projectAPI = "https://dev.oipa.nl/api/activities/" + id;    
+var projectAPI = "https://www.oipa.nl/api/activities/" + id;    
     $.getJSON( projectAPI, {
 
       format: "json",
-      // fields: "id,locations,descriptions,title,recipient_countries,reporting_organisations,last_updated_datetime,activity_status,activity_budget_value,sector"
     })
 
 
@@ -52,7 +51,7 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                             }
                         }
                     }
-                    description = "<br><b>Project description:</b><br>"+description.join('<br>');
+                    description = "<b>Project description:</b><br>"+description.join('<br>');
                 }
            
 
@@ -73,10 +72,17 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                   var status = data.activity_status.name;   
                 }
                
+                var reporting_org = "Unavailable"
+                    for(var x=0; x < data.reporting_organisations.length; x++){
+                        for (var i =0; i < data.reporting_organisations[x].narratives.length; i++){
+                           if(data.reporting_organisations[x].narratives[i].text != null){
+                            reporting_org=[];
+                            reporting_org.push(data.reporting_organisations[x].narratives[i].text);
+                            }
+                        }
+                       reporting_org = reporting_org.join(',&nbsp');
+                    }
                 
-                  if (data.reporting_organisations.length > 0){
-                  var reporting_org = data.reporting_organisations[0].organisation.organisation_identifier
-                }
 
                 var sector = "Unavailable" 
                   if(data.sectors.length > 0){
@@ -180,12 +186,12 @@ var projectAPI = "https://dev.oipa.nl/api/activities/" + id;
                 var table = document.getElementById("detail");
 
                     for (var i = 0, parameters; i<parameters.length; i++) {
-                     table += '<tr><td>'+parameters[i]+'</td><td>'+info[i]+'</td></tr>'
+                     table += '<tr><td><b>'+parameters[i]+'</b></td><td>'+info[i]+'</td></tr>'
                     }
 
                     if (date_type && date !=null){
                         for (i=0; i < data.activity_dates.length; i++){
-                            table += '<tr><td>'+date_type[i]+'</td><td>'+date[i]+'</td></tr>'
+                            table += '<tr><td><b>'+date_type[i]+'</b></td><td>'+date[i]+'</td></tr>'
                         }
                     }
                     

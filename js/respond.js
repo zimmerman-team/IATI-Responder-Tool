@@ -22,15 +22,13 @@ function showPosition(position) {
 function project_list(longitude, latitude, distance){
     $('#loader').css('display', 'block');
     
-    var projectAPI = "https://dev.oipa.nl/api/activities/";
+    var projectAPI = "https://www.oipa.nl/api/activities/";
     $.getJSON( projectAPI, {
       format: "json",
       location_longitude: longitude,
       location_latitude: latitude,
       location_distance_km: distance,
       fields: "id,locations,title,recipient_countries,recipient_regions",
-      //recipient_country: "recipient_country",
-
       page_size: 20
     })
     .done(function(data){
@@ -48,8 +46,10 @@ function project_list(longitude, latitude, distance){
                 
 
                 var title = activity_id;
-                if(activity.title != null){
+                if(activity.title.narratives.length > 0){
+                  if (activity.title.narratives[0].text != null){
                     title = activity.title.narratives[0].text;
+                  }
                 }
               
             console.log(title);

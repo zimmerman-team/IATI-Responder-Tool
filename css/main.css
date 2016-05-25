@@ -28,6 +28,7 @@ header {
     font-weight: 700;
  }
 #page-title{
+  margin-top: 20px;
   font-weight: 700;
 }
 header h2 {
@@ -110,22 +111,20 @@ header h2 {
 
 /*table list*/
 #project-list {
-    position:absolute;
+    position:relative;
+margin: 0 auto;
     width:90%;
-    left:5%;
+    top: 50px;
     background-color: #fff;
-    margin-bottom: 5%;
-    /*color: black;*/
-    /*padding: 20px;*/
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+     /*box-shadow: 0 2px 2px 0 #bbb;*/
 }
 
-#project-list th, td, tr{
-    padding: 20px;
-    /*text-align: center;    */
-} 
 
 #detail{
-  background-color: #fff;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
 #loader{
@@ -170,12 +169,13 @@ header h2 {
 
   /*marker button*/
 .marker{
-      font-weight: 400;
+    font-weight: 400;
+    margin: 0 auto;
     margin-top: 5px;
     position:relative;
     width:130px;
     text-align:center;
-    float: right;
+    /*float: right;*/
     clear: both;
     margin-bottom: 10px;
     box-shadow: 0;
@@ -183,26 +183,31 @@ header h2 {
 
 #radius-input{
   position: relative;
-  float: right;
+  /*float: right;*/
+  margin: 0 auto;
   clear: both;
   width: 130px;
   height: 50px;
   z-index: 3;
-  color:white;
-
+  /*color:white;*/
 }
 
+#radius-input label{   
+ font-weight: 600;
+ font-size: 1.3rem;
+}
 /*show coordinates of the marker */
 pre.ui-coordinates {
   font-family: proxima-nova, sans-serif;
   position:relative;
   font-weight: 600;
-   clear: both;
+  clear: both;
+  font-size: 1.3rem;
   margin-top: 15px;
   padding-top: 5px;
   margin-bottom: 0px;
   background:transparent;
-  color:#fff;
+  /*color:#fff;*/
   float: left;
   border:0;
   line-height:1.42857143;
@@ -227,10 +232,12 @@ pre.ui-coordinates {
 }
 
 .respond{
-  position:absolute;
-  width:100px;
-  right:  2%;
-  top:   7%;
+  position:relative;
+  top:10px;
+  margin-bottom: 10px;
+  width:430px;
+ float: right;
+  /*top:   7%;*/
 }
 
 
@@ -289,15 +296,40 @@ background: #242424;
 .my-legend {
   display: block;
   clear:both;
-  border: 1px solid black;
-  width: 140px !important;
+  width: 150px !important;
   height: auto;
   float:right;
+  margin: 0 auto;
   padding:5px 5px 5px 5px;
   position: relative;
-  background: rgba(1,1,1,.24);
-    /*opacity: 0.1;*/
-   
+  background-color: #fff;
+  /*color: black;*/
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  /*background: rgba(1,1,1,.24);*/
+
+  }
+
+.detail-content{
+    /*margin: 0 auto;*/
+  /*margin-top: 50px;*/
+}
+
+  .sidebar-right{
+   float: right;
+   /*margin-right: 10px;*/
+   /*max-width: 400px;*/
+  }
+
+  .detail-column{
+    background-color: #fff;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  }
+
+  .main-wrapper{
+    background-color: #fff;
+    margin: 0 auto;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+
   }
 
   

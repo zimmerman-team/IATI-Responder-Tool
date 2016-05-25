@@ -120,7 +120,7 @@ function projects_near_marker(){
 
             $('#loader').css('display', 'block');
           
-           var projectAPI = "https://dev.oipa.nl/api/locations/";
+           var projectAPI = "https://www.oipa.nl/api/locations/";
            $.getJSON( projectAPI, {
               format: "json",
               location_longitude: latlng[1],
@@ -145,7 +145,7 @@ function projects_near_marker(){
                     var latitude = location.point.pos.latitude;
                     
                     var activity = location.activity;
-                    var title = ''
+                    var title = activity.id;
 
                     if(activity.title != null && activity.title.narratives.length){
                         title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
@@ -183,7 +183,7 @@ function projects_near_marker(){
                 var project_count = "Showing first 200 of "+ data.count+" projects";
                 
                 function show_more(){
-                    var projectAPI = "https://dev.oipa.nl/api/locations/";
+                    var projectAPI = "https://www.oipa.nl/api/locations/";
                    
                        $.getJSON( projectAPI, {
                           format: "json",

@@ -73,10 +73,10 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                 }
                
                 var reporting_org = "Unavailable"
+                reporting_org = [];
                     for(var x=0; x < data.reporting_organisations.length; x++){
                         for (var i =0; i < data.reporting_organisations[x].narratives.length; i++){
                            if(data.reporting_organisations[x].narratives[i].text != null){
-                            reporting_org=[];
                             reporting_org.push(data.reporting_organisations[x].narratives[i].text);
                             }
                         }

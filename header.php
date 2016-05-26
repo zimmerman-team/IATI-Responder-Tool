@@ -39,10 +39,10 @@
       </div>
 
       <!-- Use any element to open the sidenav -->
-      <div class="nav">
-        <span style="font-size:25px;cursor:pointer; color:white;" onclick="openNav()">☰ </span>
+      <div class="nav" style="cursor:pointer; color:white;" onclick="openNav()">
+        <span class="glyphicon glyphicon-menu-hamburger">  </span>
       </div>
-      <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+
         <a class="logo" href="index.php">
         <img src="/images/IATI_studio_logo_icon.svg">  
       </a>
@@ -53,8 +53,6 @@
  
 
 
-
-           
        <script>
       function openNav() {
           document.getElementById("mySidenav").style.width = "20rem";

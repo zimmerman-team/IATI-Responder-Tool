@@ -15,15 +15,14 @@ body { margin:0; padding:100;
       }
 
 header {
-  font-family: proxima-nova, sans-serif;
-  background: #3C3C3B;
+  background: #333;
   position: relative;
   text-align: center;
   height: 50px;
 }
 
 .title-home h2{ 
-    font-family: proxima-nova, sans-serif;
+    text-align: center;
     margin-bottom: 0px;
     font-weight: 700;
  }
@@ -41,9 +40,14 @@ header h2 {
 }
 .nav{
   position: relative;
+  display: inline-block;
   float: left;
-  line-height: 50px;
+  margin-left:-15px;
+  background: #3a99d8;
+  padding: 1.7rem 2rem;
+  line-height: 1;
 }
+
 .logo{
   float: right;
   display: block;
@@ -112,7 +116,7 @@ header h2 {
 /*table list*/
 #project-list {
     position:relative;
-margin: 0 auto;
+  margin: 0 auto;
     width:90%;
     top: 50px;
     background-color: #fff;

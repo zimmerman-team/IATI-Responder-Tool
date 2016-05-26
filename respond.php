@@ -2,8 +2,6 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-
-          <!-- <button onclick="getLocation()" class="btn btn-primary but3">Nearby projects</button> -->
       
         <div id="loader">
             <div id="loader-icon">Loading...</div>

@@ -35,8 +35,21 @@ function project_list(longitude, latitude, distance){
         var geojson = [];
         var titles =[];
 
+        // var title = activity_id;
+        var seen = {}
+        var results = data.results.filter(function(activity, index, array) {
+          if (seen[activity.id]) {
+            return false
+          }
+
+          seen[activity.id] = true
+          return true
+        })
+        
+console.log(results)
         // voor elke location, maak geojson aan
-        $.each(data.results, function(index1, activity) {
+        $.each(results, function(index1, activity) {
+
 
             $.each(activity.locations, function(index2, location) {
                 var longitude = location.point.pos.longitude;
@@ -45,33 +58,32 @@ function project_list(longitude, latitude, distance){
                 
 
                 var title = activity_id;
+                
                 if(activity.title.narratives.length > 0){
                   if (activity.title.narratives[0].text != null){
                     title = activity.title.narratives[0].text;
                   }
                 }
-              
-            console.log(title);
 
 
                 var countries = [];
                 
-                if (data.results[index1].recipient_countries.length > 0){
+                if (results[index1].recipient_countries.length > 0){
 
-                  for(var i=0; i<data.results[index1].recipient_countries.length;i++){
+                  for(var i=0; i<results[index1].recipient_countries.length;i++){
 
-                    if (data.results[index1].recipient_countries[i].country.name != null){
+                    if (results[index1].recipient_countries[i].country.name != null){
                       if (i<3){
-                        countries.push(data.results[index1].recipient_countries[i].country.name);
+                        countries.push(results[index1].recipient_countries[i].country.name);
                       }
                     }               
                   }
                 } else {
                 //display region if country is unavailable
-                  for(var i=0; i<data.results[index1].recipient_regions.length;i++){
-                    if (data.results[index1].recipient_regions[i].region.name != null){
+                  for(var i=0; i<results[index1].recipient_regions.length;i++){
+                    if (results[index1].recipient_regions[i].region.name != null){
                       if (i<3){
-                        countries.push(data.results[index1].recipient_regions[i].region.name);
+                        countries.push(results[index1].recipient_regions[i].region.name);
                       }
                     }               
                   }
@@ -91,6 +103,7 @@ function project_list(longitude, latitude, distance){
                         "id" : activity_id        
                     }
                 };
+                console.log(title)
                 titles.push(title)
                 //print een lijst van de titles van de projecten 
     
@@ -101,13 +114,6 @@ function project_list(longitude, latitude, distance){
        
         });
         console.log(geojson);
-        //console.log(titles);
-        // var project_title=[];
-        // for(i=0; i<geojson.length; i++){
-        //    project_title = geojson[i].properties.title
-        //   }
-          //   if(titles.indexOf(project_title) = -1){
-          // }
 
 
         var tbody_html = '';

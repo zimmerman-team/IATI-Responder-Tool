@@ -31,7 +31,6 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
       format: "json",
     })
 
-
     .done(function(data){
      console.log(data)
 
@@ -40,18 +39,20 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                     title = data.title.narratives[0].text;
                 }
 
-                var description = '<br><b>Project description:</b> <br> Unavailable'; 
+                var description = '<b>Project description:</b> <br> Unavailable'; 
                   if(data.descriptions.length > 0){
                     description = [];
 
                     for(var i = 0;i < data.descriptions.length;i++){
                         for (var y = 0;y < data.descriptions[i].narratives.length;y++){
-                             if (data.descriptions[i].narratives[y].text != null){
-                            description.push(data.descriptions[i].narratives[y].text);
+                            if (data.descriptions[i].narratives.length != 0){
+                                 if (data.descriptions[i].narratives[y].text != null){
+                                }
+                                description.push(data.descriptions[i].narratives[y].text);
                             }
                         }
                     }
-                    description = "<b>Project description:</b><br>"+description.join('<br>');
+                    description = "<b>Project description:</b><br>"+description.join('<hr>');
                 }
            
 
@@ -63,11 +64,9 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                         countries.push(data.recipient_countries[i].country.name);
                     }
                     countries = countries.join(',&nbsp');
-                    // countries = countries: Algeria, Kenya
                 }
 
                 var last_updated = data.last_updated_datetime; 
-                
                 if (data.activity_status.name != null){
                   var status = data.activity_status.name;   
                 }

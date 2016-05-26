@@ -21,23 +21,25 @@ header {
   height: 50px;
 }
 
-.title-home h2{ 
-    text-align: center;
-    margin-bottom: 0px;
+.title-home h1{ 
+  font-weight: 700;
+    margin-bottom: 0px
     font-weight: 700;
  }
 #page-title{
+  padding-top: 20px;
   margin-top: 20px;
   font-weight: 700;
 }
+
 header h2 {
-  font-family: proxima-nova, sans-serif;
   font-weight: 550;
   display: inline-block;
   color:#fff;
   margin:0;
   line-height: 50px;
 }
+
 .nav{
   position: relative;
   display: inline-block;
@@ -62,7 +64,11 @@ header h2 {
   height: auto;
   border: 0;
 }
-
+btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
 .btn{
   background-color: #3a99d8;
   font-size: 1.5rem;
@@ -115,25 +121,20 @@ header h2 {
 
 /*table list*/
 #project-list {
-    position:relative;
-  margin: 0 auto;
-    width:90%;
-    top: 50px;
-    background-color: #fff;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-     /*box-shadow: 0 2px 2px 0 #bbb;*/
+    padding: 40px;
 }
 
-
+/*detail pagina tabel*/
 #detail{
-    margin: 0 auto;
+    position: relative;
     background-color: #fff;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
 #loader{
-  position: absolute;
+  position: relative;
   width: 100%;
+  margin: 0 auto;
   height: 100%;
   z-index:3;
   display:none;
@@ -158,18 +159,6 @@ header h2 {
   height: 50px;
   z-index: 3;
 }
-
-/*.projects_near_me_button {
-
-  position:relative;
-  width:200px;
-  z-index:100;
-  text-align:center;
-  float: right;
-  clear: both;
-  margin-top: 5px;
-    margin-bottom: 10px;
-  }*/
 
   /*marker button*/
 .marker{
@@ -200,6 +189,7 @@ header h2 {
  font-weight: 600;
  font-size: 1.3rem;
 }
+
 /*show coordinates of the marker */
 pre.ui-coordinates {
   font-family: proxima-nova, sans-serif;
@@ -239,9 +229,8 @@ pre.ui-coordinates {
   position:relative;
   top:10px;
   margin-bottom: 10px;
-  width:430px;
- float: right;
-  /*top:   7%;*/
+  width:100%;
+  float: right;
 }
 
 
@@ -303,28 +292,21 @@ background: #242424;
   width: 150px !important;
   height: auto;
   float:right;
-  margin: 0 auto;
+  margin-top: 10px;
   padding:5px 5px 5px 5px;
   position: relative;
   background-color: #fff;
-  /*color: black;*/
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  /*background: rgba(1,1,1,.24);*/
-
   }
 
-.detail-content{
-    /*margin: 0 auto;*/
-  /*margin-top: 50px;*/
+.sidebar-right{
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-  .sidebar-right{
-   float: right;
-   /*margin-right: 10px;*/
-   /*max-width: 400px;*/
-  }
-
   .detail-column{
+    margin-bottom: 10px;
     background-color: #fff;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
   }
@@ -333,7 +315,13 @@ background: #242424;
     background-color: #fff;
     margin: 0 auto;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-
+  text-align: center;
+  }
+  .list-wrapper{
+    margin-top: 10px;
+    margin-bottom: 10px;
+        background-color: #fff;
+        box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
   }
 
   

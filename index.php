@@ -7,7 +7,7 @@
             <div class="main-wrapper">
               <div class="container-fluid">
               <section>
-              <div class="title-home"><h2>Welcome to IATI Responder</h2> </div>
+              <div class="title-home"><h1>Welcome to IATI Responder</h1> </div>
                   
                   <br>To view all the projects near you on a map press the projects map button.<br> 
                   To view a list of the nearest 20 projects press the projects list button.

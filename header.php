@@ -43,12 +43,13 @@
         <span class="glyphicon glyphicon-menu-hamburger">  </span>
       </div>
 
-        <a class="logo" href="index.php">
+      <a class="logo" href="index.php">
         <img src="/images/IATI_studio_logo_icon.svg">  
       </a>
-   <div class="header-title" >
-     IATI Responder
-   </div>
+      
+     <div class="header-title" >
+       IATI Responder
+     </div>
         <h2></h2>
  
 

@@ -152,7 +152,7 @@ function projects_near_marker(){
                     }
 
                     var popupContent = '<div>';
-                        popupContent += '<h3>'+title+'</h3>'; 
+                        popupContent += '<h3><b>'+title+'</b></h3>'; 
                         popupContent += '<a href="/detail.php?activity_id='+activity.id+'">Read more</a>'+" about this project";
                         popupContent += '</div>';
 

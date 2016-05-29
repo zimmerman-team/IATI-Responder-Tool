@@ -20,7 +20,7 @@ $page = 'map';
   </div>
 
   <div class="my-legend">  
-      <a class="btn btn-primary marker" onclick="projects_near_marker()" role="button">Find projects</a>
+      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a>
 
       <div id="radius-input">
           <div class="form-group">

@@ -22,7 +22,7 @@ header {
 }
 
 .title-home h1{ 
-  font-weight: 700;
+    font-weight: 700;
     margin-bottom: 0px
     font-weight: 700;
  }
@@ -98,7 +98,6 @@ btn-primary:hover {
     display: block;
     width:300px;
     position:relative;
-
 }
 
 /*Respond knop*/
@@ -106,7 +105,7 @@ btn-primary:hover {
     position:absolute;
     top:20%;
     left:35%;
-    width:155px;
+    width:100%;
 }
 
 .list {
@@ -160,13 +159,13 @@ btn-primary:hover {
   z-index: 3;
 }
 
-  /*marker button*/
-.marker{
+  /**/
+.find-projects{
     font-weight: 400;
     margin: 0 auto;
     margin-top: 5px;
     position:relative;
-    width:130px;
+    width:100%;
     text-align:center;
     /*float: right;*/
     clear: both;
@@ -219,7 +218,7 @@ pre.ui-coordinates {
 .header-title{
     line-height: 5rem;
     text-align: center;
-    font-weight: 300;
+    font-weight: 400;
     float: right;
     color: #fff;
     margin-right: 1rem;
@@ -252,21 +251,21 @@ pre.ui-coordinates {
 /* The navigation menu links */
 .sidenav a {
     font-family: proxima-nova, sans-serif;
-    padding: 14px 10px 14px 52px;
+    padding: 15px 10px 15px 52px;
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 550;
+    font-weight: 700;
     color: white;
     display: block;
     transition: 0.2s;
     white-space:nowrap;
     margin: 0;
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 .sidenav ul li a:hover{
 background: #242424;
 }
+
 .sidenav ul {
   padding-left: 0px;
   list-style: none;

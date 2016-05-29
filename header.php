@@ -56,7 +56,7 @@
 
        <script>
       function openNav() {
-          document.getElementById("mySidenav").style.width = "20rem";
+          document.getElementById("mySidenav").style.width = "21rem";
       }
 
       /* Set the width of the side navigation to 0 */

@@ -25,7 +25,7 @@ var marker;
 var filterCircle;
 
 
-
+//
 // add listeners 
 
 $("h2").text("Projects Map")
@@ -126,7 +126,7 @@ function projects_near_marker(){
               location_longitude: latlng[1],
               location_latitude: latlng[0],
               location_distance_km: distance,
-              fields: "id,activity,point",
+              // fields: "id,activity,point,status",
               page_size: 200
             })
             .done(function(data){
@@ -151,8 +151,14 @@ function projects_near_marker(){
                         title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
                     }
 
+                    // var status = "Unavailable"
+                    // if (activity_status.name != null){
+                    //  status =activity_status.name;   
+                    // }
+
                     var popupContent = '<div>';
                         popupContent += '<h3><b>'+title+'</b></h3>'; 
+                        // popupContent += '<h3><b>'+status+'</b></h3>'; 
                         popupContent += '<a href="/detail.php?activity_id='+activity.id+'">Read more</a>'+" about this project";
                         popupContent += '</div>';
 

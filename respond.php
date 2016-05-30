@@ -17,6 +17,7 @@ $page = 'list';
                 <tr>
                     <th>Projects near me</th>
                     <th>Locations</th>
+                    <th>Designation</th>
                 </tr>
             </thead>
             <tbody>

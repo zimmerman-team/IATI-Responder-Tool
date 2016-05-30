@@ -25,7 +25,6 @@ var marker;
 var filterCircle;
 
 
-//
 // add listeners 
 
 $("h2").text("Projects Map")
@@ -45,14 +44,20 @@ map.featureLayer.on('click', function(e) {
     map.panTo(e.layer.getLatLng());
 });
 
-function ondrag() {
+var ondragvar = function ondrag(){
     var m = marker.getLatLng();
     filterCircle.setLatLng(m);
     lat = m.lat;
     lon = m.lng;
     coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
 
+ function ondragend (){
+  window.history.pushState({marker_lat: lat, marker_lng: lon}, "Responder tool - Map", '/map.php');
+  // window.history.pushState("", "", '/map.php?marker_lat='+lat+'&marker_lng='+lon);
+  console.log(lat)
+  } 
 }
+
 
 // If the user chooses not to allow their location
 // to be shared, display an error message.
@@ -78,7 +83,7 @@ function init_marker(latlng){
     marker = L.marker(latlng, {
         icon: L.mapbox.marker.icon({
           'marker-color': '#f86767',
-           "marker-symbol": "circle",
+          "marker-symbol": "circle",
         }),
         draggable: true
     }).addTo(map);
@@ -90,11 +95,12 @@ function init_marker(latlng){
     }).addTo(map);
 
     // every time the marker is dragged, update the coordinates container
-    marker.on('drag', ondrag);
+    // marker.addEventListener('drag', ondragvar)
+    // marker.on('drag', ondragvar);
+    marker.on('dragend', ondragend);
 
     show_nearby_projects(latlng, rad);
  coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
-
 }
 
 
@@ -102,7 +108,6 @@ function start_location(){
     // hier toegang tot locatie vragen
     map.locate();
 }
-
 
 
 function projects_near_marker(){
@@ -119,6 +124,10 @@ function projects_near_marker(){
  function show_nearby_projects(latlng, distance){
 
             $('#loader').css('display', 'block');
+            // $(".view-controller").on("dragend", function(e) {
+            //     that.dragStartChild(e);
+            // });
+            // $('#loader').bind(ondragvar)
           
            var projectAPI = "https://www.oipa.nl/api/locations/";
            $.getJSON( projectAPI, {
@@ -126,7 +135,6 @@ function projects_near_marker(){
               location_longitude: latlng[1],
               location_latitude: latlng[0],
               location_distance_km: distance,
-              // fields: "id,activity,point,status",
               page_size: 200
             })
             .done(function(data){
@@ -151,14 +159,16 @@ function projects_near_marker(){
                         title = activity.title.narratives[0].text.split(/\s+/).slice(0,6).join(" ");
                     }
 
-                    // var status = "Unavailable"
-                    // if (activity_status.name != null){
-                    //  status =activity_status.name;   
-                    // }
-
+                    if (data.results[i].feature_designation != null){
+                      if(data.results[i].feature_designation.name != null){
+                        var designation = data.results[i].feature_designation.name
+                      }
+                    }
+                    
                     var popupContent = '<div>';
-                        popupContent += '<h3><b>'+title+'</b></h3>'; 
-                        // popupContent += '<h3><b>'+status+'</b></h3>'; 
+                        popupContent += '<h3><b>'+title+'</b></h3>';
+                        if (data.results[i].feature_designation != null){ 
+                        popupContent += 'Designation: '+designation+'<br>'; }
                         popupContent += '<a href="/detail.php?activity_id='+activity.id+'">Read more</a>'+" about this project";
                         popupContent += '</div>';
 
@@ -171,7 +181,7 @@ function projects_near_marker(){
 
                     marker.bindPopup(popupContent,{
                         closeButton: true,
-                        minWidth: 180
+                        minWidth: 160
                     });
 
                     clusteredMarkers.addLayer(marker);
@@ -208,6 +218,7 @@ function projects_near_marker(){
                 bounds = filterCircle.getBounds();
                 map.fitBounds(bounds);
 
+                // $('#loader').unbind(ondragvar)
                 $('#loader').css('display', 'none');
       });
 

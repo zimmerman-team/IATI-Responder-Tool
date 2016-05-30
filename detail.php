@@ -25,14 +25,15 @@ $page = 'detail';
       <div class="sidebar-right">
         <div class="col-xs-6 col-md-4" id="detail"> 
             <div class="table-responsive">
-               <table class="table">
-
+               
+              <table class="table">
                 <thead>
                   <a class="btn btn-primary respond" href="form.php" role="button">Respond</a>
                 </thead>
                 <tbody>
                 </tbody>
-            </table>
+              </table>
+          
           </div>
         </div>
       </div>

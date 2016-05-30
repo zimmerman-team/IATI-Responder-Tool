@@ -6,11 +6,14 @@ $page = 'map';
 
 ?>
 
-<section>
+
  <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
         <div id='map'></div>
+        
+<!--       <div ondragend="dragEndMain(event)" class="viewcontroller">
+      </div> -->
 
         <div id="loader">
             <div id="loader-icon">Loading...</div>
@@ -32,6 +35,6 @@ $page = 'map';
       <label id="count" for="usr"></label>
   </div>
 </div>
-</section>       
+     
 
 <?php include('footer.php'); ?>

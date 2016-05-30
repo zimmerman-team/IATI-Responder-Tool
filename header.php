@@ -17,6 +17,8 @@
     <!-- Add markers on map -->
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
     <link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet'/> 
+    <!-- <link rel="stylesheet" type="text/css" href="dist/leaflet-history.css"> -->
+
 
 <title>Responder tool - Home</title>
 

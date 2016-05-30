@@ -5,31 +5,27 @@ body { margin:0; padding:100;
     font-family: proxima-nova, sans-serif;
  }
 
-#map { 
-      position: fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      top:50px;
-      display: block;
-      }
+/*All buttons*/
+btn-primary:hover {
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+}
 
+.btn{
+  background-color: #3a99d8;
+  font-size: 1.5rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: .4em 1em;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+/*Header on all pages*/
 header {
   background: #333;
   position: relative;
   text-align: center;
   height: 50px;
-}
-
-.title-home h1{ 
-    font-weight: 700;
-    margin-bottom: 0px
-    font-weight: 700;
- }
-#page-title{
-  padding-top: 20px;
-  margin-top: 20px;
-  font-weight: 700;
 }
 
 header h2 {
@@ -38,6 +34,15 @@ header h2 {
   color:#fff;
   margin:0;
   line-height: 50px;
+}
+
+.header-title{
+    line-height: 5rem;
+    text-align: center;
+    font-weight: 400;
+    float: right;
+    color: #fff;
+    margin-right: 1rem;
 }
 
 .nav{
@@ -64,72 +69,8 @@ header h2 {
   height: auto;
   border: 0;
 }
-btn-primary:hover {
-    color: #fff;
-    background-color: #286090;
-    border-color: #204d74;
-}
-.btn{
-  background-color: #3a99d8;
-  font-size: 1.5rem;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  padding: .4em 1em;
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-}
 
-
-/*Projects Map knop*/
-.but1{
-    font-weight: 300;
-    clear: both;
-    display: block;
-    margin: 0 auto;
-    width:300px;
-    margin-top:20%;
-}
-
-/*Respond List knop*/
-.but2{
-    font-weight: 300;
-    clear: both;
-    margin: 0 auto;
-    margin-top:10px;
-    display: block;
-    width:300px;
-    position:relative;
-}
-
-/*Respond knop*/
-.but3{ 
-    position:absolute;
-    top:20%;
-    left:35%;
-    width:100%;
-}
-
-.list {
-    border: 1px solid black;
-    position:absolute;
-    background-color: white;
-    top:50%;
-    left:15%;
-    width:300px; height:200px; overflow: auto;
-}
-
-
-/*table list*/
-#project-list {
-    padding: 40px;
-}
-
-/*detail pagina tabel*/
-#detail{
-    position: relative;
-    background-color: #fff;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-}
-
+/*Loader*/
 #loader{
   position: relative;
   width: 100%;
@@ -159,7 +100,69 @@ btn-primary:hover {
   z-index: 3;
 }
 
-  /**/
+/*Home page*/
+.title-home h1{ 
+    font-weight: 700;
+    margin-bottom: 0px
+    font-weight: 700;
+ }
+
+.home-buttons{
+    background-color: #fff;
+    /*padding-bottom: 28%;*/
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+
+/*Projects Map knop*/
+.but1{
+    font-weight: 300;
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    width:400px;
+    margin-top:10%;
+}
+
+/*Respond List knop*/
+.but2{
+    font-weight: 300;
+    clear: both;
+    margin: 0 auto;
+    margin-top:10px;
+    display: block;
+    width:400px;
+    position:relative;
+}
+
+.main-wrapper{
+    position:relative; 
+    float: none;
+    margin: 0 auto;
+    /*margin-left: 40%;*/
+}
+
+/*map styling*/
+#map { 
+      position: fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      top:50px;
+      display: block;
+}
+.my-legend {
+  display: block;
+  clear:both;
+  width: 150px !important;
+  height: auto;
+  float:right;
+  margin-top: 10px;
+  padding:5px 5px 5px 5px;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  }
+
 .find-projects{
     font-weight: 400;
     margin: 0 auto;
@@ -167,21 +170,17 @@ btn-primary:hover {
     position:relative;
     width:100%;
     text-align:center;
-    /*float: right;*/
     clear: both;
     margin-bottom: 10px;
     box-shadow: 0;
 }
-
 #radius-input{
   position: relative;
-  /*float: right;*/
   margin: 0 auto;
   clear: both;
   width: 130px;
   height: 50px;
   z-index: 3;
-  /*color:white;*/
 }
 
 #radius-input label{   
@@ -200,7 +199,6 @@ pre.ui-coordinates {
   padding-top: 5px;
   margin-bottom: 0px;
   background:transparent;
-  /*color:#fff;*/
   float: left;
   border:0;
   line-height:1.42857143;
@@ -209,19 +207,49 @@ pre.ui-coordinates {
   }
 
 #count{
-/*  margin-top: 0px;*/
   position: relative;
   float: right;
   clear: both;
 }
 
-.header-title{
-    line-height: 5rem;
-    text-align: center;
-    font-weight: 400;
-    float: right;
-    color: #fff;
-    margin-right: 1rem;
+/*projects list*/
+.list-wrapper{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+
+/*table list*/
+#project-list {
+    padding: 40px;
+}
+/*detail page*/
+#page-title{
+  padding-top: 20px;
+  margin-top: 20px;
+  font-weight: 700;
+}
+
+.list {
+    border: 1px solid black;
+    position:absolute;
+    background-color: white;
+    top:50%;
+    left:15%;
+    width:300px; height:200px; overflow: auto;
+}
+
+/*detail pagina tabel*/
+#detail{
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+.detail-column{
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
 .respond{
@@ -232,7 +260,11 @@ pre.ui-coordinates {
   float: right;
 }
 
-
+.sidebar-right{
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
 
 /* The side navigation menu */
 .sidenav {
@@ -259,7 +291,6 @@ pre.ui-coordinates {
     transition: 0.2s;
     white-space:nowrap;
     margin: 0;
-    /*padding-left: 20px;*/
 }
 
 .sidenav ul li a:hover{
@@ -285,43 +316,14 @@ background: #242424;
    background-color: #3a99d8;
 }
 
-.my-legend {
-  display: block;
-  clear:both;
-  width: 150px !important;
-  height: auto;
-  float:right;
-  margin-top: 10px;
-  padding:5px 5px 5px 5px;
-  position: relative;
-  background-color: #fff;
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  }
 
-.sidebar-right{
-    margin-top: 20px;
-    background-color: #fff;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-}
 
-  .detail-column{
-    margin-bottom: 10px;
-    background-color: #fff;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  }
 
-  .main-wrapper{
-    background-color: #fff;
-    margin: 0 auto;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  text-align: center;
-  }
-  .list-wrapper{
-    margin-top: 10px;
-    margin-bottom: 10px;
-        background-color: #fff;
-        box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  }
+
+
+
+
+
 
   
 

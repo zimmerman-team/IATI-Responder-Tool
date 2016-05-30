@@ -4,7 +4,7 @@
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
     <!-- <script type="text/javascript" src="dist/leaflet-history.js"></script> -->
-
+     <script src="js/helpers.js"></script>
 <?php     
     if($page == 'list'){ ?> 
     <script src="js/respond.js"></script>

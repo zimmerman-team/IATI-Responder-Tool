@@ -30,13 +30,15 @@ var filterCircle;
 $("h2").text("Projects Map")
 
 $("#radius").change(function(e){
-    rad = event.target.value;
+    rad = e.target.value;
     filterCircle.setRadius(rad * 1000);
+    setHistory();
 });
 
 $("#radius").mousewheel(function(event) {
-    rad = event.target.value;
+    rad = e.target.value;
     filterCircle.setRadius(rad * 1000);
+    setHistory();
 });
 
 //center map on marker
@@ -50,13 +52,15 @@ var ondragvar = function ondrag(){
     lat = m.lat;
     lon = m.lng;
     coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
-
- function ondragend (){
-  window.history.pushState({marker_lat: lat, marker_lng: lon}, "Responder tool - Map", '/map.php');
-  // window.history.pushState("", "", '/map.php?marker_lat='+lat+'&marker_lng='+lon);
-  console.log(lat)
-  } 
 }
+
+function setHistory(){
+  window.history.pushState("", "", '/map.php?lat='+lat+'&lng='+lon+'&radius='+rad);
+}
+
+function ondragend(){
+  setHistory();
+} 
 
 
 // If the user chooses not to allow their location
@@ -96,7 +100,7 @@ function init_marker(latlng){
 
     // every time the marker is dragged, update the coordinates container
     // marker.addEventListener('drag', ondragvar)
-    // marker.on('drag', ondragvar);
+    marker.on('drag', ondragvar);
     marker.on('dragend', ondragend);
 
     show_nearby_projects(latlng, rad);
@@ -105,8 +109,16 @@ function init_marker(latlng){
 
 
 function start_location(){
-    // hier toegang tot locatie vragen
-    map.locate();
+    // indien lat, lng en radius geset zijn in de URL, 
+    // dan die gegevens gebruiken en de marker daar tonen. 
+    if(QueryString.lat != undefined && QueryString.lng != undefined && QueryString.radius != undefined){
+      // set rad en roep init_marker aan met init_marker([lt,lng])
+      rad = parseFloat(QueryString.radius);
+      init_marker([parseFloat(QueryString.lat),parseFloat(QueryString.lng)]);
+    } else { 
+      //Anders locatie vragen.
+      map.locate();
+    }
 }
 
 

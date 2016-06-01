@@ -1,6 +1,6 @@
 // respond.js
 // var geolocate = document.getElementById("geolocate");
-      $("h2").text("Projects List")
+      // $("h2").text("Projects List")
 var x = document.getElementById("demo");
 
 function getLocation() {
@@ -27,7 +27,7 @@ function project_list(longitude, latitude, distance){
       location_longitude: longitude,
       location_latitude: latitude,
       location_distance_km: distance,
-      fields: "id,locations,title,recipient_countries,recipient_regions,sector",
+      fields: "id,locations,title,recipient_countries,recipient_regions,activity_status",
       page_size: 20
     })
     .done(function(data){
@@ -64,22 +64,22 @@ console.log(results)
 
             var countries = [];
             
-            if (results[index1].recipient_countries.length > 0){
+            if (activity.recipient_countries.length > 0){
 
-              for(var i=0; i<results[index1].recipient_countries.length;i++){
+              for(var i=0; i<activity.recipient_countries.length;i++){
 
-                if (results[index1].recipient_countries[i].country.name != null){
+                if (activity.recipient_countries[i].country.name != null){
                   if (i<3){
-                    countries.push(results[index1].recipient_countries[i].country.name);
+                    countries.push(activity.recipient_countries[i].country.name);
                   }
                 }               
               }
             } else {
             //display region if country is unavailable
-              for(var i=0; i<results[index1].recipient_regions.length;i++){
-                if (results[index1].recipient_regions[i].region.name != null){
+              for(var i=0; i<activity.recipient_regions.length;i++){
+                if (activity.recipient_regions[i].region.name != null){
                   if (i<3){
-                    countries.push(results[index1].recipient_regions[i].region.name);
+                    countries.push(activity.recipient_regions[i].region.name);
                   }
                 }               
               }
@@ -91,16 +91,8 @@ console.log(results)
               countries = countries.join(', &nbsp');
             }
 
-            var designation = "Unavailable"
-            for(var i=0; i<results.length;i++){
-               
-              if (results[i].locations[0].feature_designation != null){
-                designation = [];
-                if(results[i].locations[0].feature_designation.name != null){
-                   designation.push(results[i].locations[0].feature_designation.name)
-                }
-              }
-            }
+            var status = activity.activity_status.name
+                   
 
             var projects = {
                 "type": "Feature",
@@ -108,11 +100,9 @@ console.log(results)
                     "title": title,
                     "country": countries,
                     "id": activity_id,  
-                    "designation": designation     
+                    "status": status     
                 }
             };
-            // console.log(title)
-            console.log(activity_id)
             titles.push(title)
             //print een lijst van de titles van de projecten 
 
@@ -127,7 +117,7 @@ console.log(results)
         var tbody_html = '';
 
         $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.designation+'</td></tr>' 
+          tbody_html += '<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>' 
         });
     
         $('#project-list tbody').html(tbody_html);

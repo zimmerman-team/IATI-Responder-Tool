@@ -42,17 +42,7 @@ header h2 {
     font-weight: 400;
     float: right;
     color: #fff;
-    margin-right: 1rem;
-}
-
-.nav{
-  position: relative;
-  display: inline-block;
-  float: left;
-  margin-left:-15px;
-  background: #3a99d8;
-  padding: 1.7rem 2rem;
-  line-height: 1;
+    margin-right: 0.5rem;
 }
 
 .logo{
@@ -60,8 +50,9 @@ header h2 {
   display: block;
   width:50px;
   height: 50px;
-  margin-right: -10px;
-  margin-left: -4px;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin-left: -4px;*/
 }
 
 .logo img {
@@ -160,8 +151,10 @@ header h2 {
   padding:5px 5px 5px 5px;
   position: relative;
   background-color: #fff;
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-  }
+  border: 1px solid transparent;
+  border-radius: 2px;
+  box-shadow: 5px 5px 4px rgba(0,0,0,.3);
+}
 
 .find-projects{
     font-weight: 400;
@@ -180,36 +173,30 @@ header h2 {
   clear: both;
   width: 130px;
   height: 50px;
-  z-index: 3;
+  z-index: 2;
 }
 
 #radius-input label{   
- font-weight: 600;
- font-size: 1.3rem;
+ /*font-weight: 600;*/
+ font-size: 1.2rem;
 }
 
 /*show coordinates of the marker */
 pre.ui-coordinates {
   font-family: proxima-nova, sans-serif;
-  position:relative;
-  font-weight: 600;
   clear: both;
-  font-size: 1.3rem;
-  margin-top: 15px;
-  padding-top: 5px;
-  margin-bottom: 0px;
-  background:transparent;
-  float: left;
+  padding-top: 0px;
+  margin: auto 0;
   border:0;
-  line-height:1.42857143;
-  font size: 14px;
-  margin-left: -5px;
+
   }
 
 #count{
-  position: relative;
-  float: right;
   clear: both;
+}
+
+#label-size label{
+ font-size: 1.2rem;
 }
 
 /*projects list*/
@@ -232,12 +219,12 @@ pre.ui-coordinates {
 }
 
 .list {
-    border: 1px solid black;
-    position:absolute;
-    background-color: white;
-    top:50%;
-    left:15%;
-    width:300px; height:200px; overflow: auto;
+  border: 1px solid black;
+  position:absolute;
+  background-color: white;
+  top:50%;
+  left:15%;
+  width:300px; height:200px; overflow: auto;
 }
 
 /*detail pagina tabel*/
@@ -268,22 +255,64 @@ pre.ui-coordinates {
 
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 2; /* Stay on top */
-    top:0px;
-    left:0;
+    z-index: 3; /* Stay on top */
+    top:55px;
+    float:left;
+    margin-left: -15px;
     background-color: #333;
-    overflow-x: hidden; /* Disable horizontal scroll */
     transition: .2s ease; /* 0.5 second transition effect to slide in the sidenav */
     text-align: left;
+    transform: translateX(-100%);
+}
+.sidenav.open {
+  transform: translateX(0);
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-shadow: 5px 5px 4px rgba(0,0,0,.3);
+}
+#navtoggle {
+  position: absolute;
+  top:0;
+  left:0;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  background: #3a99d8;
+  padding:9px 13px;
+  transition: all .3s ease;
+}
+
+#navtoggle .bar {
+  background: white;
+  height: 3px;
+  width: 24px;
+  display: block;
+  margin: 5px 0;
+  transition: all .3s ease;
+}
+
+#navtoggle.open {
+  padding-top:18px;
+}
+
+#navtoggle.open .icon-bar-1 {
+  transform: rotate(135deg);
+}
+
+#navtoggle.open .icon-bar-2 {
+  opacity:0;
+}
+
+#navtoggle.open .icon-bar-3 {
+  transform: rotate(-135deg);
+  margin-top:-16px;
 }
 
 /* The navigation menu links */
 .sidenav a {
     font-family: proxima-nova, sans-serif;
-    padding: 15px 10px 15px 52px;
+    padding: 15px 25px 15px 25px;
     text-decoration: none;
     font-weight: 700;
     color: white;
@@ -311,13 +340,58 @@ background: #242424;
   opacity: 0.1;
 }
 
-/* Position and style the close button (top right corner) */
-.closebtn {
-   background-color: #3a99d8;
+/*toggle button on map*/
+  .cmn-toggle {
+    float: right; 
+    position: relative;
+    visibility: hidden;
+  }
+  .cmn-toggle + label {
+    display: block;
+    position: absolute;
+    cursor: pointer;
+  }
+  input.cmn-toggle-round + label {
+    padding: 2px;
+    width: 25%;
+    height: 20px;
+    background-color: #dddddd;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: .4em 1em;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  }
+
+  input.cmn-toggle-round + label:before,
+  input.cmn-toggle-round + label:after {
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    content: "";
+  }
+  input.cmn-toggle-round + label:before {
+    right: 1px;
+    transition: background 0.4s;
+  }
+
+  input.cmn-toggle-round + label:after {
+    width: 20px;
+    background-color: #fff;
+    transition: margin 0.1s;
+  }
+  input.cmn-toggle-round:checked + label:before {
+   background: #3a99d8;
+  }
+  input.cmn-toggle-round:checked + label:after {
+    margin-left: 13px;
+  }
+
+.switch{
+margin-right: 25px;
+float:right;  
 }
-
-
-
 
 
 

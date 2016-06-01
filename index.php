@@ -15,11 +15,11 @@
 
               <div class="home-buttons">
                 <a class="btn btn-primary but1" href="map.php" role="button">
-                <span class="glyphicon glyphicon-map-marker"></span> Projects Map
+                <span class="glyphicon glyphicon-map-marker"></span> Projects map
                 </a>
 
                 <a class="btn btn-primary but2" href="respond.php" role="button">
-                <span class="glyphicon glyphicon-list-alt"></span> Projects List
+                <span class="glyphicon glyphicon-list-alt"></span> Projects list
                 </a> 
               </div>
 

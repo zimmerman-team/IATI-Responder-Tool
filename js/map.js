@@ -23,11 +23,20 @@ var lat;
 var lon;
 var marker;
 var filterCircle;
+var active_projects = false;
+               
+
+$("#cmn-toggle-1").click(function() {
+  active_projects = !active_projects;
+  $("#cmn-toggle-1").prop("checked", active_projects);
+  projects_near_marker();
+  console.log(active_projects);
+});
+
 
 
 // add listeners 
-
-$("h2").text("Projects Map")
+// $("h2").text("Projects Map")
 
 $("#radius").change(function(e){
     rad = e.target.value;
@@ -133,7 +142,7 @@ function projects_near_marker(){
 }
 
 //OIPA call with 2 coordinates
- function show_nearby_projects(latlng, distance){
+ function show_nearby_projects(latlng, distance, status){
 
             $('#loader').css('display', 'block');
             // $(".view-controller").on("dragend", function(e) {
@@ -141,18 +150,24 @@ function projects_near_marker(){
             // });
             // $('#loader').bind(ondragvar)
           
-           var projectAPI = "https://www.oipa.nl/api/locations/";
-           $.getJSON( projectAPI, {
+           var projectAPI = "https://dev.oipa.nl/api/locations/";
+           var projectApiArgs = {
               format: "json",
               location_longitude: latlng[1],
               location_latitude: latlng[0],
               location_distance_km: distance,
               page_size: 200
-            })
+            }
+
+            if(active_projects){
+              projectApiArgs.activity_status = "1,2,3" 
+            }
+
+           $.getJSON( projectAPI, projectApiArgs)
             .done(function(data){
 
                 console.log(data);
-    
+                console.log(status);
 
                 var geojson = [];
 
@@ -178,7 +193,7 @@ function projects_near_marker(){
                     }
                     
                     var popupContent = '<div>';
-                        popupContent += '<h3><b>'+title+'</b></h3>';
+                        popupContent += '<h4><b>'+title+'</b></h4>';
                         if (data.results[i].feature_designation != null){ 
                         popupContent += 'Designation: '+designation+'<br>'; }
                         popupContent += '<a href="/detail.php?activity_id='+activity.id+'">Read more</a>'+" about this project";
@@ -193,7 +208,8 @@ function projects_near_marker(){
 
                     marker.bindPopup(popupContent,{
                         closeButton: true,
-                        minWidth: 160
+                        minWidth: 140
+                        // maxWidth: 170
                     });
 
                     clusteredMarkers.addLayer(marker);
@@ -201,14 +217,19 @@ function projects_near_marker(){
 
                 map.addLayer(clusteredMarkers);
 
-                // coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
+                // if (data.count == 0){
+                //  alert('No projects availabe, choose a different location');
+                // }
+
+                var content = 'No projects availabe, choose a different location'
                 if (data.count == 0){
-                 alert('No projects availabe, choose a different location');
+                  marker.bindPopup(content);
                 }
+                
                    
                    // var project_count = document.getElementById("count");
                 if (data.count > data.results.length){
-                var project_count = "Showing first 200 of "+ data.count+" projects";
+                var project_count = "First 200 of "+ data.count+" projects on map";
                 
                 function show_more(){
                     var projectAPI = "https://www.oipa.nl/api/locations/";

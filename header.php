@@ -26,13 +26,16 @@
 <body>
 
   <header id="header">
-    <div class="container-fluid">
+    <div id="navtoggle">
+      <span class="icon-bar-1 bar"></span>
+      <span class="icon-bar-2 bar"></span>
+      <span class="icon-bar-3 bar"></span>
+    </div>
+ 
       
       <div id="mySidenav" class="sidenav">
         <ul>
-
-          <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times; Close menu</a></li> <hr>
-          <li><a href="map.php">Projects map</a></li><hr>
+          <hr><li><a href="map.php">Projects map</a></li><hr>
           <li><a href="respond.php">Projects list</a></li><hr>
           <li><a href="about.php">About</a></li><hr>
           <li><a href="contact.php">Contact</a></li><hr>
@@ -41,10 +44,7 @@
       </div>
 
       <!-- Use any element to open the sidenav -->
-      <div class="nav" style="cursor:pointer; color:white;" onclick="openNav()">
-        <span class="glyphicon glyphicon-menu-hamburger">  </span>
-      </div>
-
+      
       <a class="logo" href="index.php">
         <img src="/images/IATI_studio_logo_icon.svg">  
       </a>
@@ -54,18 +54,6 @@
      </div>
         <h2></h2>
  
-
-
-       <script>
-      function openNav() {
-          document.getElementById("mySidenav").style.width = "21rem";
-      }
-
-      /* Set the width of the side navigation to 0 */
-      function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-      }
-      </script>
-    </div> 
+ 
   </header>
 

@@ -61,35 +61,6 @@ header h2 {
   border: 0;
 }
 
-/*Loader*/
-#loader{
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
-  height: 100%;
-  z-index:3;
-  display:none;
-}
-
-#loader-bg{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.1;
-  z-index:3;
-}
-
-#loader-icon{
-  position: absolute;
-  left: 40%;
-  top: 50%;
-  color: #fff;
-  font-size: 20px;
-  width: 100px;
-  height: 50px;
-  z-index: 3;
-}
 
 /*Home page*/
 .title-home h1{ 
@@ -156,6 +127,11 @@ header h2 {
   box-shadow: 5px 5px 4px rgba(0,0,0,.3);
 }
 
+.my-legend hr{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .find-projects{
     font-weight: 400;
     margin: 0 auto;
@@ -164,31 +140,36 @@ header h2 {
     width:100%;
     text-align:center;
     clear: both;
-    margin-bottom: 10px;
+    /*margin-bottom: 10px;*/
     box-shadow: 0;
 }
-#radius-input{
-  position: relative;
-  margin: 0 auto;
-  clear: both;
-  width: 130px;
-  height: 50px;
-  z-index: 2;
+#radius{
+    width: 35%;
+    float: right;
+    position: relative;
+    font-size: 14px;
+    padding: 2px;
+    height: 25px;
+    margin-left: 10px;
 }
 
 #radius-input label{   
- /*font-weight: 600;*/
+  padding-top: 5px;
+  line-height: 2;
  font-size: 1.2rem;
 }
 
+
 /*show coordinates of the marker */
-pre.ui-coordinates {
+.ui-coordinates {
   font-family: proxima-nova, sans-serif;
   clear: both;
-  padding-top: 0px;
-  margin: auto 0;
-  border:0;
-
+  margin-left: 0px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
   }
 
 #count{
@@ -207,10 +188,6 @@ pre.ui-coordinates {
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-/*table list*/
-#project-list {
-    padding: 40px;
-}
 /*detail page*/
 #page-title{
   padding-top: 20px;
@@ -227,12 +204,6 @@ pre.ui-coordinates {
   width:300px; height:200px; overflow: auto;
 }
 
-/*detail pagina tabel*/
-#detail{
-  position: relative;
-  background-color: #fff;
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-}
 .detail-column{
   margin-bottom: 10px;
   background-color: #fff;
@@ -244,10 +215,10 @@ pre.ui-coordinates {
   top:10px;
   margin-bottom: 10px;
   width:100%;
-  float: right;
 }
 
 .sidebar-right{
+  /*float: right;*/
     margin-top: 20px;
     background-color: #fff;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
@@ -394,6 +365,32 @@ float:right;
 }
 
 
+/*while an ajax call is busy*/
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .5 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
 
 
 

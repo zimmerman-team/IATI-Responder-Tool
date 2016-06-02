@@ -11,19 +11,22 @@ $page = 'list';
             <div id="loader-bg"></div>
         </div>
 
+    
         <div class="table-responsive" id="project-list">
+        <div class="col-md-12"> 
             <table class="table">
-            <thead>
-                <tr>
-                    <th>Projects near me</th>
-                    <th>Locations</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    </div>
+                <thead>
+                    <tr>
+                        <th>Projects near me</th>
+                        <th>Locations</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        </div>
 </div>
 
 <?php include('footer.php'); ?>

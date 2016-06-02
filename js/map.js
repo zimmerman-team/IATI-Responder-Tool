@@ -10,7 +10,7 @@ var West = L.latLng( -60.0,  180.0),
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 14,
-    minZoom: 3,
+    minZoom: 2,
     tileLayer: {
         continuousWorld: true,
         // This option disables loading tiles outside of the world bounds.
@@ -24,13 +24,20 @@ var lon;
 var marker;
 var filterCircle;
 var active_projects = false;
-               
+
 
 $("#cmn-toggle-1").click(function() {
   active_projects = !active_projects;
   $("#cmn-toggle-1").prop("checked", active_projects);
   projects_near_marker();
   console.log(active_projects);
+});
+
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
 });
 
 
@@ -71,7 +78,6 @@ function ondragend(){
   setHistory();
 } 
 
-
 // If the user chooses not to allow their location
 // to be shared, display an error message.
 map.on('locationerror', function() {
@@ -103,6 +109,7 @@ function init_marker(latlng){
 
     filterCircle = L.circle(latlng, rad * 1000, {
         opacity: 1,
+        color: '#000',
         weight: 1,
         fillOpacity: 0
     }).addTo(map);
@@ -144,11 +151,8 @@ function projects_near_marker(){
 //OIPA call with 2 coordinates
  function show_nearby_projects(latlng, distance, status){
 
+
             $('#loader').css('display', 'block');
-            // $(".view-controller").on("dragend", function(e) {
-            //     that.dragStartChild(e);
-            // });
-            // $('#loader').bind(ondragvar)
           
            var projectAPI = "https://dev.oipa.nl/api/locations/";
            var projectApiArgs = {
@@ -167,7 +171,6 @@ function projects_near_marker(){
             .done(function(data){
 
                 console.log(data);
-                console.log(status);
 
                 var geojson = [];
 
@@ -209,7 +212,6 @@ function projects_near_marker(){
                     marker.bindPopup(popupContent,{
                         closeButton: true,
                         minWidth: 140
-                        // maxWidth: 170
                     });
 
                     clusteredMarkers.addLayer(marker);
@@ -222,14 +224,15 @@ function projects_near_marker(){
                 // }
 
                 var content = 'No projects availabe, choose a different location'
+                marker.bindPopup(content);
                 if (data.count == 0){
-                  marker.bindPopup(content);
+                  marker.OpenPopup(content);
                 }
                 
                    
                    // var project_count = document.getElementById("count");
                 if (data.count > data.results.length){
-                var project_count = "First 200 of "+ data.count+" projects on map";
+                var project_count = "<hr>First 200 of "+ data.count+" projects on map";
                 
                 function show_more(){
                     var projectAPI = "https://www.oipa.nl/api/locations/";
@@ -251,7 +254,7 @@ function projects_near_marker(){
                 bounds = filterCircle.getBounds();
                 map.fitBounds(bounds);
 
-                // $('#loader').unbind(ondragvar)
+
                 $('#loader').css('display', 'none');
       });
 

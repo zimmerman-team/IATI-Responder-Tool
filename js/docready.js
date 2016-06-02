@@ -4,4 +4,11 @@ $(document).ready(function(){
         $("#mySidenav").toggleClass("open");
     });
 
+    $body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
 });

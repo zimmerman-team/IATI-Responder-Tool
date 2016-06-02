@@ -39,7 +39,7 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                     title = data.title.narratives[0].text;
                 }
 
-                var description = '<b>Project description:</b> <br> Unavailable'; 
+                var description = '<b>Description unavailable</b>'; 
                   if(data.descriptions.length > 0){
                     description = [];
 
@@ -52,7 +52,7 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                             }
                         }
                     }
-                    description = "<b>Project description:</b><br>"+description.join('<hr>');
+                    description = description.join('<hr>');
                 }
            
 

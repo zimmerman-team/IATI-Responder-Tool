@@ -11,42 +11,41 @@ $page = 'map';
   <div class="row">
     <div class="col-xs-12">
         <div id='map'></div>
-        
-<!--       <div ondragend="dragEndMain(event)" class="viewcontroller">
-      </div> -->
+      
 
         <div id="loader">
             <div id="loader-icon">Loading...</div>
             <div id="loader-bg"></div>
         </div>
+        
     </div>
   </div>
 
   <div class="my-legend">  
-      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a>
+      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> <hr>
       
-      <pre id='coordinates' class='ui-coordinates'></pre>
-      
+      <div id='coordinates' class='ui-coordinates'></div> <hr>
+
       <div id="radius-input">
-          <div class="form-group">
-            <label for="usr">Radius in km:</label>
-            <input type="number" class="form-control" id="radius" step="10" min="10" max="500" value="100">
-          </div>
+            <label for="usr">Radius in km
+            <input type="number" class="form-control" id="radius" step="10" min="10" max="500" value="100"></label> <hr>
       </div> 
       
 
     
       <div id="label-size">
-      <label>Active projects &nbsp
+      <label>Active projects &nbsp 
         <div class="switch">
-           <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+           <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="">
             <label id="check" for="cmn-toggle-1"></label>
         </div>
-</label>
+      </label>
+      
         <label id="count" for="usr"></label>
       </div>
   </div>
 </div>
-     
+
+     <div class="modal"><!-- Place at bottom of page --></div>
 
 <?php include('footer.php'); ?>

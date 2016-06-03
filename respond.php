@@ -2,16 +2,21 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-      
-<div class="col-xs-12" >
+    <div class="col-xs-12" >      
+      <div id="toggle-button-list">
+      <label>Active projects &nbsp 
+        <div class="switch">
+           <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="">
+            <label id="check" for="cmn-toggle-1"></label>
+        </div>
+      </label>
+    
+        <label id="count" for="usr"></label>
+      </div>
+    
+
     <div class="list-wrapper">
 
-        <div id="loader">
-            <div id="loader-icon">Loading...</div>
-            <div id="loader-bg"></div>
-        </div>
-
-    
         <div class="table-responsive" id="project-list">
         <div class="col-md-12"> 
             <table class="table">
@@ -28,5 +33,5 @@ $page = 'list';
         </div>
         </div>
 </div>
-
+</div>
 <?php include('footer.php'); ?>

@@ -182,7 +182,7 @@ header h2 {
 
 /*projects list*/
 .list-wrapper{
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   background-color: #fff;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
@@ -374,7 +374,7 @@ float:right;
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .5 ) 
+    background: rgba( 255, 255, 255, .5) 
                 url('http://i.stack.imgur.com/FhHRx.gif') 
                 50% 50% 
                 no-repeat;
@@ -392,7 +392,12 @@ body.loading .modal {
     display: block;
 }
 
-
+#toggle-button-list{
+  position: relative;
+  float: right;
+  margin-top: 5px;
+  
+}
 
 
 

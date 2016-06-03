@@ -23,7 +23,7 @@ var lat;
 var lon;
 var marker;
 var filterCircle;
-var active_projects = false;
+var active_projects = true;
 
 
 $("#cmn-toggle-1").click(function() {
@@ -31,13 +31,6 @@ $("#cmn-toggle-1").click(function() {
   $("#cmn-toggle-1").prop("checked", active_projects);
   projects_near_marker();
   console.log(active_projects);
-});
-
-$body = $("body");
-
-$(document).on({
-    ajaxStart: function() { $body.addClass("loading");    },
-     ajaxStop: function() { $body.removeClass("loading"); }    
 });
 
 
@@ -150,7 +143,6 @@ function projects_near_marker(){
 
 //OIPA call with 2 coordinates
  function show_nearby_projects(latlng, distance, status){
-
 
             $('#loader').css('display', 'block');
           

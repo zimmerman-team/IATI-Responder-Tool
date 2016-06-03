@@ -6,18 +6,11 @@ $page = 'map';
 
 ?>
 
-
  <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
         <div id='map'></div>
-      
 
-        <div id="loader">
-            <div id="loader-icon">Loading...</div>
-            <div id="loader-bg"></div>
-        </div>
-        
     </div>
   </div>
 
@@ -46,6 +39,6 @@ $page = 'map';
   </div>
 </div>
 
-     <div class="modal"><!-- Place at bottom of page --></div>
+
 
 <?php include('footer.php'); ?>

@@ -1,7 +1,9 @@
 // respond.js
-// var geolocate = document.getElementById("geolocate");
       // $("h2").text("Projects List")
 var x = document.getElementById("demo");
+var longitude;
+var latitude;
+var distance = 100;
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -11,33 +13,46 @@ function getLocation() {
     }  
 }
     
-function showPosition(position) {
-  // x.innerHTML="Latitude: " + position.coords.latitude + 
-  //        "<br>Longitude: " + position.coords.longitude;  
-  project_list(position.coords.longitude, position.coords.latitude, 100); 
+function showPosition(position, status) { 
+  longitude = position.coords.longitude;
+  latitude = position.coords.latitude;
+
+  project_list(); 
 }
+
+var active_projects = true;
+
+$("#cmn-toggle-1").click(function() {
+  active_projects = !active_projects;
+  $("#cmn-toggle-1").prop("checked", active_projects);
+ project_list(); 
+  console.log(active_projects);
+});
   
 
-function project_list(longitude, latitude, distance){
-    $('#loader').css('display', 'block');
+function project_list(){
     
-    var projectAPI = "https://www.oipa.nl/api/activities/";
-    $.getJSON( projectAPI, {
-      format: "json",
-      location_longitude: longitude,
-      location_latitude: latitude,
-      location_distance_km: distance,
-      fields: "id,locations,title,recipient_countries,recipient_regions,activity_status",
-      page_size: 20
-    })
-    .done(function(data){
-     console.log(data);
+    
+      var projectAPI = "https://dev.oipa.nl/api/activities/";
+      var projectApiArgs = {
+        format: "json",
+        location_longitude: longitude,
+        location_latitude: latitude,
+        location_distance_km: distance,
+        fields: "id,locations,title,recipient_countries,recipient_regions,activity_status",
+        page_size: 20
+      }
+      
+      if(active_projects){
+          projectApiArgs.activity_status = "1,2,3" 
+      }
+      
+      $.getJSON( projectAPI, projectApiArgs)
+        .done(function(data){
         var geojson = [];
-        var titles =[];
-
-        // var title = activity_id;
         var seen = {}
-        var results = data.results.filter(function(activity, index, array) {
+        var results = data.results;
+        results = results.filter(function(activity) {
           if (seen[activity.id]) {
             return false
           }
@@ -46,7 +61,6 @@ function project_list(longitude, latitude, distance){
           return true
         })
 
-console.log(results)
         // voor elke location, maak geojson aan
         $.each(results, function(index1, activity) {
 
@@ -54,7 +68,7 @@ console.log(results)
             var activity_id = activity.id;
 
             var title = activity_id;
-            
+            console.log(activity);
             if(activity.title.narratives.length > 0){
               if (activity.title.narratives[0].text != null){
                 title = activity.title.narratives[0].text;
@@ -90,9 +104,14 @@ console.log(results)
             } else {
               countries = countries.join(', &nbsp');
             }
-
-            var status = activity.activity_status.name
-                   
+            
+            if(activity.activity_status){
+              var status = activity.activity_status.name
+            } else {
+              var status = 'No activity status'
+            }
+            
+            
 
             var projects = {
                 "type": "Feature",
@@ -103,15 +122,9 @@ console.log(results)
                     "status": status     
                 }
             };
-            titles.push(title)
-            //print een lijst van de titles van de projecten 
-
-              geojson.push(projects);
-      
-            $('#loader').css('display', 'none');
-       
+          
+              geojson.push(projects);       
         });
-        console.log(geojson);
 
 
         var tbody_html = '';

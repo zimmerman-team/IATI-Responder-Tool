@@ -53,7 +53,7 @@
        IATI Responder
      </div>
         <h2></h2>
- 
+      <div class="modal"><!-- Place at bottom of page --></div>
  
   </header>
 

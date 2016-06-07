@@ -70,9 +70,7 @@ header h2 {
  }
 
 .home-buttons{
-    background-color: #fff;
-    /*padding-bottom: 28%;*/
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+/*margin-bottom: 10px;*/
 }
 
 /*Projects Map knop*/
@@ -96,21 +94,26 @@ header h2 {
     position:relative;
 }
 
+.glyphicon{
+  float:left;
+}
 .main-wrapper{
     position:relative; 
     float: none;
     margin: 0 auto;
+    background: #fff;
+    padding-bottom: 40px;
     /*margin-left: 40%;*/
 }
 
 /*map styling*/
 #map { 
-      position: fixed;
-      bottom:0;
-      left:0;
-      right:0;
-      top:50px;
-      display: block;
+  position: fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  top:50px;
+  display: block;
 }
 .my-legend {
   display: block;
@@ -140,23 +143,22 @@ header h2 {
     width:100%;
     text-align:center;
     clear: both;
-    /*margin-bottom: 10px;*/
     box-shadow: 0;
 }
 #radius{
-    width: 35%;
+    width: 42px;
     float: right;
     position: relative;
     font-size: 14px;
     padding: 2px;
     height: 25px;
-    margin-left: 10px;
+    margin-left: 12px;
 }
 
 #radius-input label{   
   padding-top: 5px;
   line-height: 2;
- font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 
@@ -165,12 +167,23 @@ header h2 {
   font-family: proxima-nova, sans-serif;
   clear: both;
   margin-left: 0px;
-  padding-top: 1px;
-  padding-bottom: 1px;
   background: transparent;
   border: 1px solid transparent;
   border-radius: 2px;
-  }
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+#show-button{
+    font-weight: 400;
+    margin: 0 auto;
+    margin-top: 5px;
+    position:relative;
+    width:100%;
+    text-align:center;
+    clear: both;
+    box-shadow: 0;
+}
 
 #count{
   clear: both;
@@ -218,7 +231,6 @@ header h2 {
 }
 
 .sidebar-right{
-  /*float: right;*/
     margin-top: 20px;
     background-color: #fff;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
@@ -237,10 +249,11 @@ header h2 {
     transform: translateX(-100%);
 }
 .sidenav.open {
-  transform: translateX(0);
+    transform: translateX(0);
     border: 1px solid transparent;
     border-radius: 2px;
     box-shadow: 5px 5px 4px rgba(0,0,0,.3);
+    /*height: 100%;*/
 }
 #navtoggle {
   position: absolute;
@@ -282,15 +295,15 @@ header h2 {
 
 /* The navigation menu links */
 .sidenav a {
-    font-family: proxima-nova, sans-serif;
-    padding: 15px 25px 15px 25px;
-    text-decoration: none;
-    font-weight: 700;
-    color: white;
-    display: block;
-    transition: 0.2s;
-    white-space:nowrap;
-    margin: 0;
+  font-family: proxima-nova, sans-serif;
+  padding: 15px 25px 15px 25px;
+  text-decoration: none;
+  font-weight: 700;
+  color: white;
+  display: block;
+  transition: 0.2s;
+  white-space:nowrap;
+  margin: 0;
 }
 
 .sidenav ul li a:hover{
@@ -374,7 +387,7 @@ float:right;
     left:       0;
     height:     100%;
     width:      100%;
-    background: rgba( 255, 255, 255, .5) 
+    background: rgba( 255, 255, 255, .3) 
                 url('http://i.stack.imgur.com/FhHRx.gif') 
                 50% 50% 
                 no-repeat;
@@ -395,11 +408,19 @@ body.loading .modal {
 #toggle-button-list{
   position: relative;
   float: right;
+  margin-top: 5px; 
+}
+#radius-list{
+  float:left;
   margin-top: 5px;
-  
 }
 
+/*about page*/
+.about{
+  background: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 
+}
 
   
 

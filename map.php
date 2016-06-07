@@ -23,7 +23,6 @@ $page = 'map';
             <label for="usr">Radius in km
             <input type="number" class="form-control" id="radius" step="10" min="10" max="500" value="100"></label> <hr>
       </div> 
-      
 
     
       <div id="label-size">
@@ -35,6 +34,9 @@ $page = 'map';
       </label>
       
         <label id="count" for="usr"></label>
+        <span id="show-button" >Show more</span>
+                   
+
       </div>
   </div>
 </div>

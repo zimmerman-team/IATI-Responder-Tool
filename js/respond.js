@@ -3,7 +3,7 @@
 var x = document.getElementById("demo");
 var longitude;
 var latitude;
-var distance = 100;
+var distance = 50;
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -31,9 +31,8 @@ $("#cmn-toggle-1").click(function() {
   
 
 function project_list(){
-    
-    
-      var projectAPI = "https://dev.oipa.nl/api/activities/";
+        
+      var projectAPI = "https://www.oipa.nl/api/activities/";
       var projectApiArgs = {
         format: "json",
         location_longitude: longitude,
@@ -43,9 +42,10 @@ function project_list(){
         page_size: 20
       }
       
-      if(active_projects){
-          projectApiArgs.activity_status = "1,2,3" 
-      }
+      // Alleen bij dev 
+      // if(active_projects){
+      //     projectApiArgs.activity_status = "1,2,3" 
+      // }
       
       $.getJSON( projectAPI, projectApiArgs)
         .done(function(data){
@@ -60,15 +60,14 @@ function project_list(){
           seen[activity.id] = true
           return true
         })
-
+        console.log(data)
         // voor elke location, maak geojson aan
         $.each(results, function(index1, activity) {
-
 
             var activity_id = activity.id;
 
             var title = activity_id;
-            console.log(activity);
+            // console.log(activity);
             if(activity.title.narratives.length > 0){
               if (activity.title.narratives[0].text != null){
                 title = activity.title.narratives[0].text;
@@ -110,8 +109,10 @@ function project_list(){
             } else {
               var status = 'No activity status'
             }
-            
-            
+
+            var project_radius = "Radius: "+distance+" km";
+            document.getElementById("radius-list").innerHTML = project_radius;
+
 
             var projects = {
                 "type": "Feature",

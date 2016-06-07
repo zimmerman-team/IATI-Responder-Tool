@@ -27,7 +27,6 @@ function info(){
 
 var projectAPI = "https://www.oipa.nl/api/activities/" + id;    
     $.getJSON( projectAPI, {
-
       format: "json",
     })
 
@@ -180,7 +179,7 @@ var projectAPI = "https://www.oipa.nl/api/activities/" + id;
                 text.innerHTML = info2.join('<br>'); 
                 
           
-                var parameters = ["Project ID", "Reporting organisation", "Last updated on", "Status", "Region", "Country", "Sector", "Budgets", "Commitment", "Disbursement", "Expenditure", "Aid type", "Finance type"]
+                var parameters = ["Project ID", "Reporting organisation", "Last updated", "Status", "Region", "Country", "Sector", "Budgets", "Commitment", "Disbursement", "Expenditure", "Aid type", "Finance type"]
 
                 var table = document.getElementById("detail");
 

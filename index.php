@@ -3,13 +3,14 @@
 
           <div class="row">
             <div class="col-md-12 main-wrapper">
-
+ 
               <!-- <div class="col-md-5 main-wrapper">    -->
                 <div class="container-fluid">
+                <center>
                     <div class="title-home"><h1>Welcome to IATI Responder</h1> </div>
-                    
-                    <br>To view all the projects near you on a map press the projects map button.<br> 
-                    To view a list of the nearest 20 projects press the projects list button.
+                      Search IATI projects from over 400 organisations. <br>
+                      
+                    </center>
                 </div>
               <!-- </div> -->
 
@@ -23,7 +24,6 @@
                 </a> 
               </div>
 
-          </div>
         </div>
          
   

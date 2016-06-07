@@ -10,7 +10,7 @@ var West = L.latLng( -60.0,  180.0),
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 14,
-    minZoom: 2,
+    minZoom: 3,
     tileLayer: {
         continuousWorld: true,
         // This option disables loading tiles outside of the world bounds.
@@ -24,6 +24,7 @@ var lon;
 var marker;
 var filterCircle;
 var active_projects = true;
+var page_nr = 1
 
 
 $("#cmn-toggle-1").click(function() {
@@ -33,7 +34,10 @@ $("#cmn-toggle-1").click(function() {
   console.log(active_projects);
 });
 
-
+$("#show-button").click(function() {
+  page_nr += 1;
+  show_nearby_projects([lat, lon], rad);
+});
 
 // add listeners 
 // $("h2").text("Projects Map")
@@ -87,7 +91,6 @@ map.on('locationfound', function(e) {
 
 
 function init_marker(latlng){
-
     lat = latlng[0];
     lon = latlng[1];
 
@@ -100,6 +103,10 @@ function init_marker(latlng){
         draggable: true
     }).addTo(map);
 
+var init_text ="Drag marker to the desired location and press the Find projects button"
+marker.bindPopup(init_text)
+marker.openPopup(init_text)
+   
     filterCircle = L.circle(latlng, rad * 1000, {
         opacity: 1,
         color: '#000',
@@ -135,6 +142,7 @@ function projects_near_marker(){
     // remove old markers    
     map.removeLayer(clusteredMarkers);
     clusteredMarkers = L.markerClusterGroup();
+    page = 1
 
     // query oipa
     show_nearby_projects([lat, lon], rad);
@@ -146,18 +154,23 @@ function projects_near_marker(){
 
             $('#loader').css('display', 'block');
           
-           var projectAPI = "https://dev.oipa.nl/api/locations/";
+           var projectAPI = "https://www.oipa.nl/api/locations/";
            var projectApiArgs = {
               format: "json",
               location_longitude: latlng[1],
               location_latitude: latlng[0],
               location_distance_km: distance,
-              page_size: 200
+              page_size: 200,
+              page: page_nr
             }
 
-            if(active_projects){
-              projectApiArgs.activity_status = "1,2,3" 
-            }
+            console.log(page_nr)
+
+            // Status kan alleen bij dev.oipa.nl
+            // if(active_projects){
+            //   projectApiArgs.activity_status = "1,2,3" 
+            // }
+
 
            $.getJSON( projectAPI, projectApiArgs)
             .done(function(data){
@@ -211,37 +224,20 @@ function projects_near_marker(){
 
                 map.addLayer(clusteredMarkers);
 
-                // if (data.count == 0){
-                //  alert('No projects availabe, choose a different location');
-                // }
-
-                var content = 'No projects availabe, choose a different location'
-                marker.bindPopup(content);
+                var content = 'No projects availabe, drag marker to different location'
+            
                 if (data.count == 0){
-                  marker.OpenPopup(content);
+                  marker.bindPopup(content);
+                  marker.openPopup(content);
                 }
-                
-                   
-                   // var project_count = document.getElementById("count");
+
+                var project_count = "<hr>"+ data.count+" projects near me"
                 if (data.count > data.results.length){
-                var project_count = "<hr>First 200 of "+ data.count+" projects on map";
-                
-                function show_more(){
-                    var projectAPI = "https://www.oipa.nl/api/locations/";
-                   
-                       $.getJSON( projectAPI, {
-                          format: "json",
-                          location_longitude: longitude,
-                          location_latitude: latitude,
-                          location_distance_km: distance,
-                          fields: "id,activity,point",
-                          page_size: 200,
-                          page:2
-                        })
-                 }
-                   document.getElementById("count").innerHTML = project_count;
+                 project_count = "<hr>First 200 of "+ data.count+" projects on map";
+
                 }
-             
+
+                document.getElementById("count").innerHTML = project_count;
 
                 bounds = filterCircle.getBounds();
                 map.fitBounds(bounds);

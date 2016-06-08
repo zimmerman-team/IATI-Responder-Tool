@@ -26,6 +26,7 @@ header {
   position: relative;
   text-align: center;
   height: 50px;
+  z-index: 9999;
 }
 
 header h2 {
@@ -115,7 +116,7 @@ header h2 {
   top:50px;
   display: block;
 }
-.my-legend {
+#my-legend {
   display: block;
   clear:both;
   width: 150px !important;
@@ -128,11 +129,23 @@ header h2 {
   border: 1px solid transparent;
   border-radius: 2px;
   box-shadow: 5px 5px 4px rgba(0,0,0,.3);
+  z-index: 40;
 }
 
-.my-legend hr{
+#my-legend hr{
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+#show-legend{
+  top:75px;
+  right:25px;
+  position: fixed;
+  border:0;
+  width: 140px;
+    padding: 5px;
+    text-align: center;
+    background-color: #3a99d8;
 }
 
 .find-projects{
@@ -175,14 +188,19 @@ header h2 {
 }
 
 #show-button{
-    font-weight: 400;
-    margin: 0 auto;
-    margin-top: 5px;
-    position:relative;
-    width:100%;
-    text-align:center;
-    clear: both;
-    box-shadow: 0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin: 0 auto;
+  margin-top: 0;
+  position:relative;
+  /*text-align:center;*/
+  clear: both;
+  background:#3a99d8;
+}
+
+#hide-legend{
+  width: 100%;
+  padding: 5px;
 }
 
 #count{
@@ -419,7 +437,6 @@ body.loading .modal {
 .about{
   background: #fff;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
-
 }
 
   

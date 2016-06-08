@@ -11,4 +11,8 @@ $(document).on({
      ajaxStop: function() { $body.removeClass("loading"); }    
 });
 
+$("#show-legend").click(function(){
+    $("#my-legend").slideDown();
+});
+
 });

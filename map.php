@@ -6,15 +6,15 @@ $page = 'map';
 
 ?>
 
- <div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
         <div id='map'></div>
-
     </div>
   </div>
 
-  <div class="my-legend">  
+
+  <div id="my-legend">  
       <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> <hr>
       
       <div id='coordinates' class='ui-coordinates'></div> <hr>
@@ -26,19 +26,23 @@ $page = 'map';
 
     
       <div id="label-size">
-      <label>Active projects &nbsp 
-        <div class="switch">
-           <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="">
-            <label id="check" for="cmn-toggle-1"></label>
-        </div>
-      </label>
-      
-        <label id="count" for="usr"></label>
-        <span id="show-button" >Show more</span>
-                   
+        <label>Active projects &nbsp 
+          <div class="switch">
+              <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="">
+              <label id="check" for="cmn-toggle-1"></label>
+          </div>
+        </label>
+        
+          <label id="count" for="usr"></label>
+          <p id="show-button"></p><hr>
 
+           <div id="hide-legend" class="btn btn-primary"> hide legend </div>
       </div>
+
+
   </div>
+    <div id="show-legend" class="btn btn-primary" role="button"> Show legend </div>
+   
 </div>
 
 

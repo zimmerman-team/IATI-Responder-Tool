@@ -25,6 +25,27 @@ var marker;
 var filterCircle;
 var active_projects = true;
 var page_nr = 1
+var mouse_latlng = null;
+
+map.on('mousemove', function(e) {
+  mouse_latlng = e.latlng;
+});
+
+var timeoutId = 0;
+function onHoldForTwoSeconds(){
+  console.log(mouse_latlng);
+  lat = mouse_latlng.lat;
+  lon = mouse_latlng.lng;
+  projects_near_marker();
+  marker.setLatLng([lat,lon]);
+  filterCircle.setLatLng([lat,lon]);
+}
+
+$('#map').mousedown(function() {
+    timeoutId = setTimeout(onHoldForTwoSeconds, 2000);
+}).bind('mouseup mouseleave', function() {
+    clearTimeout(timeoutId);
+});
 
 
 $("#cmn-toggle-1").click(function() {
@@ -37,6 +58,16 @@ $("#cmn-toggle-1").click(function() {
 $("#show-button").click(function() {
   page_nr += 1;
   show_nearby_projects([lat, lon], rad);
+});
+
+$("#show-legend").click(function(){
+    var marginTop = $("#my-legend").css('margin-top');
+      $("#my-legend").animate({marginTop: '10px'});
+});
+
+$("#hide-legend").click(function(){
+      var marginTop = $("#my-legend").css('margin-top');
+   $("#my-legend").animate({marginTop: '-350px'});
 });
 
 // add listeners 
@@ -103,9 +134,9 @@ function init_marker(latlng){
         draggable: true
     }).addTo(map);
 
-var init_text ="Drag marker to the desired location and press the Find projects button"
-marker.bindPopup(init_text)
-marker.openPopup(init_text)
+    var init_text ="Drag marker to the desired location and press the Find projects button"
+    marker.bindPopup(init_text)
+    marker.openPopup(init_text)
    
     filterCircle = L.circle(latlng, rad * 1000, {
         opacity: 1,
@@ -166,7 +197,7 @@ function projects_near_marker(){
 
             console.log(page_nr)
 
-            // Status kan alleen bij dev.oipa.nl
+            //Status kan alleen bij dev.oipa.nl
             // if(active_projects){
             //   projectApiArgs.activity_status = "1,2,3" 
             // }
@@ -234,7 +265,7 @@ function projects_near_marker(){
                 var project_count = "<hr>"+ data.count+" projects near me"
                 if (data.count > data.results.length){
                  project_count = "<hr>First 200 of "+ data.count+" projects on map";
-
+                document.getElementById("show-button").innerHTML = "Show more";
                 }
 
                 document.getElementById("count").innerHTML = project_count;
@@ -252,5 +283,14 @@ function projects_near_marker(){
 
 
 
+// var timeoutId = 0;
+// function myFunction(){
+// console.log('yay');
+// }
 
+// $('#map').mousedown(function() {
+//     timeoutId = setTimeout(myFunction, 1000);
+// }).bind('mouseup mouseleave', function() {
+//     clearTimeout(timeoutId);
+// });
 

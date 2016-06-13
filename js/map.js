@@ -173,7 +173,7 @@ function projects_near_marker(){
     // remove old markers    
     map.removeLayer(clusteredMarkers);
     clusteredMarkers = L.markerClusterGroup();
-    page = 1
+    page_nr = 1
 
     // query oipa
     show_nearby_projects([lat, lon], rad);
@@ -280,17 +280,4 @@ function projects_near_marker(){
 }
 
 
-
-
-
-// var timeoutId = 0;
-// function myFunction(){
-// console.log('yay');
-// }
-
-// $('#map').mousedown(function() {
-//     timeoutId = setTimeout(myFunction, 1000);
-// }).bind('mouseup mouseleave', function() {
-//     clearTimeout(timeoutId);
-// });
 

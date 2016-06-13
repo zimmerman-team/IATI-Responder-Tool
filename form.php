@@ -75,9 +75,6 @@ $headers .= "\r\nX-Mailer: PHP/".phpversion();
           <label><input type="radio" name="question2" value="Sufficient">Sufficient</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Dissatisfied">Dissatisfied</label>
-        </div>
-        <div class="radio">
           <label><input type="radio" name="question2" value="Somewhat poor">Somewhat poor</label>
         </div>
         <div class="radio">

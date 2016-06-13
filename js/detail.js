@@ -18,9 +18,6 @@ function getParameterByName(name, url) {
 var id = getParameterByName('activity_id'); // 
 
 
-//console.log(id)
-
-
 function info(){
     
     $('#loader').css('display', 'block');

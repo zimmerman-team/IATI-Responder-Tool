@@ -20,6 +20,7 @@ btn-primary:hover {
   padding: .4em 1em;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
+
 /*Header on all pages*/
 header {
   background: #333;
@@ -52,8 +53,7 @@ header h2 {
   width:50px;
   height: 50px;
   margin-left: auto;
-  margin-right: auto;
-  /*margin-left: -4px;*/
+  margin-right: 5px;
 }
 
 .logo img {
@@ -143,9 +143,9 @@ header h2 {
   position: fixed;
   border:0;
   width: 140px;
-    padding: 5px;
-    text-align: center;
-    background-color: #3a99d8;
+  padding: 5px;
+  text-align: center;
+  background-color: #3a99d8;
 }
 
 .find-projects{
@@ -157,9 +157,10 @@ header h2 {
     text-align:center;
     clear: both;
     box-shadow: 0;
+    padding: 5px;
 }
 #radius{
-    width: 42px;
+    width: 52px;
     float: right;
     position: relative;
     font-size: 14px;
@@ -193,7 +194,6 @@ header h2 {
   margin: 0 auto;
   margin-top: 0;
   position:relative;
-  /*text-align:center;*/
   clear: both;
   background:#3a99d8;
 }

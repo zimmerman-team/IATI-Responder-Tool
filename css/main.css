@@ -70,9 +70,7 @@ header h2 {
     font-weight: 700;
  }
 
-.home-buttons{
-/*margin-bottom: 10px;*/
-}
+
 
 /*Projects Map knop*/
 .but1{
@@ -112,10 +110,11 @@ header h2 {
   position: fixed;
   bottom:0;
   left:0;
-  right:0;
+  right: 0;
   top:50px;
   display: block;
 }
+
 #my-legend {
   display: block;
   clear:both;
@@ -123,6 +122,7 @@ header h2 {
   height: auto;
   float:right;
   margin-top: 10px;
+  margin-right: 10px;
   padding:5px 5px 5px 5px;
   position: relative;
   background-color: #fff;
@@ -139,7 +139,7 @@ header h2 {
 
 #show-legend{
   top:75px;
-  right:25px;
+  right:18px;
   position: fixed;
   border:0;
   width: 140px;
@@ -148,11 +148,12 @@ header h2 {
   background-color: #3a99d8;
 }
 
+#show-legend:hover{
+  background-color: #286090;
+  border-color: #204d74;
+}
+
 .find-projects{
-    font-weight: 400;
-    margin: 0 auto;
-    margin-top: 5px;
-    position:relative;
     width:100%;
     text-align:center;
     clear: both;
@@ -160,7 +161,7 @@ header h2 {
     padding: 5px;
 }
 #radius{
-    width: 52px;
+    width: 50px;
     float: right;
     position: relative;
     font-size: 14px;
@@ -195,7 +196,7 @@ header h2 {
   margin-top: 0;
   position:relative;
   clear: both;
-  background:#3a99d8;
+  /*background:#3a99d8;*/
 }
 
 #hide-legend{
@@ -212,11 +213,46 @@ header h2 {
 }
 
 /*projects list*/
-.list-wrapper{
-  margin-top: 30px;
+#project-list{
+  position: relative;
+  margin-top: 10px;
   margin-bottom: 10px;
   background-color: #fff;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12); 
+  width: 100%;
+}
+
+#project-list td{
+  padding:15px;
+}
+#project-list th{
+  padding:15px;
+}
+
+#toggle-button-list{
+  position: relative;
+  clear: both;
+  margin-top: 5px; 
+}
+#radius-list{
+  clear: both;
+  margin-top: 15px;
+}
+#count-list{
+  clear: both;
+  margin-top: 20px;
+  }
+
+.list-column{
+  margin-top: 10px;
+  float:right;
+  background-color: #fff;
+  padding:5px 5px 5px 5px;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+#show-more{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 /*detail page*/
@@ -244,8 +280,9 @@ header h2 {
 .respond{
   position:relative;
   top:10px;
-  margin-bottom: 10px;
-  width:100%;
+  margin-left: 12px;
+  margin-bottom: 20px;
+  width:95%;
 }
 
 .sidebar-right{
@@ -423,21 +460,10 @@ body.loading .modal {
     display: block;
 }
 
-#toggle-button-list{
-  position: relative;
-  float: right;
-  margin-top: 5px; 
-}
-#radius-list{
-  float:left;
-  margin-top: 5px;
-}
-
 /*about page*/
 .about{
   background: #fff;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-  
 

@@ -34,8 +34,8 @@
       
       <div id="mySidenav" class="sidenav">
         <ul>
-          <hr><li><a href="map.php"><span class="glyphicon glyphicon-map-marker"></span> Projects map</a></li><hr>
-          <li><a href="respond.php"><span class="glyphicon glyphicon-list-alt"></span> Projects list</a></li><hr>
+          <hr><li><a href="map.php"><span class="glyphicon glyphicon-map-marker"></span>&nbsp Projects map</a></li><hr>
+          <li><a href="respond.php"><span class="glyphicon glyphicon-list-alt"></span>&nbsp Projects list</a></li><hr>
           <li><a href="about.php">About</a></li><hr>
           <li><a href="contact.php">Contact</a></li><hr>
           <li><a href="#">Messages</a></li><hr>

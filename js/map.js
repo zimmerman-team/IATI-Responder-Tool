@@ -10,7 +10,7 @@ var West = L.latLng( -60.0,  180.0),
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
     maxZoom: 14,
-    minZoom: 3,
+    minZoom: 2,
     tileLayer: {
         continuousWorld: true,
         // This option disables loading tiles outside of the world bounds.
@@ -18,13 +18,15 @@ var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     }
 });
 
+ // map.dragPan.disable(); 
 var clusteredMarkers = L.markerClusterGroup();
 var lat;
 var lon;
 var marker;
 var filterCircle;
 var active_projects = true;
-var page_nr = 1
+var page_nr = 1;
+var count = 200;
 var mouse_latlng = null;
 
 map.on('mousemove', function(e) {
@@ -36,6 +38,7 @@ function onHoldForTwoSeconds(){
   console.log(mouse_latlng);
   lat = mouse_latlng.lat;
   lon = mouse_latlng.lng;
+  setHistory();
   projects_near_marker();
   marker.setLatLng([lat,lon]);
   filterCircle.setLatLng([lat,lon]);
@@ -52,11 +55,11 @@ $("#cmn-toggle-1").click(function() {
   active_projects = !active_projects;
   $("#cmn-toggle-1").prop("checked", active_projects);
   projects_near_marker();
-  console.log(active_projects);
 });
 
 $("#show-button").click(function() {
   page_nr += 1;
+  count += 200;
   show_nearby_projects([lat, lon], rad);
 });
 
@@ -184,7 +187,7 @@ function projects_near_marker(){
  function show_nearby_projects(latlng, distance, status){
 
             $('#loader').css('display', 'block');
-          
+    
            var projectAPI = "https://www.oipa.nl/api/locations/";
            var projectApiArgs = {
               format: "json",
@@ -195,7 +198,7 @@ function projects_near_marker(){
               page: page_nr
             }
 
-            console.log(page_nr)
+            // console.log(page_nr)
 
             //Status kan alleen bij dev.oipa.nl
             // if(active_projects){
@@ -262,10 +265,14 @@ function projects_near_marker(){
                   marker.openPopup(content);
                 }
 
-                var project_count = "<hr>"+ data.count+" projects near me"
+            
+                var project_count = "<hr>"+ data.count+" projects on map"
+
                 if (data.count > data.results.length){
-                 project_count = "<hr>First 200 of "+ data.count+" projects on map";
-                document.getElementById("show-button").innerHTML = "Show more";
+
+                 project_count = "<hr>"+count+" of "+ data.count+" projects on map";
+                 document.getElementById("show-button").innerHTML = "Show more";
+
                 }
 
                 document.getElementById("count").innerHTML = project_count;

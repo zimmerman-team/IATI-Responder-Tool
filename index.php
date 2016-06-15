@@ -3,8 +3,6 @@
 
           <div class="row">
             <div class="col-md-12 main-wrapper">
- 
-              <!-- <div class="col-md-5 main-wrapper">    -->
                 <div class="container-fluid">
                 <center>
                     <div class="title-home"><h1>Welcome to IATI Responder</h1> </div>
@@ -12,9 +10,7 @@
                       
                     </center>
                 </div>
-              <!-- </div> -->
 
-              <div class="home-buttons">
                 <a class="btn btn-primary but1" href="map.php" role="button">
                 <span class="glyphicon glyphicon-map-marker"></span> Projects map
                 </a>

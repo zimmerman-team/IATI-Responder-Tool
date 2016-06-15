@@ -4,6 +4,8 @@ var x = document.getElementById("demo");
 var longitude;
 var latitude;
 var distance = 50;
+var page_nr = 1;
+var tbody_html = [];
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -16,7 +18,6 @@ function getLocation() {
 function showPosition(position, status) { 
   longitude = position.coords.longitude;
   latitude = position.coords.latitude;
-
   project_list(); 
 }
 
@@ -26,9 +27,13 @@ $("#cmn-toggle-1").click(function() {
   active_projects = !active_projects;
   $("#cmn-toggle-1").prop("checked", active_projects);
  project_list(); 
-  console.log(active_projects);
+  // console.log(active_projects);
 });
   
+$("#show-more").click(function() {
+  page_nr += 1;
+  project_list();
+});
 
 function project_list(){
         
@@ -39,7 +44,8 @@ function project_list(){
         location_latitude: latitude,
         location_distance_km: distance,
         fields: "id,locations,title,recipient_countries,recipient_regions,activity_status",
-        page_size: 20
+        page_size: 20,
+        page: page_nr
       }
       
       // Alleen bij dev 
@@ -113,6 +119,10 @@ function project_list(){
             var project_radius = "Radius: "+distance+" km";
             document.getElementById("radius-list").innerHTML = project_radius;
 
+            var project_count = data.count+ " projects near me"; 
+            document.getElementById("count-list").innerHTML = project_count;
+                 
+            document.getElementById("show-more").innerHTML = "Show more";
 
             var projects = {
                 "type": "Feature",
@@ -123,18 +133,14 @@ function project_list(){
                     "status": status     
                 }
             };
-          
               geojson.push(projects);       
         });
 
-
-        var tbody_html = '';
-
         $.each(geojson, function(index, projects){
-          tbody_html += '<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>' 
+          tbody_html.push('<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>'); 
         });
     
-        $('#project-list tbody').html(tbody_html);
+        $('#project-list tbody').html(tbody_html.join(''));
         
   });
 }

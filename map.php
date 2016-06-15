@@ -6,7 +6,7 @@ $page = 'map';
 
 ?>
 
-<div class="container-fluid">
+
   <div class="row">
     <div class="col-xs-12">
         <div id='map'></div>
@@ -36,14 +36,14 @@ $page = 'map';
           <label id="count" for="usr"></label>
           <p id="show-button"></p><hr>
 
-           <div id="hide-legend" class="btn btn-primary"> hide legend </div>
+           <div id="hide-legend" class="btn btn-primary"> Hide legend </div>
       </div>
 
 
   </div>
     <div id="show-legend" class="btn btn-primary" role="button"> Show legend </div>
    
-</div>
+
 
 
 

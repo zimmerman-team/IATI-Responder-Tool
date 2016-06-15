@@ -2,18 +2,20 @@
 include('header.php'); 
 $page = 'contact';
 ?>
-<div class="col-xs-12" >
-    <div class="about">
-    <center><div class="title-home"><h1> Contact </h1></div></center> 
-    <div class="container-fluid">
 
+<div class="row">
+    <div class="col-md-12 main-wrapper">
+        <div class="container-fluid">
+        <center><div class="title-home"><h1>Contact</h1> </div></center>
 
+        The developers of IATI Responder are based in Amsterdam, The Netherlands.<br>
+        Oostelijke Handelskade 12H<br>
+        1019 BM Amsterdam<br>
+        The Netherlands<br><br>
+        For more info:<br>
         mail at: mansur@zimmermanzimmerman.nl <br>
-        phone: <br>
-        address: <br>
 
-   </div>     
-   </div>
+    </div> 
 </div>
 <?php 
 include('footer.php');

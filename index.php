@@ -1,8 +1,7 @@
 <?php include('header.php'); ?>
 
 
-          <div class="row">
-            <div class="col-md-12 main-wrapper">
+            <div class="main-wrapper">
                 <div class="container-fluid">
                 <center>
                     <div class="title-home"><h1>Welcome to IATI Responder</h1> </div>
@@ -18,12 +17,8 @@
                 <a class="btn btn-primary but2" href="respond.php" role="button">
                 <span class="glyphicon glyphicon-list-alt"></span> Projects list
                 </a> 
-              </div>
-
-        </div>
+            </div>
          
-  
-      
        
 
 <?php include('footer.php'); ?>

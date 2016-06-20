@@ -10,6 +10,7 @@ $page = 'detail';
             <table class="table">
               <thead>
                 <a class="btn btn-primary respond" href="form.php" role="button">Respond</a>
+                <!-- <div  id="respond-button"></div> -->
               </thead>
               <tbody>
               </tbody>

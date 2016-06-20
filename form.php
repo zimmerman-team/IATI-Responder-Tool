@@ -15,6 +15,7 @@ $headers .= "\r\nX-Mailer: PHP/".phpversion();
 // $mail_status = mail($to, $subject, $message, $headers);
   //var_dump($mail_status);
   var_dump($_POST);
+  
 }
 ?>
   <div class="container-fluid">
@@ -60,28 +61,27 @@ $headers .= "\r\nX-Mailer: PHP/".phpversion();
 
       <label>In wich way does this project benefit you?</label>
       <div class="form-group">
-      <!--   <label for="inputlg">input-lg</label> -->
-        <input class="form-control input-lg" id="inputlg" type="text">
+        <input class="form-control input-lg" name="question2" id="inputlg" type="text">
       </div>
 
         <label> The information on the detail page is:</label>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Great">Great</label>
+          <label><input type="radio" name="question3" value="Great">Great</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Ample">Ample</label>
+          <label><input type="radio" name="question3" value="Ample">Ample</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Sufficient">Sufficient</label>
+          <label><input type="radio" name="question3" value="Sufficient">Sufficient</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Somewhat poor">Somewhat poor</label>
+          <label><input type="radio" name="question3" value="Somewhat poor">Somewhat poor</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question2" value="Poor">Poor</label>
+          <label><input type="radio" name="question3" value="Poor">Poor</label>
         </div>
 
-       <center><button type="submit" class="btn ">Submit</button></center> 
+       <center><button type="submit" class="btn btn-primary">Submit form</button></center> 
     </form>
   </div>
  

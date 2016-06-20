@@ -31,7 +31,12 @@ var mouse_latlng = null;
 
 map.on('mousemove', function(e) {
   mouse_latlng = e.latlng;
+  
 });
+
+// $("#map").hover(function(e) {
+//   cursor.bindPopup("hold down for 2 seconds")
+// }
 
 var timeoutId = 0;
 function onHoldForTwoSeconds(){
@@ -106,6 +111,8 @@ function setHistory(){
 }
 
 function ondragend(){
+  marker.bindPopup("Press the Find projects button to search for projects");
+  marker.openPopup();
   setHistory();
 } 
 
@@ -137,7 +144,7 @@ function init_marker(latlng){
         draggable: true
     }).addTo(map);
 
-    var init_text ="Drag marker to the desired location and press the Find projects button"
+    var init_text ="Drag marker to the desired location or hold down for 2 seconds to search for projects"
     marker.bindPopup(init_text)
     marker.openPopup(init_text)
    
@@ -176,8 +183,9 @@ function projects_near_marker(){
     // remove old markers    
     map.removeLayer(clusteredMarkers);
     clusteredMarkers = L.markerClusterGroup();
-    page_nr = 1
-
+    page_nr = 1;
+    count = 200;
+    marker.unbindPopup();
     // query oipa
     show_nearby_projects([lat, lon], rad);
     coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);

@@ -2,9 +2,10 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-
-    <div class="col-md-12 col-md-2 col-md-push-10" > 
-        <div class="list-column clearfix">    
+    <div class="col-md-10 col-md-push-1" >
+<div class="row">
+    <!-- <div class="col-md-12" >  -->
+        <div class="list-column ">    
           <div id="toggle-button-list">
           <label>Active projects &nbsp 
             <div class="switch">
@@ -12,13 +13,15 @@ $page = 'list';
                 <label id="check" for="cmn-toggle-1"></label>
             </div>
           </label>
-          </div><hr>
-            <label id="radius-list" for="usr"></label><hr>
+          </div>
+            <label id="radius-list" for="usr"></label>
             <label id="count-list" for="usr"></label>
         </div>     
-</div>
+    </div>
+<!-- </div> -->
 
-    <div class="col-md-12 col-md-10 col-md-pull-2"> 
+<div class="row">
+    <!-- <div class="col-md-10 ">  -->
         <table class="table-striped table-hover" id="project-list">
                 <thead>
                     <tr>
@@ -33,6 +36,6 @@ $page = 'list';
 
         <center><div id="show-more" class="btn btn-primary"></div></center>
     </div>
-
 </div>
+
 <?php include('footer.php'); ?>

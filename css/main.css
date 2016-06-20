@@ -9,12 +9,11 @@ body { margin:0; padding:100;
 btn-primary:hover {
     color: #fff;
     background-color: #286090;
-    border-color: #204d74;
+     /*#2684c2;*/
 }
 
 .btn{
   background-color: #3a99d8;
-  font-size: 1.5rem;
   border: 1px solid transparent;
   border-radius: 2px;
   padding: .4em 1em;
@@ -22,15 +21,17 @@ btn-primary:hover {
 }
 
 /*Header on all pages*/
-header {
+#header {
   background: #333;
   position: relative;
   text-align: center;
   height: 50px;
+  -webkit-font-smoothing: antialiased;
   z-index: 9999;
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-header h2 {
+#header h2 {
   font-weight: 550;
   display: inline-block;
   color:#fff;
@@ -122,7 +123,7 @@ header h2 {
   height: auto;
   float:right;
   margin-top: 10px;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
   padding:5px 5px 5px 5px;
   position: relative;
   background-color: #fff;
@@ -139,12 +140,10 @@ header h2 {
 
 #show-legend{
   top:75px;
-  right:18px;
+  right:20px;
   position: fixed;
-  border:0;
   width: 140px;
   padding: 5px;
-  text-align: center;
   background-color: #3a99d8;
 }
 
@@ -159,6 +158,10 @@ header h2 {
     clear: both;
     box-shadow: 0;
     padding: 5px;
+    background: #009900; 
+}
+.find-projects:hover{
+  background: #006600;
 }
 #radius{
     width: 50px;
@@ -190,13 +193,10 @@ header h2 {
 }
 
 #show-button{
-  font-weight: 400;
-  font-size: 1.2rem;
   margin: 0 auto;
   margin-top: 0;
   position:relative;
   clear: both;
-  /*background:#3a99d8;*/
 }
 
 #hide-legend{
@@ -231,28 +231,23 @@ header h2 {
 
 #toggle-button-list{
   position: relative;
-  clear: both;
-  margin-top: 5px; 
+  float: right;
+  /*clear: both;*/
 }
-#radius-list{
-  clear: both;
-  margin-top: 15px;
-}
+
 #count-list{
-  clear: both;
-  margin-top: 20px;
+  margin-left: 43%;
   }
 
 .list-column{
   margin-top: 10px;
-  float:right;
   background-color: #fff;
   padding:5px 5px 5px 5px;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 #show-more{
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 /*detail page*/

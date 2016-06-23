@@ -51,8 +51,8 @@
      <div class="header-title" >
        IATI Responder
      </div>
-        <h2></h2>
-      <div class="modal"><!-- Place at bottom of page --></div>
+        <!-- <h2></h2> -->
+      <div class="modal"><!-- loader --></div>
 
   </header>
 

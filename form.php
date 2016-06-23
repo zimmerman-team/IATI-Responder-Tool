@@ -1,42 +1,30 @@
 <?php 
 include('header.php'); 
 $page = 'messages';
-if (isset($_POST['question0'])){
-
-$to = 'mansur@zimmermanzimmerman.nl';
-$subject = 'IATI Responder form';
-$message = 'Response through the responder tool.';
-$message .= 'First question answer: ' . $_POST['question0'];
-
-$headers = "From: IATI Responder Tool <responder@iatistudio.com>";
-$headers .= "\r\nReply-To: responder@iatistudio.com";
-$headers .= "\r\nX-Mailer: PHP/".phpversion();
-
-// $mail_status = mail($to, $subject, $message, $headers);
-  //var_dump($mail_status);
-  var_dump($_POST);
-  
-}
+// echo '<pre>';
+// var_dump($_SERVER['QUERY_STRING']);
+// echo '</pre>';
+$_POST[$_SERVER['QUERY_STRING']];
+var_dump($_POST);
+var_dump($_SERVER['QUERY_STRING'])
 ?>
+
   <div class="container-fluid">
-    <form role="form" action="form.php" method="post" >
-      <!-- <div class="form-group"> -->
-         <!-- <center><h3>Form</h3></center> -->
+    <form role="form" action="submit.php" method="post">
         
         <br><label> What is the status of this project?</label>
         <div class="radio">
-          <label><input type="radio" name="question0" value="finished"> The project is finished</label>
+          <label><input type="radio" name="question0" value="Finished"> The project is finished</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question0" value="progress">The project is in progress</label>
+          <label><input type="radio" name="question0" value="Progress">The project is in progress</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question0" value="slow progress">The progress is running slowly</label>
+          <label><input type="radio" name="question0" value="Slow progress">The progress is running slowly</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question0" value="no progress">I dont see any progress made</label>
+          <label><input type="radio" name="question0" value="No progress">I dont see any progress made</label>
         </div>
-     <!-- </div> -->
 
 
         <label> How satisfied are you with the progress of this project?</label>
@@ -59,7 +47,22 @@ $headers .= "\r\nX-Mailer: PHP/".phpversion();
           <label><input type="radio" name="question1" value="Don't know">Don't know</label>
         </div>
 
-      <label>In wich way does this project benefit you?</label>
+        <label> Are the results of the project visible?</label>
+        <div class="radio">
+          <label><input type="radio" name="question4" value="Extremely satisfied">The results are clearly visible</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="question4" value="Satisfied">The results are somewhat visible</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="question4" value="Average">The results are not visible at all</label>
+        </div>
+        <div class="radio">
+          <label><input type="radio" name="question4" value="Dissatisfied">The project is not yet finished</label>
+        </div>
+
+
+      <label>Is there anything we can improve concerning this project?</label>
       <div class="form-group">
         <input class="form-control input-lg" name="question2" id="inputlg" type="text">
       </div>
@@ -81,7 +84,10 @@ $headers .= "\r\nX-Mailer: PHP/".phpversion();
           <label><input type="radio" name="question3" value="Poor">Poor</label>
         </div>
 
-       <center><button type="submit" class="btn btn-primary">Submit form</button></center> 
+       <center>
+          <button type="submit" class="btn btn-primary">Submit form</button>
+       </center> 
+
     </form>
   </div>
  

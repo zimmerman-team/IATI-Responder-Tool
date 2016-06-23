@@ -3,7 +3,7 @@
 
 var text = document.getElementById("description");
 var head = document.getElementById("page-title");
-//var url_id = document.getElementById("respond-button");
+var url_id = document.getElementById("respond-button");
  
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
@@ -15,9 +15,9 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-var id = getParameterByName('activity_id'); // 
+var id = getParameterByName('activity_id'); 
 
-// url_id.innerHTML ='<a class="respond" href="/form.php?activity_id='+id'"></a>'
+$(url_id).attr('href', '/form.php?activity_id='+id);
 
 function info(){
     $('#loader').css('display', 'block');

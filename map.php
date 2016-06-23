@@ -30,7 +30,7 @@ $page = 'map';
         </label>
         
           <label id="count" for="usr"></label>
-          <p id="show-button"></p><hr>
+          <button class="btn btn-primary" id="show-button">Show more</button><hr>
 
       <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
       </div>

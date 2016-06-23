@@ -1,5 +1,5 @@
 // respond.js
-      // $("h2").text("Projects List")
+     //  $("h2").text("Projects List")
 var x = document.getElementById("demo");
 var longitude;
 var latitude;
@@ -37,7 +37,7 @@ $("#show-more").click(function() {
 
 function project_list(){
         
-      var projectAPI = "https://www.oipa.nl/api/activities/";
+      var projectAPI = "https://dev.oipa.nl/api/activities/";
       var projectApiArgs = {
         format: "json",
         location_longitude: longitude,
@@ -49,9 +49,9 @@ function project_list(){
       }
       
       // Alleen bij dev 
-      // if(active_projects){
-      //     projectApiArgs.activity_status = "1,2,3" 
-      // }
+      if(active_projects){
+          projectApiArgs.activity_status = "1,2,3" 
+      }
       
       $.getJSON( projectAPI, projectApiArgs)
         .done(function(data){

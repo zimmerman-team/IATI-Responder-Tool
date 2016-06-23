@@ -123,10 +123,9 @@ btn-primary:hover {
   height: auto;
   float:right;
   margin-top: 10px;
-  /*margin-right: 10px;*/
   padding:5px 5px 5px 5px;
   position: relative;
-  background-color: #fff;
+  background-color: rgba(254, 255, 255, 1); 
   border: 1px solid transparent;
   border-radius: 2px;
   box-shadow: 5px 5px 4px rgba(0,0,0,.3);
@@ -139,7 +138,7 @@ btn-primary:hover {
 }
 
 #show-legend{
-  top:75px;
+  top:67px;
   right:20px;
   position: fixed;
   width: 140px;
@@ -193,10 +192,11 @@ btn-primary:hover {
 }
 
 #show-button{
-  margin: 0 auto;
-  margin-top: 0;
-  position:relative;
-  clear: both;
+    padding: 2px;
+    position: fixed;
+    margin-left: 39px;
+    font-size: 13px;
+    margin-top: -23px;
 }
 
 #hide-legend{
@@ -236,7 +236,7 @@ btn-primary:hover {
 }
 
 #count-list{
-  margin-left: 43%;
+  margin-left: 4%;
   }
 
 .list-column{
@@ -461,4 +461,6 @@ body.loading .modal {
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-
+.return-home{
+  margin-top:;
+}

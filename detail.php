@@ -9,8 +9,7 @@ $page = 'detail';
           <div class="table-responsive" id="detail">
             <table class="table">
               <thead>
-                <a class="btn btn-primary respond" href="form.php" role="button">Respond</a>
-                <!-- <div  id="respond-button"></div> -->
+                <a href="#" class="btn btn-primary respond" id="respond-button" role="button">Respond</a>
               </thead>
               <tbody>
               </tbody>

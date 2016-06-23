@@ -9,7 +9,8 @@ var West = L.latLng( -60.0,  180.0),
 
 var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     maxBounds: bounds,
-    maxZoom: 14,
+    maxBoundsViscosity: 0,
+    maxZoom: 18,
     minZoom: 2,
     tileLayer: {
         continuousWorld: true,
@@ -18,7 +19,7 @@ var map = L.mapbox.map('map', 'mapbox.streets', {  //mapbox.emerald
     }
 });
 
- // map.dragPan.disable(); 
+
 var clusteredMarkers = L.markerClusterGroup();
 var lat;
 var lon;
@@ -30,23 +31,22 @@ var count = 200;
 var mouse_latlng = null;
 
 map.on('mousemove', function(e) {
-  mouse_latlng = e.latlng;
-  
+mouse_latlng = e.latlng;         
 });
 
-// $("#map").hover(function(e) {
-//   cursor.bindPopup("hold down for 2 seconds")
-// }
+// map.dragPan.disable(); 
 
 var timeoutId = 0;
 function onHoldForTwoSeconds(){
   console.log(mouse_latlng);
   lat = mouse_latlng.lat;
   lon = mouse_latlng.lng;
+  page_nr = 1;
   setHistory();
   projects_near_marker();
   marker.setLatLng([lat,lon]);
   filterCircle.setLatLng([lat,lon]);
+  marker.unbindPopup();
 }
 
 $('#map').mousedown(function() {
@@ -88,7 +88,7 @@ $("#radius").change(function(e){
 });
 
 $("#radius").mousewheel(function(event) {
-    rad = e.target.value;
+    rad = event.target.value;
     filterCircle.setRadius(rad * 1000);
     setHistory();
 });
@@ -196,9 +196,10 @@ function projects_near_marker(){
 
             $('#loader').css('display', 'block');
     
-           var projectAPI = "https://www.oipa.nl/api/locations/";
+           var projectAPI = "https://dev.oipa.nl/api/locations/";
            var projectApiArgs = {
               format: "json",
+              fields: "point,name,ref,activity,feature_designation",
               location_longitude: latlng[1],
               location_latitude: latlng[0],
               location_distance_km: distance,
@@ -209,9 +210,9 @@ function projects_near_marker(){
             // console.log(page_nr)
 
             //Status kan alleen bij dev.oipa.nl
-            // if(active_projects){
-            //   projectApiArgs.activity_status = "1,2,3" 
-            // }
+            if(active_projects){
+              projectApiArgs.activity_status = "1,2,3" 
+            }
 
 
            $.getJSON( projectAPI, projectApiArgs)
@@ -278,9 +279,17 @@ function projects_near_marker(){
 
                 if (data.count > data.results.length){
 
-                 project_count = "<hr>"+count+" of "+ data.count+" projects on map";
-                 document.getElementById("show-button").innerHTML = "Show more";
+                  $("#show-button").show();
+                  $("#show-button").html("Show more");
+                  if(count > data.count){ 
+                    count = data.count;
+                    $("#show-button").hide();
+                  }
 
+                  project_count = "<hr>"+count+" of "+ data.count+" projects on map";
+                 
+                } else {
+                  $("#show-button").hide();
                 }
 
                 document.getElementById("count").innerHTML = project_count;

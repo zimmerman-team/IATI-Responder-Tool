@@ -5,6 +5,7 @@ var longitude;
 var latitude;
 var distance = 50;
 var page_nr = 1;
+var number = 0;
 var tbody_html = [];
 
 function getLocation() {
@@ -37,7 +38,7 @@ $("#show-more").click(function() {
 
 function project_list(){
         
-      var projectAPI = "https://dev.oipa.nl/api/activities/";
+      var projectAPI = "https://www.oipa.nl/api/activities/";
       var projectApiArgs = {
         format: "json",
         location_longitude: longitude,
@@ -48,7 +49,7 @@ function project_list(){
         page: page_nr
       }
       
-      // Alleen bij dev 
+     
       if(active_projects){
           projectApiArgs.activity_status = "1,2,3" 
       }
@@ -137,7 +138,7 @@ function project_list(){
         });
 
         $.each(geojson, function(index, projects){
-          tbody_html.push('<tr><td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>'); 
+          tbody_html.push('<tr><td>'+index+'</td> <td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>'); 
         });
     
         $('#project-list tbody').html(tbody_html.join(''));

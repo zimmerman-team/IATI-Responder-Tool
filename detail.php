@@ -6,10 +6,14 @@ $page = 'detail';
 
   <div class="col-md-12 col-md-4 col-md-push-8" > 
       <div class="sidebar-right">
-          <div class="table-responsive" id="detail">
+          <div class="table" id="detail">
             <table class="table">
               <thead>
-                <a href="#" class="btn btn-primary respond" id="respond-button" role="button">Respond</a>
+                <tr>
+                  <th colspan="2">
+                    <a href="#" class="btn btn-primary respond" id="respond-button" role="button">Respond</a>
+                  </th>
+                </tr>
               </thead>
               <tbody>
               </tbody>

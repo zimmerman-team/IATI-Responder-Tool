@@ -3,6 +3,7 @@
 <?php include('header.php'); 
 
 echo '<pre>';
+var_dump($_SERVER['QUERY_STRING']);
 var_dump($_POST);
 echo '</pre>';
 

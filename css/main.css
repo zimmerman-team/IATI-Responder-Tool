@@ -79,7 +79,7 @@ btn-primary:hover {
     clear: both;
     display: block;
     margin: 0 auto;
-    width:400px;
+    width:300px;
     margin-top:10%;
 }
 
@@ -90,7 +90,7 @@ btn-primary:hover {
     margin: 0 auto;
     margin-top:10px;
     display: block;
-    width:400px;
+    width:300px;
     position:relative;
 }
 
@@ -102,8 +102,8 @@ btn-primary:hover {
     float: none;
     margin: 0 auto;
     background: #fff;
-    padding-bottom: 40px;
-    /*margin-left: 40%;*/
+    padding-bottom: 100px;
+    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
 /*map styling*/
@@ -133,8 +133,8 @@ btn-primary:hover {
 }
 
 #my-legend hr{
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #show-legend{
@@ -232,11 +232,10 @@ btn-primary:hover {
 #toggle-button-list{
   position: relative;
   float: right;
-  /*clear: both;*/
 }
 
 #count-list{
-  margin-left: 4%;
+  margin-left: 45.5%;
   }
 
 .list-column{
@@ -285,6 +284,13 @@ btn-primary:hover {
     background-color: #fff;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
+
+
+.sidebar-right #detail td {
+  word-wrap: break-word;
+  max-width: 150px;
+}
+
 
 /* The side navigation menu */
 .sidenav {
@@ -386,6 +392,7 @@ background: #242424;
     cursor: pointer;
   }
   input.cmn-toggle-round + label {
+    margin-top: -2.5px;
     padding: 2px;
     width: 25%;
     height: 20px;
@@ -463,4 +470,8 @@ body.loading .modal {
 
 .return-home{
   margin-top:;
+}
+.submit-btn{
+  margin-bottom: 10px;
+  margin-top: 10px;
 }

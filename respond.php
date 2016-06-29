@@ -22,7 +22,7 @@ $page = 'list';
 
 
     <div class="row">
-        <table class="table-striped table-hover" id="project-list">
+        <table class="table-striped table-hover table-responsive" id="project-list">
                 <thead>
                     <tr>
                         <th>Nr.</th>

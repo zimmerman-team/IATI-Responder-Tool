@@ -49,7 +49,6 @@ function project_list(){
         page: page_nr
       }
       
-     
       if(active_projects){
           projectApiArgs.activity_status = "1,2,3" 
       }
@@ -125,20 +124,26 @@ function project_list(){
                  
             document.getElementById("show-more").innerHTML = "Show more";
 
+            number += 1;
+            
             var projects = {
                 "type": "Feature",
                 "properties": {
                     "title": title,
                     "country": countries,
                     "id": activity_id,  
-                    "status": status     
-                }
+                    "status": status,     
+                },
+                "number": number
             };
-              geojson.push(projects);       
+
+            
+
+            geojson.push(projects);       
         });
 
         $.each(geojson, function(index, projects){
-          tbody_html.push('<tr><td>'+index+'</td> <td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>'); 
+          tbody_html.push('<tr><td>'+projects.number+'</td> <td><a href="/detail.php'+'?activity_id='+projects.properties.id+'">'+projects.properties.title+'</a></td>  <td>'+projects.properties.country+'</td> <td>'+projects.properties.status+'</td></tr>'); 
         });
     
         $('#project-list tbody').html(tbody_html.join(''));

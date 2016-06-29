@@ -49,6 +49,10 @@ function onHoldForTwoSeconds(){
   marker.unbindPopup();
 }
 
+$("#map").on("taphold",function(){
+    onHoldForTwoSeconds();
+});
+
 $('#map').mousedown(function() {
     timeoutId = setTimeout(onHoldForTwoSeconds, 2000);
 }).bind('mouseup mouseleave', function() {
@@ -155,8 +159,6 @@ function init_marker(latlng){
         fillOpacity: 0
     }).addTo(map);
 
-    // every time the marker is dragged, update the coordinates container
-    // marker.addEventListener('drag', ondragvar)
     marker.on('drag', ondragvar);
     marker.on('dragend', ondragend);
 

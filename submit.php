@@ -3,8 +3,8 @@
 <?php include('header.php'); 
 
 echo '<pre>';
-var_dump($_SERVER['QUERY_STRING']);
-var_dump($_POST);
+// var_dump($_SERVER['QUERY_STRING']);
+// var_dump($_POST);
 echo '</pre>';
 
 $to = 'mansur@zimmermanzimmerman.nl';
@@ -12,6 +12,12 @@ $subject = 'IATI Responder form';
 $message = 'Response through the responder tool.';
 $message .= 'First question answer: ' . $_POST['question0'];
 $message .= 'Second question answer: ' . $_POST['question1'];
+$message .= 'Third question answer: ' . $_POST['question2'];
+$message .= 'Fourth question answer: ' . $_POST['question3'];
+$message .= 'Fifth question answer: ' . $_POST['question4'];
+
+
+
 
 $headers = "From: IATI Responder Tool <responder@iatistudio.com>";
 $headers .= "\r\nReply-To: responder@iatistudio.com";

@@ -27,7 +27,7 @@ btn-primary:hover {
   text-align: center;
   height: 50px;
   -webkit-font-smoothing: antialiased;
-  z-index: 9999;
+  z-index: 9;
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
@@ -45,7 +45,6 @@ btn-primary:hover {
     font-weight: 400;
     float: right;
     color: #fff;
-    margin-right: 0.5rem;
 }
 
 .logo{
@@ -99,11 +98,9 @@ btn-primary:hover {
 }
 .main-wrapper{
     position:relative; 
-    float: none;
-    margin: 0 auto;
     background: #fff;
-    padding-bottom: 100px;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+    /*padding-bottom: 100%;*/
+    padding-bottom: 550px;
 }
 
 /*map styling*/
@@ -121,15 +118,15 @@ btn-primary:hover {
   clear:both;
   width: 150px !important;
   height: auto;
-  float:right;
+  right: 10px;
   margin-top: 10px;
   padding:5px 5px 5px 5px;
-  position: relative;
+  position: fixed;
   background-color: rgba(254, 255, 255, 1); 
   border: 1px solid transparent;
   border-radius: 2px;
   box-shadow: 5px 5px 4px rgba(0,0,0,.3);
-  z-index: 40;
+  z-index: 5;
 }
 
 #my-legend hr{
@@ -139,7 +136,7 @@ btn-primary:hover {
 
 #show-legend{
   top:67px;
-  right:20px;
+  right:10px;
   position: fixed;
   width: 140px;
   padding: 5px;
@@ -152,10 +149,10 @@ btn-primary:hover {
 }
 
 .find-projects{
-    width:100%;
-    text-align:center;
-    clear: both;
-    box-shadow: 0;
+    width:100px;
+    position: fixed;
+    right:10px;
+    top: 95%;
     padding: 5px;
     background: #009900; 
 }
@@ -469,7 +466,7 @@ body.loading .modal {
 }
 
 .return-home{
-  margin-top:;
+  margin-top:200px;
 }
 .submit-btn{
   margin-bottom: 10px;

@@ -30,16 +30,15 @@ $page = 'map';
         </label>
         
           <label id="count" for="usr"></label>
-          <button class="btn btn-primary" id="show-button">Show more</button><hr>
+          <button class="btn btn-primary" id="show-button">Show more</button>
 
-      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
       </div>
 
 
   </div>
     <div id="show-legend" class="btn btn-primary" role="button"> Open legend </div>
-   
 </div>
   
+      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
 
 <?php include('footer.php'); ?>

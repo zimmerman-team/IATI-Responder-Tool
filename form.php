@@ -4,9 +4,9 @@ $page = 'messages';
 // echo '<pre>';
 // var_dump($_SERVER['QUERY_STRING']);
 // echo '</pre>';
-$POST['query_string'] = $_SERVER['QUERY_STRING'];
-var_dump($_POST);
-var_dump($_SERVER['QUERY_STRING'])
+
+// $POST['query_string'] = $_SERVER['QUERY_STRING'];
+// var_dump($POST)
 ?>
 
   <div class="container-fluid">
@@ -47,39 +47,39 @@ var_dump($_SERVER['QUERY_STRING'])
 <!-- <hr> -->
         <label> Are the results of the project visible?</label>
         <div class="radio">
-          <label><input type="radio" name="question4" value="Clearly visible results">The results are clearly visible</label>
+          <label><input type="radio" name="question2" value="Clearly visible results">The results are clearly visible</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question4" value="Somewhat visible results">The results are somewhat visible</label>
+          <label><input type="radio" name="question2" value="Somewhat visible results">The results are somewhat visible</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question4" value="Results not visible">The results are not visible at all</label>
+          <label><input type="radio" name="question2" value="Results not visible">The results are not visible at all</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question4" value="Project isn't finished yet">The project is not yet finished</label>
+          <label><input type="radio" name="question2" value="Project isn't finished yet">The project is not yet finished</label>
         </div>
 
 
       <label>Is there anything we can improve concerning this project?</label>
       <div class="form-group">
-        <input class="form-control input-lg" name="question2" id="inputlg" type="text">
+        <input class="form-control input-lg" name="question3" id="inputlg" type="text">
       </div>
 
         <label> The information on the detail page is:</label>
         <div class="radio">
-          <label><input type="radio" name="question3" value="Great">Great</label>
+          <label><input type="radio" name="question4" value="Great">Great</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question3" value="Ample">Ample</label>
+          <label><input type="radio" name="question4" value="Ample">Ample</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question3" value="Sufficient">Sufficient</label>
+          <label><input type="radio" name="question4" value="Sufficient">Sufficient</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question3" value="Somewhat poor">Somewhat poor</label>
+          <label><input type="radio" name="question4" value="Somewhat poor">Somewhat poor</label>
         </div>
         <div class="radio">
-          <label><input type="radio" name="question3" value="Poor">Poor</label>
+          <label><input type="radio" name="question4" value="Poor">Poor</label>
         </div>
 
        <center>

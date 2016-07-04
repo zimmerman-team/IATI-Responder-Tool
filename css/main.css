@@ -152,7 +152,7 @@ btn-primary:hover {
     width:100px;
     position: fixed;
     right:10px;
-    top: 95%;
+    top: 90%;
     padding: 5px;
     background: #009900; 
 }
@@ -170,7 +170,7 @@ btn-primary:hover {
 }
 
 #radius-input label{   
-  padding-top: 5px;
+  /*padding-top: 5px;*/
   line-height: 2;
   font-size: 1.2rem;
 }
@@ -207,6 +207,7 @@ btn-primary:hover {
 
 #label-size label{
  font-size: 1.2rem;
+ margin-bottom: none;
 }
 
 /*projects list*/
@@ -220,10 +221,10 @@ btn-primary:hover {
 }
 
 #project-list td{
-  padding:15px;
+  padding:10px;
 }
 #project-list th{
-  padding:15px;
+  padding:10px;
 }
 
 #toggle-button-list{

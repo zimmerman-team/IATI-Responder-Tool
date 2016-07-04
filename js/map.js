@@ -148,7 +148,7 @@ function init_marker(latlng){
         draggable: true
     }).addTo(map);
 
-    var init_text ="Drag marker to the desired location or hold down for 2 seconds to search for projects"
+    var init_text ="To search for projects drag marker to desired location or hold down for 2 seconds outside of the circle "
     marker.bindPopup(init_text)
     marker.openPopup(init_text)
    
@@ -206,7 +206,8 @@ function projects_near_marker(){
               location_latitude: latlng[0],
               location_distance_km: distance,
               page_size: 200,
-              page: page_nr
+              page: page_nr,
+              async: true
             }
 
             // console.log(page_nr)

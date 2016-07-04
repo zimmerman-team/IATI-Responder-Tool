@@ -4,7 +4,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js'></script>
     <script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
-    <!-- <script type="text/javascript" src="dist/leaflet-history.js"></script> -->
+
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
      <script src="js/helpers.js"></script>
      <script src="js/docready.js"></script>
 

@@ -5,8 +5,8 @@ $page = 'messages';
 // var_dump($_SERVER['QUERY_STRING']);
 // echo '</pre>';
 
-// $POST['query_string'] = $_SERVER['QUERY_STRING'];
-// var_dump($POST)
+ $POST['query_string'] = $_SERVER['QUERY_STRING'];
+ var_dump($POST)
 ?>
 
   <div class="container-fluid">
@@ -84,6 +84,7 @@ $page = 'messages';
 
        <center>
           <button type="submit" class="btn btn-primary submit-btn">Submit form</button>
+          <!-- <a href="submit.php?activity_id=" </a> -->
        </center> 
 
     </form>

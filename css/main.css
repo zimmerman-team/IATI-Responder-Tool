@@ -99,7 +99,6 @@ btn-primary:hover {
 .main-wrapper{
     position:relative; 
     background: #fff;
-    /*padding-bottom: 100%;*/
     padding-bottom: 550px;
 }
 
@@ -116,7 +115,7 @@ btn-primary:hover {
 #my-legend {
   display: block;
   clear:both;
-  width: 150px !important;
+  width: 105px !important;
   height: auto;
   right: 10px;
   margin-top: 10px;
@@ -131,42 +130,42 @@ btn-primary:hover {
 
 #my-legend hr{
   margin-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
-#show-legend{
+#open-legend{
   top:67px;
   right:10px;
   position: fixed;
-  width: 140px;
+  width: 105px;
   padding: 5px;
   background-color: #3a99d8;
 }
 
-#show-legend:hover{
+#open-legend:hover{
   background-color: #286090;
   border-color: #204d74;
 }
 
-.find-projects{
-    width:100px;
+#close-legend{
+  width: 100%;
+  padding: 5px;
+}
+
+#find-projects{
+    width:105px;
     position: fixed;
     right:10px;
-    top: 90%;
+    top: 44%;
     padding: 5px;
     background: #009900; 
 }
-.find-projects:hover{
+#find-projects:hover{
   background: #006600;
 }
 #radius{
-    width: 50px;
-    float: right;
-    position: relative;
-    font-size: 14px;
-    padding: 2px;
+    padding: 10px;
     height: 25px;
-    margin-left: 12px;
 }
 
 #radius-input label{   
@@ -185,20 +184,13 @@ btn-primary:hover {
   border: 1px solid transparent;
   border-radius: 2px;
   font-size: 1.2rem;
-  font-weight: 700;
+  /*font-weight: 700;*/
 }
 
 #show-button{
     padding: 2px;
-    position: fixed;
-    margin-left: 39px;
+    position: relative;
     font-size: 13px;
-    margin-top: -23px;
-}
-
-#hide-legend{
-  width: 100%;
-  padding: 5px;
 }
 
 #count{
@@ -220,21 +212,29 @@ btn-primary:hover {
   width: 100%;
 }
 
-#project-list td{
-  padding:10px;
-}
-#project-list th{
+#project-list th, td {
   padding:10px;
 }
 
+
 #toggle-button-list{
-  position: relative;
-  float: right;
+  position: fixed;
+left: 370px;
+margin-top: -2px;
+  /*float: right;*/
 }
 
 #count-list{
-  margin-left: 45.5%;
+  margin-left: 18%;
   }
+
+#radius-list{
+  margin-left: 46%;
+}
+
+#active-projects-list{
+  /*margin-left:50px; */
+}
 
 .list-column{
   margin-top: 10px;
@@ -378,7 +378,7 @@ background: #242424;
   opacity: 0.1;
 }
 
-/*toggle button on map*/
+/*toggle button for active projects*/
   .cmn-toggle {
     float: right; 
     position: relative;
@@ -392,11 +392,11 @@ background: #242424;
   input.cmn-toggle-round + label {
     margin-top: -2.5px;
     padding: 2px;
-    width: 25%;
+    width: 40%;
     height: 20px;
     background-color: #dddddd;
-    border: 1px solid transparent;
-    border-radius: 2px;
+    border-radius: 20px;
+    border:1px solid #dddddd;
     padding: .4em 1em;
     box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
   }
@@ -413,24 +413,26 @@ background: #242424;
   input.cmn-toggle-round + label:before {
     right: 1px;
     transition: background 0.4s;
+    border-radius: 20px;
   }
 
   input.cmn-toggle-round + label:after {
-    width: 20px;
+    width:20px;
+    border-radius: 20px;
     background-color: #fff;
-    transition: margin 0.1s;
+    transition: margin 0.2s;
   }
   input.cmn-toggle-round:checked + label:before {
    background: #3a99d8;
   }
   input.cmn-toggle-round:checked + label:after {
-    margin-left: 13px;
+    margin-left:17px;
   }
 
 .switch{
-margin-right: 25px;
-float:right;  
+margin-top: 5px;
 }
+
 
 
 /*while an ajax call is busy*/

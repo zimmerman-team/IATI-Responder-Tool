@@ -11,8 +11,11 @@ $page = 'map';
 
 <div class="container-fluid">
   <div id="my-legend">  
-      <div id="hide-legend" class="btn btn-primary"> Close legend </div> <hr>
-
+      <div id="close-legend" class="btn btn-primary"> Close legend </div> <hr>
+      <div id="label-size">
+        <label >Marker position</label>
+      </div>
+      
       <div id='coordinates' class='ui-coordinates'></div> <hr>
 
       <div id="radius-input">
@@ -36,9 +39,9 @@ $page = 'map';
 
 
   </div>
-    <div id="show-legend" class="btn btn-primary" role="button"> Open legend </div>
+    <div id="open-legend" class="btn btn-primary" role="button"> Open legend </div>
 </div>
   
-      <a class="btn btn-primary find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
+      <a class="btn btn-primary" id="find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
 
 <?php include('footer.php'); ?>

@@ -8,7 +8,7 @@ $page = 'about';
         <div class="container-fluid">
         <center><div class="title-home"><h1>About</h1> </div></center>
         IATI Responder gives the possibilty to search worldwide trough thousands of IATI projects.<br>
-        The goal of the IATI Responder is to provide the local communities a better view of the aid development projects in their area.<br>
+        The goal of IATI Responder is to provide local communities a better view of aid development projects in their area.<br>
         In addition the community can respond to these projects and give feedback, so we can improve the projects.<br>
         <br>
         The projects map gives a clear view of all the projects near the user.<br>

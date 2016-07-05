@@ -16,7 +16,7 @@ function getParameterByName(name, url) {
 }
 
 var id = getParameterByName('activity_id'); 
-
+//send activity id with URL 
 $(url_id).attr('href', '/form.php?activity_id='+id);
 
 function info(){

@@ -72,16 +72,25 @@ $("#show-button").click(function() {
   show_nearby_projects([lat, lon], rad);
 });
 
-$("#show-legend").click(function(){
+$("#open-legend").click(function(){
     var marginTop = $("#my-legend").css('margin-top');
       $("#my-legend").animate({marginTop: '10px'});
 });
 
-$("#hide-legend").click(function(){
+$("#close-legend").click(function(){
       var marginTop = $("#my-legend").css('margin-top');
    $("#my-legend").animate({marginTop: '-350px'});
 });
+//button position when legend is open
+$("#open-legend").click(function(){
+    var marginTop = $("#my-legend").css('margin-top');
+      $("#find-projects").animate({marginTop: '0%'});
+});
 
+$("#close-legend").click(function(){
+    var marginTop = $("#my-legend").css('margin-top');
+      $("#find-projects").animate({marginTop: '-18%'});
+});
 // add listeners 
 // $("h2").text("Projects Map")
 
@@ -107,7 +116,7 @@ var ondragvar = function ondrag(){
     filterCircle.setLatLng(m);
     lat = m.lat;
     lon = m.lng;
-    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
+    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(10) + '<br />Longitude: ' + lon.toPrecision(10);
 }
 
 function setHistory(){
@@ -163,7 +172,7 @@ function init_marker(latlng){
     marker.on('dragend', ondragend);
 
     show_nearby_projects(latlng, rad);
- coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(6) + '<br />Longitude: ' + latlng[1].toPrecision(6) ;
+ coordinates.innerHTML = 'Latitude: ' + latlng[0].toPrecision(10) + '<br />Longitude: ' + latlng[1].toPrecision(10) ;
 }
 
 
@@ -190,7 +199,7 @@ function projects_near_marker(){
     marker.unbindPopup();
     // query oipa
     show_nearby_projects([lat, lon], rad);
-    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(6) + '<br />Longitude: ' + lon.toPrecision(6);
+    coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(10) + '<br />Longitude: ' + lon.toPrecision(10);
 }
 
 //OIPA call with 2 coordinates

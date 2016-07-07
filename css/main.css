@@ -129,8 +129,8 @@ btn-primary:hover {
 }
 
 #my-legend hr{
-  margin-top: 5px;
-  margin-bottom: 3px;
+  margin-top: 2px;
+  margin-bottom: 2px;
 }
 
 #open-legend{
@@ -156,7 +156,7 @@ btn-primary:hover {
     width:105px;
     position: fixed;
     right:10px;
-    top: 44%;
+    top: 45%;
     padding: 5px;
     background: #009900; 
 }
@@ -169,7 +169,6 @@ btn-primary:hover {
 }
 
 #radius-input label{   
-  /*padding-top: 5px;*/
   line-height: 2;
   font-size: 1.2rem;
 }
@@ -184,12 +183,12 @@ btn-primary:hover {
   border: 1px solid transparent;
   border-radius: 2px;
   font-size: 1.2rem;
-  /*font-weight: 700;*/
 }
 
 #show-button{
     padding: 2px;
     position: relative;
+    width: 100%;
     font-size: 13px;
 }
 
@@ -218,22 +217,25 @@ btn-primary:hover {
 
 
 #toggle-button-list{
-  position: fixed;
-left: 370px;
-margin-top: -2px;
-  /*float: right;*/
+  position: relative;
+  float: right;
+  margin-right: 23px;
+  margin-top: -2px;
 }
 
 #count-list{
-  margin-left: 18%;
-  }
+   font-size: 1.2rem;
+margin-left: 6%;
+}
 
 #radius-list{
-  margin-left: 46%;
+   font-size: 1.2rem;
+  /*margin-left: 46%;*/
 }
 
 #active-projects-list{
-  /*margin-left:50px; */
+float:right;
+/*margin-right: 30px;*/
 }
 
 .list-column{
@@ -396,9 +398,9 @@ background: #242424;
     height: 20px;
     background-color: #dddddd;
     border-radius: 20px;
-    border:1px solid #dddddd;
+    /*border:1px solid #dddddd;*/
     padding: .4em 1em;
-    box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+    /*box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);*/
   }
 
   input.cmn-toggle-round + label:before,
@@ -426,13 +428,21 @@ background: #242424;
    background: #3a99d8;
   }
   input.cmn-toggle-round:checked + label:after {
-    margin-left:17px;
+    margin-left:19px;
   }
 
 .switch{
 margin-top: 5px;
 }
+#toggle-button-list .switch{
+margin-top: 0px;
+float:right;
+margin-right: 7px;
+}
 
+#toggle-button-list input.cmn-toggle-round:checked + label:after {
+    margin-left:22px;
+}
 
 
 /*while an ajax call is busy*/

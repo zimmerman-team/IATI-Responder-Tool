@@ -89,7 +89,7 @@ $("#open-legend").click(function(){
 
 $("#close-legend").click(function(){
     var marginTop = $("#my-legend").css('margin-top');
-      $("#find-projects").animate({marginTop: '-18%'});
+      $("#find-projects").animate({marginTop: '-15%'});
 });
 // add listeners 
 // $("h2").text("Projects Map")
@@ -196,10 +196,11 @@ function projects_near_marker(){
     clusteredMarkers = L.markerClusterGroup();
     page_nr = 1;
     count = 200;
-    marker.unbindPopup();
+
     // query oipa
     show_nearby_projects([lat, lon], rad);
     coordinates.innerHTML = 'Latitude: ' + lat.toPrecision(10) + '<br />Longitude: ' + lon.toPrecision(10);
+    marker.unbindPopup();
 }
 
 //OIPA call with 2 coordinates
@@ -278,6 +279,7 @@ function projects_near_marker(){
                 });
 
                 map.addLayer(clusteredMarkers);
+                marker.unbindPopup();
 
                 var content = 'No projects availabe, drag marker to different location'
             

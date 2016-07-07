@@ -2,22 +2,25 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-<div class="col-md-8 col-md-push-2" >
+<div class="col-md-6 col-md-push-3" >
     <div class="row">
         <div class="list-column ">   
 
           <div id="toggle-button-list">
-            
-                <div class="switch toggle-on-list">
+            <div id="label-size">
+              <label>Active projects &nbsp 
+                <div class="switch">
                     <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox" checked="">
                     <label id="check" for="cmn-toggle-1"></label>
-                </div>              
+                </div>
+              </label>
+            </div>
           </div>
           
-          <label id="active-projects-list">Active projects &nbsp </label>
-          <label id="radius-list" for="usr"></label>
-          <label id="count-list" for="usr"></label>
-            
+          <label id="radius-list" for="usr"></label> 
+          <label id="count-list" for="usr"></label>            
+<!--           <label id="active-projects-list">Active projects &nbsp </label>
+ -->
         </div>     
     </div>
 

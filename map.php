@@ -42,6 +42,6 @@ $page = 'map';
     <div id="open-legend" class="btn btn-primary" role="button"> Open legend </div>
 </div>
   
-      <a class="btn btn-primary" id="find-projects" onclick="projects_near_marker()" role="button">Find projects</a> 
+      <a class="btn btn-primary" id="find-projects" onclick="projects_near_marker()" role="button">Search for projects</a> 
 
 <?php include('footer.php'); ?>

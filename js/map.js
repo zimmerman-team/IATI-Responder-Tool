@@ -124,7 +124,7 @@ function setHistory(){
 }
 
 function ondragend(){
-  marker.bindPopup("Press the Find projects button to search for projects");
+  marker.bindPopup("Press the Search for projects button to search for projects");
   marker.openPopup();
   setHistory();
 } 

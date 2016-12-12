@@ -65,10 +65,11 @@ btn-primary:hover {
 
 /*Home page*/
 .title-home h1{ 
-    font-weight: 700;
-    margin-bottom: 0px
-    font-weight: 700;
+  font-size: 3.3rem;
+  font-family: "proxima-nova", sans-serif
+  margin-bottom: 1rem;
  }
+
 
 
 
@@ -80,6 +81,14 @@ btn-primary:hover {
     margin: 0 auto;
     width:300px;
     margin-top:10%;
+    margin-bottom:10px;
+}
+
+.text-map{
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+}
+.text-list{
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
 /*Respond List knop*/
@@ -91,6 +100,7 @@ btn-primary:hover {
     display: block;
     width:300px;
     position:relative;
+    margin-bottom: 10px;
 }
 
 .glyphicon{
@@ -115,7 +125,7 @@ btn-primary:hover {
 #my-legend {
   display: block;
   clear:both;
-  width: 105px !important;
+  width: 130px !important;
   height: auto;
   right: 10px;
   margin-top: 10px;
@@ -136,8 +146,8 @@ btn-primary:hover {
 #open-legend{
   top:67px;
   right:10px;
+  width: 130px;
   position: fixed;
-  width: 105px;
   padding: 5px;
   background-color: #3a99d8;
 }
@@ -153,10 +163,9 @@ btn-primary:hover {
 }
 
 #find-projects{
-    width:105px;
     position: fixed;
     right:10px;
-    top: 45%;
+    top: 40%;
     padding: 5px;
     background: #009900; 
 }

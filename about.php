@@ -11,11 +11,9 @@ $page = 'about';
         The goal of IATI Responder is to provide local communities a better view of aid development projects in their area.<br>
         In addition the community can respond to these projects and give feedback, so we can improve the projects.<br>
         <br>
-        The projects map gives a clear view of all the projects near the user.<br>
-        With the draggable marker and legend projects can be searched in specied regions.<br>
-        By holding down for two seconds, the marker will apppear with all the projects near it.<br>
-        <br> 
-        IATI Responder is developed by Mansur Dehpoor an intern at Zimmerman & Zimmerman based in the Netherlands <br>
+        The IATI Responder started as an intern project by Mansur Dehpoor at Zimmerman & Zimmerman. <br>
+        In cooperation with colleagues the first version of the IATI Responder was set.
+
     </div> 
 <!-- </div> -->
 

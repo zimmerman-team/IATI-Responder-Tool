@@ -122,7 +122,7 @@ function project_list(){
             var project_count = data.count+ " projects near me"; 
             document.getElementById("count-list").innerHTML = project_count;
                  
-            document.getElementById("show-more").innerHTML = "Show more";
+            document.getElementById("show-more").innerHTML = "Load more";
 
             number += 1;
             
@@ -136,8 +136,6 @@ function project_list(){
                 },
                 "number": number
             };
-
-            
 
             geojson.push(projects);       
         });

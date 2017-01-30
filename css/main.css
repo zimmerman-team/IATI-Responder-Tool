@@ -20,6 +20,14 @@ btn-primary:hover {
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
+#search-btn{
+    position: fixed;
+    left:43px;
+    top: 9%;
+    padding: 5px;
+    background: #009900;  
+}
+
 /*Header on all pages*/
 #header {
   background: #333;
@@ -31,13 +39,6 @@ btn-primary:hover {
   box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
 }
 
-#header h2 {
-  font-weight: 550;
-  display: inline-block;
-  color:#fff;
-  margin:0;
-  line-height: 50px;
-}
 
 .header-title{
     line-height: 5rem;
@@ -64,18 +65,33 @@ btn-primary:hover {
 
 
 /*Home page*/
-.title-home h1{ 
-  font-size: 3.3rem;
-  font-family: "proxima-nova", sans-serif
-  margin-bottom: 1rem;
- }
+.content{
+  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  background: #fff
+}
 
+.content h1{
+  text-align: center;
+  margin-top: 0;
+  padding-top: 25px;
+  font-weight: 600;
+}
 
+.content h4{
+  text-align: center;
+  /*font-weight: 600;*/
+}
 
+.content .row{
+  margin: 0px;
+}
 
+.content hr{
+margin-bottom: 0px;
+}
 /*Projects Map knop*/
 .but1{
-    font-weight: 300;
+    /*font-weight: 300;*/
     clear: both;
     display: block;
     margin: 0 auto;
@@ -85,32 +101,36 @@ btn-primary:hover {
 }
 
 .text-map{
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+  /*box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);*/
+    border-right: solid #C0C0C0;
+  text-align: left;
 }
-.text-list{
-  box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);
+.text-map h4{
+font-weight: 600;
 }
 
+.text-list{
+  /*box-shadow: 0 1.5px 4px rgba(0,0,0,.24),0 1.5px 6px rgba(0,0,0,.12);*/
+  text-align: left;
+}
+.text-list h4{
+  font-weight: 600;
+}
 /*Respond List knop*/
 .but2{
-    font-weight: 300;
+    /*font-weight: 300;*/
     clear: both;
-    margin: 0 auto;
-    margin-top:10px;
     display: block;
+    margin: 0 auto;
     width:300px;
-    position:relative;
-    margin-bottom: 10px;
+    margin-top:22%;
+    margin-bottom:10px;
 }
 
 .glyphicon{
   float:left;
 }
-.main-wrapper{
-    position:relative; 
-    background: #fff;
-    padding-bottom: 550px;
-}
+
 
 /*map styling*/
 #map { 
@@ -164,7 +184,7 @@ btn-primary:hover {
 
 #find-projects{
     position: fixed;
-    right:10px;
+    left:10px;
     top: 40%;
     padding: 5px;
     background: #009900; 

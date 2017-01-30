@@ -157,7 +157,7 @@ function init_marker(latlng){
         draggable: true
     }).addTo(map);
 
-    var init_text ="To search for projects drag marker to desired location or hold down for 2 seconds outside of the circle "
+    var init_text ="To search for projects drag marker to desired location or hold down for 2 seconds."
     marker.bindPopup(init_text)
     marker.openPopup(init_text)
    
@@ -207,8 +207,8 @@ function projects_near_marker(){
  function show_nearby_projects(latlng, distance, status){
 
             $('#loader').css('display', 'block');
-    
-           var projectAPI = "https://dev.oipa.nl/api/locations/";
+            //dev.oipa werkt tijdelijk niet
+           var projectAPI = "https://www.oipa.nl/api/locations/";
            var projectApiArgs = {
               format: "json",
               fields: "point,name,ref,activity,feature_designation",

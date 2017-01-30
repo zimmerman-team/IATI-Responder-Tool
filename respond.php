@@ -2,7 +2,7 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-<div class="col-md-6 col-md-push-3" >
+<div class="col-md-8 col-md-push-2" >
     <div class="row">
         <div class="list-column ">   
 

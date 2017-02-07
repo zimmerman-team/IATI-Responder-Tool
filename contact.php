@@ -3,8 +3,7 @@ include('header.php');
 $page = 'contact';
 ?>
 
-
-    <div class="main-wrapper">
+       <div class="col-md-10 col-md-push-1">
         <div class="container-fluid">
         <center><div class="title-home"><h1>Contact</h1> </div></center>
 
@@ -13,7 +12,7 @@ $page = 'contact';
         1019 BM Amsterdam<br>
         The Netherlands<br><br>
         For more info mail at:<br> mansur@zimmermanzimmerman.nl <br>
-    </div> 
+      </div>
 
 <?php 
 include('footer.php');

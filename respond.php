@@ -2,10 +2,14 @@
 include('header.php'); 
 $page = 'list';
 ?> 
-<div class="col-md-8 col-md-push-2" >
+<div class="col-md-10 col-md-push-1" >
     <div class="row">
         <div class="list-column ">   
-
+          <h3>Project list</h3>
+          <p>
+           In the project list all the projects near you are shown.
+           Lorum ipsum...
+          </p>
           <div id="toggle-button-list">
             <div id="label-size">
               <label>Active projects &nbsp 
